@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belkin WeMo — Patricia Panqueva</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f2ee; --ink: #1a1814; --muted: #6b6560;
+    --accent: #2E9E48; --accent-dark: #1f7033;
+    --rule: #d8d4ce; --card-bg: #eeeae4; --dark: #0f1410;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: var(--bg); border-bottom: 1px solid var(--rule); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO — phone mockup style */
+  .hero { background: var(--dark); padding: 80px 0 0; }
+  .hero-content { max-width: 1100px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+  .hero-text { padding-bottom: 60px; }
+  .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: block; }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 10vw, 120px); line-height: 0.9; color: #fff; letter-spacing: 0.02em; margin-bottom: 32px; }
+  .hero-meta { display: flex; flex-direction: column; gap: 16px; }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 3px; }
+  .hero-meta-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); font-weight: 500; }
+  .hero-meta-value { font-size: 14px; color: rgba(255,255,255,0.8); }
+  .hero-phone { display: flex; justify-content: center; }
+  .hero-phone img { width: 280px; border-radius: 36px 36px 0 0; box-shadow: 0 -20px 60px rgba(46,158,72,0.2); }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+
+  .section-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 20px; display: block; }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 4vw, 52px); letter-spacing: 0.04em; line-height: 1.05; margin-bottom: 24px; color: var(--ink); }
+  p { color: var(--muted); margin-bottom: 20px; font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 500; }
+
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .stat-box { background: var(--card-bg); padding: 28px 24px; }
+  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; color: var(--accent); letter-spacing: 0.02em; margin-bottom: 6px; }
+  .stat-label { font-size: 12px; font-weight: 500; letter-spacing: 0.05em; color: var(--muted); text-transform: uppercase; }
+
+  .full-img { width: 100%; display: block; }
+  .img-caption { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; margin-top: 12px; font-style: italic; }
+
+  /* PHONE GRID — portrait screens side by side */
+  .phone-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 40px 0; align-items: start; }
+  .phone-grid img { width: 100%; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+  .phone-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 40px 0; align-items: start; }
+  .phone-grid-3 img { width: 100%; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+
+  .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 40px 0; }
+  .img-grid-2 img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; object-position: top; }
+
+  .dark-strip { background: var(--dark); padding: 72px 80px; }
+  .dark-strip .section-label { color: #fff; }
+  .dark-strip h2 { color: #fff; }
+  .dark-strip p { color: rgba(255,255,255,0.55); }
+  .dark-strip strong { color: rgba(255,255,255,0.9); }
+
+  .accent-strip { background: var(--accent); padding: 72px 80px; }
+  .accent-strip .section-label { color: rgba(255,255,255,0.65); }
+  .accent-strip h2 { color: #fff; }
+  .accent-strip p { color: rgba(255,255,255,0.8); }
+  .accent-strip strong { color: #fff; }
+
+  .pull-quote { border-left: 3px solid var(--accent); padding: 24px 36px; margin: 40px 0; background: var(--card-bg); }
+  .pull-quote blockquote { font-size: 20px; font-weight: 300; line-height: 1.55; color: var(--ink); font-style: italic; margin-bottom: 16px; }
+  .pull-quote cite { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-style: normal; font-weight: 600; }
+
+  .two-col-text { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+
+  .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .process-step { background: var(--card-bg); padding: 36px 28px; position: relative; }
+  .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 1; color: var(--rule); position: absolute; top: 20px; right: 24px; }
+  .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 12px; }
+  .step-body { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  .challenge-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 48px; }
+  .challenge-card { background: rgba(255,255,255,0.07); padding: 32px 28px; }
+  .challenge-title { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.1em; color: #fff; margin-bottom: 10px; }
+  .challenge-body { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+  .tool-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .tool-card { background: var(--card-bg); padding: 32px 28px; }
+  .tool-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 6px; }
+  .tool-role { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; margin-bottom: 12px; }
+  .tool-body { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  .outcome-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .outcome-card { background: var(--accent); padding: 36px 28px; color: #fff; }
+  .outcome-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; margin-bottom: 12px; }
+  .outcome-card p { color: rgba(255,255,255,0.75); font-size: 14px; margin: 0; }
+
+  .role-list { list-style: none; margin-top: 16px; }
+  .role-list li { padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 15px; color: var(--muted); display: flex; gap: 16px; align-items: baseline; }
+  .role-list li::before { content: '→'; color: var(--accent); font-size: 14px; flex-shrink: 0; }
+
+  .case-nav { padding: 60px 80px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--rule); }
+  .case-nav a { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--ink); text-decoration: none; transition: color 0.2s; }
+  .case-nav a:hover { color: var(--accent); }
+  .case-nav .back { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+</style>
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Patricia Panqueva</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="hero-tag">Belkin International · Los Angeles · 2014</span>
+      <h1 class="hero-title">Belkin<br>WeMo</h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><span class="hero-meta-label">Role</span><span class="hero-meta-value">UX Designer — Contractor</span></div>
+        <div class="hero-meta-item"><span class="hero-meta-label">Platform</span><span class="hero-meta-value">iOS & Android Smart Home App</span></div>
+        <div class="hero-meta-item"><span class="hero-meta-label">Focus</span><span class="hero-meta-value">Scheduling · Automation · Device Control</span></div>
+        <div class="hero-meta-item"><span class="hero-meta-label">Tools</span><span class="hero-meta-value">InVision · Flinto · Origami · Paper</span></div>
+      </div>
+    </div>
+    <div class="hero-phone">
+      <img src="wm-proto-p3.jpg" alt="WeMo scheduling screen — hi-fi prototype">
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="section">
+  <div class="container">
+    <div class="intro-grid">
+      <div>
+        <span class="section-label">Overview</span>
+        <h2>Making Smart Home Actually Simple</h2>
+        <p>WeMo was Belkin's smart home platform — a family of Wi-Fi connected plugs, switches, and sensors that let you control and automate your home from your phone. The hardware was clever. The software needed to match.</p>
+        <p>As a UX contractor embedded in the product team, I focused on one of the most critical and complex parts of the app: <strong>scheduling and automation</strong>. How do you let someone set "turn on the porch light 5 minutes after sunset every weekday" in a way that feels intuitive — not like programming a VCR?</p>
+        <p>The answer came through rapid iteration — sketching, paper prototyping, InVision flows, Flinto transitions, and Origami micro-interactions — tested early and often until the complexity disappeared.</p>
+      </div>
+      <div>
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-number">iOS</div><div class="stat-label">& Android — both platforms designed in parallel</div></div>
+          <div class="stat-box"><div class="stat-number">∞</div><div class="stat-label">Device types — one modular schedule pattern for all</div></div>
+          <div class="stat-box"><div class="stat-number">3</div><div class="stat-label">Prototype fidelities — paper, InVision, Origami</div></div>
+          <div class="stat-box"><div class="stat-number">2014</div><div class="stat-label">Launched — early days of consumer smart home</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CHALLENGE -->
+<div class="dark-strip">
+  <span class="section-label">The Design Challenge</span>
+  <h2>Scheduling is Easy<br>to Get Wrong</h2>
+  <p style="max-width:700px;font-size:18px;line-height:1.65;">Smart home automation sounds simple until you try to design it. Users need to set time-based rules across <strong>multiple devices, multiple conditions, and multiple time modes</strong> — clock time, sunrise, sunset. The scheduling UI had to handle all of this without ever feeling like a settings panel.</p>
+  <div class="challenge-cards">
+    <div class="challenge-card">
+      <div class="challenge-title">Device Multiplicity</div>
+      <div class="challenge-body">One schedule needed to apply to multiple devices — a lamp, a kitchen switch, a fan — without requiring users to repeat the same setup for each one. The "apply to similar devices" pattern was a core UX innovation.</div>
+    </div>
+    <div class="challenge-card">
+      <div class="challenge-title">Time Complexity</div>
+      <div class="challenge-body">Three schedule modes — clock time, sunrise, sunset — each with optional offsets. Switching between modes had to feel effortless, with the UI adapting clearly so users always understood what they'd set.</div>
+    </div>
+    <div class="challenge-card">
+      <div class="challenge-title">Cross-Platform Consistency</div>
+      <div class="challenge-body">iOS and Android required the same scheduling logic expressed in each platform's native patterns. A modular design system meant the same mental model worked everywhere, even when controls differed.</div>
+    </div>
+  </div>
+</div>
+
+<!-- HI-FI PROTOTYPES FROM PDF -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">High-Fidelity Prototypes</span>
+    <h2>From the InVision<br>Prototype</h2>
+    <p style="max-width:640px;">These screens are from the clickable InVision prototype — used for user testing and stakeholder walkthroughs. They show the full scheduling flow: from the device list, through schedule creation, to the time-mode picker with its slider interaction.</p>
+    <div class="phone-grid">
+      <div>
+        <img src="wm-proto-p2.jpg" alt="WeMo device list — Switch, Mr Coffee Brewer, Holmes Heater, Smart LED Bulb">
+        <p class="img-caption">Device list — all WeMo devices visible at a glance with status and power control.</p>
+      </div>
+      <div>
+        <img src="wm-proto-p3.jpg" alt="Schedule overview — on at 06:00am, off at sunset, Mon–Fri, apply to other devices">
+        <p class="img-caption">Schedule overview — clock on, sunset off, weekdays selected, apply to multiple devices.</p>
+      </div>
+      <div>
+        <img src="wm-proto-p8.jpg" alt="Schedule — on at sunset, off at 08:00pm, weekdays">
+        <p class="img-caption">Sunset trigger — the device turns on exactly at sunset and off at 08:00pm.</p>
+      </div>
+      <div>
+        <img src="wm-proto-p20.jpg" alt="Time picker — sunset mode on top, clock slider on bottom">
+        <p class="img-caption">Time-mode picker — sunset selected (green), clock time below with horizontal slider.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIME VISUALIZATION -->
+<div class="accent-strip">
+  <span class="section-label">Time Visualization Exploration</span>
+  <h2>Three Modes,<br>One Intuition</h2>
+  <p style="max-width:680px;font-size:18px;line-height:1.65;">The time visualization exploration was about finding a single interaction model that could express clock time, sunrise, and sunset — without switching to separate UI paradigms for each. <strong>The horizontal slider + large type combination</strong> let users scrub through time modes naturally, with the active selection dominating the screen.</p>
+  <div style="margin-top:40px;">
+    <img class="full-img" src="wm10-2-2000x1125.png" alt="Time visualization exploration — four scheduling states side by side" style="border-radius:8px;">
+    <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:12px;font-style:italic;">Four states: clock-based (06:00am), sun-based (5 min after sunset), unscheduled, and the picker in active use — all using the same visual language so users always know where they are.</p>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Design Process</span>
+    <h2>Sketch Fast,<br>Test Faster</h2>
+    <p style="max-width:640px;">The prototyping process moved through three fidelity levels — each one answering a different type of question. Early sketches explored flow and labelling. Mid-fidelity InVision prototypes tested navigation. Origami prototypes validated the feel of micro-interactions.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <div class="step-title">Sketch & Paper</div>
+        <p class="step-body">Quick hand-drawn flows explored the scheduling concept — device states, time modes, notification states. Paper prototypes caught structural problems before any digital work began.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <div class="step-title">InVision & Flinto</div>
+        <p class="step-body">Mid-fidelity wireframes linked in InVision for click-through testing. Flinto added tap-level transitions to validate the flow between schedule creation, device selection, and confirmation.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <div class="step-title">Origami</div>
+        <p class="step-body">Used in collaboration with the visual designer to prototype physics-based micro-interactions — slider behaviour for time offsets, toggle states, and the tactile feel of the schedule controls.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAPER PROTOTYPES -->
+<div style="margin:0;">
+  <img class="full-img" src="wm5-2000x776.jpg" alt="Paper prototype sketches — WeMo app states for Mr. Coffee device">
+  <div class="container"><p class="img-caption">Early paper sketches — "Mr Coffee Ready", "Mr Coffee Brewing", "Mr Coffee Brewing is Done (Enjoy!)" — three device states colour-coded before any digital implementation.</p></div>
+</div>
+
+<!-- WIREFRAMES -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Wireframes</span>
+    <h2>Apply Once,<br>Schedule Everything</h2>
+    <p style="max-width:640px;">A key UX insight: users shouldn't have to create the same schedule separately for every device. The wireframe flow for <strong>"Apply this schedule to other similar devices"</strong> solved a real pain point — set your schedule once, then extend it across multiple devices in a single step.</p>
+    <div class="img-grid-2">
+      <img src="wm4-2000x1495.jpg" alt="Wireframe flow: apply schedule to multiple WeMo devices">
+      <img src="wm4-1492x1115.jpeg" alt="Close-up wireframe: schedule settings with sunset trigger and day selection">
+    </div>
+    <p class="img-caption">Step 3 — "Apply the schedule to other similar devices." Notes read "Explore Options..." — a live annotation from a testing session with handwritten user names below.</p>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">UI Specifications</span>
+    <h2>Designed for<br>Engineering Handoff</h2>
+    <p style="max-width:640px;">Beyond prototyping, I produced detailed UI specifications — annotated wireframes with numbered modules, states, strings, and actions — for the engineering team. Each component was documented with its default state, enabled/disabled variations, and exact interaction behaviour.</p>
+    <div class="img-grid-2" style="margin-top:40px;">
+      <img src="Mortin_specs_2.JPG" alt="WeMo UI spec sheet — Mortein product, peekaboo drawer, intensity controls" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:top;">
+      <img src="Mortin_specs.JPG" alt="WeMo UI spec sheet — overflow menu, schedule list, branding component" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:top;">
+    </div>
+    <p class="img-caption">InVision-annotated spec sheets — numbered modules (1–30), states, strings, and actions documented for each component. The Mortein product integration shows the breadth of the WeMo ecosystem: custom device branding, intensity controls, peekaboo drawers, and in-app cartridge ordering.</p>
+  </div>
+</section>
+
+<!-- TOOL STACK -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Prototyping Tools</span>
+    <h2>The Right Tool<br>for Each Question</h2>
+    <div class="tool-row">
+      <div class="tool-card">
+        <div class="tool-name">InVision</div>
+        <div class="tool-role">Flow & Navigation Testing</div>
+        <div class="tool-body">Linked wireframes for click-through user testing. Validated the overall scheduling flow and device management IA with real users before visual design began.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Flinto</div>
+        <div class="tool-role">Transition & Tap Prototyping</div>
+        <div class="tool-body">Added tap-level transitions and screen animations to simulate the app experience. Essential for testing the scheduling flow with stakeholders before any engineering began.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Origami</div>
+        <div class="tool-role">Micro-interaction Design</div>
+        <div class="tool-body">Collaboration with the visual designer to prototype physics-based interactions — slider behaviour, toggle animations, time-picker feel. Reduced engineering guesswork on the most nuanced UI moments.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Outcomes</span>
+    <h2>Shipped, Scaled,<br>Consistent</h2>
+    <div class="outcome-row">
+      <div class="outcome-card">
+        <h3>Launched 2014</h3>
+        <p>The WeMo scheduling UX shipped on iOS and Android as part of Belkin's smart home ecosystem — one of the most feature-complete smart home apps of its era.</p>
+      </div>
+      <div class="outcome-card" style="background:var(--accent-dark);">
+        <h3>Modular System</h3>
+        <p>A single scheduling pattern scaled across every WeMo device type — dramatically reducing design and engineering overhead for each new product launch.</p>
+      </div>
+      <div class="outcome-card" style="background:var(--dark);">
+        <h3>Engineering Specs</h3>
+        <p>Fully annotated UI specifications delivered for every component — numbered modules, states, strings, and actions — enabling clean engineering handoff.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLE + LEARNINGS -->
+<section class="section">
+  <div class="container">
+    <div class="two-col-text">
+      <div>
+        <span class="section-label">My Role</span>
+        <h2>UX Designer<br>Contractor</h2>
+        <ul class="role-list">
+          <li>Designed the scheduling and automation UX for the WeMo app (iOS & Android)</li>
+          <li>Led rapid prototyping across paper, InVision, Flinto, and Origami</li>
+          <li>Designed the "apply schedule to multiple devices" interaction pattern</li>
+          <li>Built the modular scheduling design system across the WeMo device family</li>
+          <li>Collaborated with the visual designer on Origami micro-interaction prototypes</li>
+          <li>Produced annotated UI specifications for engineering handoff (iOS & Android)</li>
+          <li>Participated in iterative user testing throughout the design process</li>
+        </ul>
+      </div>
+      <div>
+        <span class="section-label">Key Learnings</span>
+        <h2>Complexity Hides<br>in the Details</h2>
+        <p>WeMo taught me that smart home UX is deceptively hard. The interactions feel simple — turn a light on, set a schedule — but the edge cases multiply fast. What if the device is offline? What if sunrise varies by season? What if you want to apply a schedule but not to all devices of that type?</p>
+        <p><strong>Prototyping at the right fidelity</strong> was the discipline that kept us honest. Paper caught structural problems. InVision caught flow problems. Origami caught feel problems. Each tool answered a different question — and the sequence mattered.</p>
+        <p>Working closely with a visual designer on Origami prototypes was a reminder that <strong>the best UX decisions happen at the boundary between interaction and visual design</strong> — where timing, motion, and layout all meet at once.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="case-nav">
+  <a class="back" href="index.html">← All Projects</a>
+  <a href="glowing-citizens-case-study.html">Glowing Citizens →</a>
+</div>
+
+</body>
+</html>

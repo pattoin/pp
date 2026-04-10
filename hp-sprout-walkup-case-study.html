@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HP Sprout Walk-UP — Patricia Panqueva</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f2ee;
+    --ink: #1a1814;
+    --muted: #6b6560;
+    --accent: #0096D6;
+    --accent-dark: #006fa0;
+    --rule: #d8d4ce;
+    --white: #ffffff;
+    --card-bg: #eeeae4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    margin-top: 64px;
+    position: relative;
+    height: 72vh;
+    min-height: 480px;
+    overflow: hidden;
+    background: #1a2c3a;
+  }
+  .hero-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+    display: block;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 56px 80px;
+    background: linear-gradient(to top, rgba(15,25,35,0.88) 0%, rgba(15,25,35,0.1) 60%);
+  }
+  .hero-tag {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 8vw, 100px);
+    line-height: 0.95;
+    color: #fff;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+  }
+  .hero-meta {
+    display: flex; gap: 40px; flex-wrap: wrap;
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.45); font-weight: 500;
+  }
+  .hero-meta-value {
+    font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.88);
+  }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+  .section:last-child { border-bottom: none; }
+
+  /* INTRO GRID */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .intro-left {}
+  .section-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 20px;
+    display: block;
+  }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 4vw, 52px);
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  p { color: var(--muted); margin-bottom: 20px; font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 500; }
+
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; margin-top: 8px;
+  }
+  .stat-box {
+    background: var(--card-bg);
+    padding: 28px 24px;
+  }
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px; line-height: 1;
+    color: var(--accent); letter-spacing: 0.02em;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.05em;
+    color: var(--muted); text-transform: uppercase;
+  }
+
+  /* FULL-WIDTH IMAGE */
+  .full-img {
+    width: 100%; display: block;
+    margin: 0;
+  }
+  .img-caption {
+    font-size: 12px; color: var(--muted); letter-spacing: 0.04em;
+    margin-top: 12px; font-style: italic;
+  }
+
+  /* IMAGE GRID */
+  .img-grid-2 {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+    margin: 40px 0;
+  }
+  .img-grid-3 {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px;
+    margin: 40px 0;
+  }
+  .img-grid-2 img, .img-grid-3 img {
+    width: 100%; display: block;
+    aspect-ratio: 4/3; object-fit: cover;
+  }
+
+  /* CHALLENGE STRIP */
+  .challenge-strip {
+    background: var(--ink);
+    padding: 72px 80px;
+  }
+  .challenge-strip .section-label { color: var(--accent); }
+  .challenge-strip h2 { color: #fff; }
+  .challenge-strip p { color: rgba(255,255,255,0.6); }
+  .challenge-strip strong { color: rgba(255,255,255,0.9); }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    border-left: 3px solid var(--accent);
+    padding: 24px 36px;
+    margin: 40px 0;
+    background: var(--card-bg);
+  }
+  .pull-quote blockquote {
+    font-size: 20px; font-weight: 300; line-height: 1.55;
+    color: var(--ink); font-style: italic;
+    margin-bottom: 16px;
+  }
+  .pull-quote cite {
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); font-style: normal; font-weight: 600;
+  }
+
+  /* TWO-COL TEXT */
+  .two-col-text {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  }
+
+  /* PERSONAS */
+  .persona-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+    margin-top: 40px;
+  }
+  .persona-card {
+    background: var(--card-bg);
+    padding: 28px 24px;
+  }
+  .persona-icon {
+    width: 40px; height: 40px;
+    background: var(--accent);
+    margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 18px;
+  }
+  .persona-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; letter-spacing: 0.06em;
+    color: var(--ink); margin-bottom: 6px;
+  }
+  .persona-role {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); font-weight: 600; margin-bottom: 12px;
+  }
+  .persona-quote {
+    font-size: 13px; color: var(--muted); font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* PROCESS STEPS */
+  .process-steps {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+    margin-top: 40px;
+  }
+  .process-step {
+    background: var(--card-bg); padding: 36px 28px;
+    position: relative;
+  }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px; line-height: 1;
+    color: var(--rule); position: absolute;
+    top: 20px; right: 24px;
+    letter-spacing: 0.02em;
+  }
+  .step-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 0.06em;
+    color: var(--ink); margin-bottom: 12px;
+  }
+  .step-body { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* SYSTEM DIAGRAM SECTION */
+  .system-section { background: var(--card-bg); padding: 72px 80px; }
+  .system-section .section-label { color: var(--accent); }
+
+  /* OUTCOMES */
+  .outcome-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+    margin-top: 40px;
+  }
+  .outcome-card {
+    background: var(--accent); padding: 36px 28px; color: #fff;
+  }
+  .outcome-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 0.06em;
+    margin-bottom: 12px;
+  }
+  .outcome-card p { color: rgba(255,255,255,0.75); font-size: 14px; margin: 0; }
+
+  /* ROLE */
+  .role-list { list-style: none; margin-top: 16px; }
+  .role-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px; color: var(--muted);
+    display: flex; gap: 16px; align-items: baseline;
+  }
+  .role-list li::before {
+    content: '→'; color: var(--accent);
+    font-size: 14px; flex-shrink: 0;
+  }
+
+  /* NAV BOTTOM */
+  .case-nav {
+    padding: 60px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--rule);
+  }
+  .case-nav a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; letter-spacing: 0.06em;
+    color: var(--ink); text-decoration: none;
+    display: flex; align-items: center; gap: 12px;
+    transition: color 0.2s;
+  }
+  .case-nav a:hover { color: var(--accent); }
+  .case-nav .back {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .case-nav .back:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .hero-overlay { padding: 36px 24px; }
+    .container { padding: 0 24px; }
+    .intro-grid, .two-col-text { grid-template-columns: 1fr; gap: 40px; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .persona-row { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .outcome-row { grid-template-columns: 1fr; }
+    .challenge-strip, .system-section, .case-nav { padding: 48px 24px; }
+    .img-grid-2, .img-grid-3 { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">Patricia Panqueva</a>
+  <ul class="nav-links">
+    <li><a href="About.html">About</a></li>
+    <li><a href="index.html">Work</a></li>
+    <li><a href="Contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="wk2-1691x1268.jpeg" alt="Children engaging with HP Sprout Walk-UP in a museum">
+  <div class="hero-overlay">
+    <span class="hero-tag">HP Inc. · 2016</span>
+    <h1 class="hero-title">HP Sprout<br>Walk-UP</h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Role</span>
+        <span class="hero-meta-value">Lead UX Designer</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Platform</span>
+        <span class="hero-meta-value">Self-Service Kiosk · Public Spaces</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Deployed</span>
+        <span class="hero-meta-value">Museums, Libraries, Offices</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Year</span>
+        <span class="hero-meta-value">2015–2016</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-left">
+        <span class="section-label">Overview</span>
+        <h2>Designing for Strangers, Every Time</h2>
+        <p>The HP Sprout was built for personal use — a creative workstation with a depth camera overhead and a touch mat below. But what happens when you take that experience public? When there's no onboarding, no manual, and the next user is a museum visitor who has 10 minutes and zero context?</p>
+        <p>That was the challenge. I led the UX for <strong>HP Sprout Walk-UP</strong> — a self-service mode that transformed Sprout's powerful hardware into an unattended, zero-training kiosk deployable in museums, libraries, schools, offices, and retail spaces.</p>
+        <p>The result was a fully modular, administrator-configurable platform that served radically different user types — from an eight-year-old in face paint to an elderly librarian scanning family documents.</p>
+      </div>
+      <div class="intro-right">
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Minutes of training required for walk-up users</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">4+</div>
+            <div class="stat-label">Distinct deployment contexts designed for</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">2</div>
+            <div class="stat-label">User roles: visitors & administrators</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">20m</div>
+            <div class="stat-label">Max session length with auto-reset</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGE STRIP -->
+<div class="challenge-strip">
+  <span class="section-label">The Problem</span>
+  <h2>Designing for a User<br>You'll Never Meet</h2>
+  <p style="max-width: 680px; font-size: 18px; line-height: 1.65;">
+    Desktop software assumes familiarity. Public kiosks don't have that luxury. The Sprout Walk-UP needed to be simultaneously <strong>effortless for a first-time visitor</strong> and <strong>deeply configurable for the administrator</strong> — a librarian or museum director who needed to brand the experience, set time limits, choose apps, and keep sessions clean between users.
+  </p>
+
+  <div class="pull-quote" style="margin-top: 48px; background: rgba(255,255,255,0.06); border-color: var(--accent);">
+    <blockquote style="color: rgba(255,255,255,0.85);">"We need something that can be used by pretty much anybody. We try to give our visitors activities that are suited for a multi-generational audience. The solution has to be fairly intuitive — spontaneous, easily recognizable, something you can just jump in and do."</blockquote>
+    <cite>Jeff Burdona — Director of Education, San Jose Museum of Art</cite>
+  </div>
+</div>
+
+<!-- USERS -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Research & Personas</span>
+    <h2>Who Walks Up?</h2>
+    <p style="max-width: 640px;">Field research and contextual inquiry across museums, libraries, and offices revealed a dramatically diverse user base with one shared constraint: zero patience for learning a new system.</p>
+    <div class="persona-row">
+      <div class="persona-card">
+        <div class="persona-icon">🎒</div>
+        <div class="persona-name">High School Student</div>
+        <div class="persona-role">Capture & Create</div>
+        <div class="persona-quote">"I'm used to my phone for capturing. I expect it to work the same way everywhere."</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">👩‍👧</div>
+        <div class="persona-name">Teacher & Student</div>
+        <div class="persona-role">Scan & Share</div>
+        <div class="persona-quote">"I need to scan a document and email it to my daughter's teacher — quickly and easily."</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">📚</div>
+        <div class="persona-name">Elderly Librarian</div>
+        <div class="persona-role">Archive & Preserve</div>
+        <div class="persona-quote">"I want to scan multiple objects to archive my family memories — I can't afford to make mistakes."</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">🏛️</div>
+        <div class="persona-name">Administrator</div>
+        <div class="persona-role">Configure & Control</div>
+        <div class="persona-quote">"I customized the Sprout for the SF public library — our brand, our apps, our rules."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIELD PHOTO -->
+<div style="margin: 0;">
+  <img class="full-img" src="wk3-1691x893.png" alt="Experience prototyping and role-playing session">
+  <div class="container"><p class="img-caption">Experience prototyping with role-playing — simulating bank teller telepresence interactions to stress-test the interaction model before digital development.</p></div>
+</div>
+
+<!-- PROCESS -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Design Process</span>
+    <h2>From Desktop App<br>to Public Platform</h2>
+    <p style="max-width: 640px;">Transforming a personal creative tool into a public kiosk required rethinking every assumption — session management, navigation hierarchy, error recovery, and trust signals.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <div class="step-title">Field Research & Journey Mapping</div>
+        <p class="step-body">Observed users in museums, libraries, and offices. Mapped journeys for first-time visitors across all key tasks — capturing, scanning, archiving, and sharing. Identified critical drop-off moments in the existing Sprout UX when used without support.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <div class="step-title">Experience Prototyping & Role Play</div>
+        <p class="step-body">Built physical and digital prototypes for novel interaction models including telepresence and virtual assistant flows. Ran role-playing sessions with colleagues to simulate stranger-use scenarios and stress-test assumptions at low cost before engineering.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <div class="step-title">Dual-Layer System Design</div>
+        <p class="step-body">Designed two distinct UX layers: a locked-down, timed, touch-first visitor experience and a full-featured admin configurator. Each layer had its own information architecture, interaction model, and trust level — with no crossover confusion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USER JOURNEY IMAGES -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">User Journeys</span>
+    <h2>Designed for First-Time,<br>Every Time</h2>
+    <p style="max-width: 640px;">Each user journey was mapped against the constraint that the system was already set up and waiting. No login, no tutorial — just clear affordances and progressive disclosure.</p>
+  </div>
+  <div style="margin-top: 40px;">
+    <img class="full-img" src="wk4-1691x951.png" alt="User journey map for first-time public users">
+    <div class="container"><p class="img-caption">User Journey — First Time / Public Use. Designed around the constraint that Sprout is pre-configured and ready. Each persona's goal is achievable within minutes, without instruction.</p></div>
+  </div>
+  <div class="container">
+    <div class="img-grid-3" style="margin-top: 40px;">
+      <div>
+        <img src="wks1-1980x1114.png" alt="Walk-UP user journey: select capture activity" style="width:100%; display:block;">
+        <p class="img-caption">B. Select an activity — camera icon prominent on both vertical screen and touch mat</p>
+      </div>
+      <div>
+        <img src="wks2-1800x1013.png" alt="Walk-UP user journey: position object on touch mat" style="width:100%; display:block;">
+        <p class="img-caption">B. Position object — live preview on vertical screen guides placement</p>
+      </div>
+      <div>
+        <img src="wks3-1800x1013.png" alt="Walk-UP user journey: capture document" style="width:100%; display:block;">
+        <p class="img-caption">C. Capture — one tap, document captured. Session timer visible at all times</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEM DIAGRAM -->
+<div class="system-section">
+  <span class="section-label">System Architecture</span>
+  <h2>A Platform, Not a Feature</h2>
+  <p style="max-width: 660px; color: var(--muted);">Walk-UP was designed as a complete ecosystem — not a skin on top of Sprout's existing software. It comprised a <strong>Configurator Tool</strong> for administrators, an optional <strong>Control Center</strong> for multi-device fleet management, and a <strong>locked-down visitor experience</strong> with timed sessions, curated apps, and multiple output paths.</p>
+  <div style="margin-top: 40px;">
+    <img class="full-img" src="wk11-1691x951.png" alt="Walk-UP system architecture diagram">
+    <p class="img-caption" style="margin-top: 12px;">System architecture: Configurator Tool (A), optional Control Center for multi-unit management (B), and the locked-down public experience (C) with session management, output options, and curated app selection.</p>
+  </div>
+</div>
+
+<!-- BRANDING + ADAPTABILITY -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Modular Design System</span>
+    <h2>One Platform,<br>Infinite Contexts</h2>
+    <div class="two-col-text">
+      <div>
+        <p>The core UX challenge was <strong>adaptability without chaos</strong>. A museum needed theatrical, immersive visuals. A library needed calm, utilitarian clarity. A bank branch needed trust signals and transactional precision.</p>
+        <p>The Walk-UP configurator allowed administrators to define their own brand identity — colors, logos, welcome videos, background imagery — while the underlying interaction model remained consistent and learnable across all deployments.</p>
+      </div>
+      <div>
+        <p>Session management was equally critical. The timed session model (configurable up to 20 minutes) protected privacy between users and reset the device to a clean state automatically. Outputs — USB, print, email, cloud share, or live display on a third monitor — were surfaced only at the right moment, not buried in menus.</p>
+        <p>The result: an experience that felt <strong>native to each space</strong> while sharing a single, maintainable codebase and UX framework.</p>
+      </div>
+    </div>
+    <div style="margin-top: 40px;">
+      <img class="full-img" src="wk5-1-1691x951.png" alt="Branding and adaptability — museum and office contexts">
+      <p class="img-caption">Museum and office deployment contexts — same hardware, radically different brand expressions. The configurator enabled this without engineering changes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IN THE WILD -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">In the Wild</span>
+    <h2>Real Users,<br>Real Spaces</h2>
+    <p style="max-width: 640px;">Walk-UP deployed across museums, libraries, and educational events. Seeing the system in use — children in costume exploring the touch mat, elderly visitors scanning heirlooms, families collaborating side by side — validated the core UX hypothesis: delight is achievable without instruction.</p>
+  </div>
+  <div class="img-grid-2" style="margin: 40px 0 0;">
+    <img src="wk7-1886x1886.jpeg" alt="Children using HP Sprout Walk-UP at a cultural event">
+    <img src="wk7-2000x2000.jpg" alt="Children interacting with Sprout touch mat at event">
+  </div>
+  <div class="container">
+    <p class="img-caption">Walk-UP deployed at a cultural education event — children in traditional dress using the touch mat intuitively, with no instruction required.</p>
+    <div style="margin-top: 40px;">
+      <img class="full-img" src="wk10-1691x952.jpg" alt="Designer testing Walk-UP in HP lab with physical objects">
+      <p class="img-caption">Lab testing — exploring the capture interaction with physical objects on the touch mat, validating the overhead camera's live preview UX before finalizing interaction flows.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Outcomes & Impact</span>
+    <h2>What Walk-UP Delivered</h2>
+    <div class="outcome-row">
+      <div class="outcome-card">
+        <h3>Zero-Training UX</h3>
+        <p>First-time visitors across age groups completed core tasks — capture, scan, share — without any instruction or support staff intervention.</p>
+      </div>
+      <div class="outcome-card" style="background: var(--accent-dark);">
+        <h3>Multi-Context Deployment</h3>
+        <p>A single platform shipped across museums, libraries, offices, and retail environments — each with unique branding and app configurations.</p>
+      </div>
+      <div class="outcome-card" style="background: #1a2c3a;">
+        <h3>Scalable Administration</h3>
+        <p>The Configurator Tool and optional Control Center gave administrators full control over multi-unit fleets without engineering support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLE -->
+<section class="section">
+  <div class="container">
+    <div class="two-col-text">
+      <div>
+        <span class="section-label">My Role</span>
+        <h2>UX Leadership<br>End to End</h2>
+        <ul class="role-list">
+          <li>Defined UX vision and product strategy for the Walk-UP platform</li>
+          <li>Led field research across museums, libraries, and offices to map first-time user journeys</li>
+          <li>Designed dual-layer UX: locked visitor experience + admin configurator tool</li>
+          <li>Led experience prototyping workshops including role-playing and physical prototypes</li>
+          <li>Collaborated with cross-functional teams to align UX with hardware and software constraints</li>
+          <li>Ensured accessibility and usability across a multi-generational user base</li>
+          <li>Presented vision and rationale to HP stakeholders and enterprise partners</li>
+        </ul>
+      </div>
+      <div>
+        <span class="section-label">Key Learnings</span>
+        <h2>Designing for<br>Zero Context</h2>
+        <p>Walk-UP taught me that the most demanding UX challenge isn't complexity — it's <strong>radical simplicity under real constraints</strong>. Every affordance had to work for an 8-year-old and an 80-year-old. Every session had to end cleanly with no trace of the previous user.</p>
+        <p>It deepened my conviction that <strong>great public UX is invisible</strong>. When a child touches the mat without hesitation, when a visitor scans a document and emails it home without asking for help — that's the design working. No applause, no recognition. Just flow.</p>
+        <p>The administrator experience was equally instructive: configurability is only powerful when it's bounded. Giving admins infinite options creates paralysis. Giving them a <strong>structured set of meaningful choices</strong> creates ownership.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM NAV -->
+<div class="case-nav">
+  <a class="back" href="index.html">← All Projects</a>
+  <a href="hp-sprout-3d-case-study.html">HP Sprout 3D Capture →</a>
+</div>
+
+</body>
+</html>

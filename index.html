@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patricia Panqueva — UX Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0a0a0a;--paper:#f4f2ee;--white:#fff;--muted:#9a9690;
+  --border:1.5px solid rgba(10,10,10,.12);
+}
+html{background:var(--paper);}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:52px;background:var(--paper);
+  border-bottom:var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;
+  transition:height .3s ease;
+}
+nav.scrolled{height:44px;}
+.nav-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.15rem;letter-spacing:.08em;
+  color:var(--ink);text-decoration:none;
+}
+.nav-links{display:flex;align-items:center;gap:0;list-style:none;}
+.nav-link{
+  padding:6px 14px;
+  font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color .15s;
+}
+.nav-link:hover{color:var(--ink);}
+.nav-cta{
+  margin-left:8px;
+  padding:7px 18px;
+  background:var(--ink);color:var(--white);
+  font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;
+  transition:opacity .15s;
+}
+.nav-cta:hover{opacity:.8;}
+@media(max-width:560px){.nav-link.hm{display:none;}}
+
+/* ── HERO ── */
+.hero{
+  margin-top:52px;
+  position:relative;
+  min-height:92vh;
+  overflow:hidden;
+  display:flex;
+  background:url("images/glowing-citizens.jpg") center center/cover no-repeat;
+  background-color:#0a0a0a;
+}
+.hero-panel{
+  position:relative;z-index:2;
+  width:520px;min-height:92vh;
+  background:var(--paper);
+  padding:64px 52px 52px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  flex-shrink:0;
+}
+.hero-eyebrow{
+  font-size:.64rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:12px;
+}
+.hero-h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.5rem,7vw,6rem);
+  line-height:1;letter-spacing:.04em;
+  color:var(--ink);margin-bottom:20px;
+}
+.hero-h1 em{
+  display:block;
+  color:var(--white);
+  background:var(--ink);
+  padding:0 12px;
+  font-style:normal;
+  width:fit-content;
+  margin-bottom:4px;
+}
+.hero-desc{
+  font-size:.95rem;font-weight:300;line-height:1.75;
+  color:#555;max-width:380px;margin-bottom:32px;
+}
+.hero-desc strong{color:var(--ink);font-weight:500;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
+.h-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;
+  font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;transition:all .18s;
+}
+.h-btn-fill{background:var(--ink);color:var(--white);}.h-btn-fill:hover{opacity:.8;}
+.h-btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}.h-btn-ghost:hover{background:var(--ink);color:var(--white);}
+.hero-cos{padding-top:28px;border-top:var(--border);}
+.hero-cos-l{font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{
+  padding:4px 10px;
+  border:1.5px solid rgba(10,10,10,.18);
+  font-size:.68rem;font-weight:500;color:#555;
+  transition:all .15s;
+}
+.chip:hover{border-color:var(--ink);color:var(--ink);}
+@media(max-width:700px){
+  .hero{min-height:auto;}
+  .hero-panel{width:100%;min-height:auto;padding:48px 24px 40px;background:rgba(244,242,238,.96);}
+}
+
+/* ── WORK HEADER ── */
+.work-header{
+  display:flex;align-items:baseline;justify-content:space-between;
+  padding:52px 28px 20px;
+  border-bottom:var(--border);
+}
+.work-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,6vw,5rem);
+  letter-spacing:.04em;color:var(--ink);
+  line-height:1;
+}
+.work-sub{font-size:.72rem;font-weight:400;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+
+/* ── GRID ── */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1px;
+  background:rgba(10,10,10,.1);
+  border-top:none;
+  border-bottom:var(--border);
+}
+
+.card{
+  position:relative;overflow:hidden;
+  
+  display:block;text-decoration:none;
+  background:var(--paper);
+  cursor:pointer;
+}
+.card:hover .card-img{transform:scale(1.06);}
+.card:hover .card-num{opacity:1;}
+.card:hover .fab{opacity:1;transform:translate(0,0);}
+.card-img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  transition:transform .6s cubic-bezier(.25,.46,.45,.94);
+  filter:grayscale(15%);
+}
+.card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,10,10,.88) 0%,rgba(10,10,10,.2) 50%,transparent 80%);
+}
+.card-num{
+  position:absolute;top:16px;left:16px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:4rem;line-height:1;
+  color:rgba(255,255,255,.08);
+  letter-spacing:.02em;
+  opacity:0;transition:opacity .3s;
+}
+.card-info{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:40px 20px 20px;
+}
+.card-tag{
+  font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-bottom:4px;
+}
+.card-title{
+  font-family:'Bebas Neue',sans-serif;
+  letter-spacing:.04em;line-height:1.05;
+  color:var(--white);
+}
+.card-sub{font-size:.68rem;font-weight:300;color:rgba(255,255,255,.45);margin-top:3px;}
+.fab{
+  position:absolute;top:14px;right:14px;
+  width:36px;height:36px;
+  background:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:translate(4px,-4px);
+  transition:opacity .2s,transform .25s cubic-bezier(.34,1.56,.64,1);
+}
+.fab svg{width:14px;height:14px;stroke:var(--ink);}
+
+.c1{grid-column:span 8;height:420px;}.c1 .card-title{font-size:2.2rem;}
+.c2{grid-column:span 4;height:420px;}.c2 .card-title{font-size:1.5rem;}
+.c3{grid-column:span 4;height:310px;}.c3 .card-title{font-size:1.2rem;}
+.c4{grid-column:span 4;height:310px;}.c4 .card-title{font-size:1.2rem;}
+.c5{grid-column:span 4;height:310px;}.c5 .card-title{font-size:1.2rem;}
+.c6{grid-column:span 5;height:360px;}.c6 .card-title{font-size:1.4rem;}
+.c7{grid-column:span 4;height:360px;}.c7 .card-title{font-size:1.3rem;}
+.c8{grid-column:span 3;height:360px;}.c8 .card-title{font-size:1.1rem;}
+.c9{grid-column:span 4;height:320px;}.c9 .card-title{font-size:1.2rem;}
+.c10{grid-column:span 8;height:320px;}.c10 .card-title{font-size:1.8rem;}
+
+/* stagger */
+.card{opacity:0;animation:emerge .6s ease forwards;}
+@keyframes emerge{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.c1{animation-delay:.04s}.c2{animation-delay:.08s}.c3{animation-delay:.12s}
+.c4{animation-delay:.15s}.c5{animation-delay:.18s}.c6{animation-delay:.22s}
+.c7{animation-delay:.25s}.c8{animation-delay:.28s}.c9{animation-delay:.32s}.c10{animation-delay:.36s}
+
+/* ── FOOTER ── */
+footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;height:56px;
+  background:var(--ink);
+  border-top:var(--border);
+  gap:16px;
+}
+.f-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:.95rem;letter-spacing:.08em;color:var(--white);
+}
+.f-role{font-size:.62rem;color:rgba(255,255,255,.28);letter-spacing:.06em;text-transform:uppercase;}
+.f-links{display:flex;gap:2px;}
+.f-link{
+  display:flex;align-items:center;gap:5px;
+  padding:6px 12px;
+  font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);text-decoration:none;
+  transition:color .15s;
+}
+.f-link:hover{color:var(--white);}
+.f-link svg{width:12px;height:12px;flex-shrink:0;}
+.f-copy{font-size:.6rem;color:rgba(255,255,255,.18);white-space:nowrap;}
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr);}
+  .c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10{grid-column:span 1;height:220px;}
+  .c1,.c10{grid-column:span 2;height:280px;}
+  .card-title{font-size:1.1rem!important;}
+  footer{height:auto;padding:16px;flex-wrap:wrap;}
+  .f-copy{width:100%;text-align:center;}
+  .work-header{flex-direction:column;gap:6px;}
+}
+</style>
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-name">Patricia Panqueva</a>
+  <ul class="nav-links">
+    <li><a href="#work" class="nav-link hm">Work</a></li>
+    <li><a href="about.html" class="nav-link hm">About</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#3d4d5c494f545e545c134d5c534c48584b5c7d5a505c5451135e5250" class="nav-cta">Say Hello</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-panel">
+    <p class="hero-eyebrow">Senior UX &amp; Product Designer</p>
+    <h1 class="hero-h1">Hi there,<br><em>I'm Patricia!</em></h1>
+    <p class="hero-desc"><strong>15+ years shaping products at Amazon, HP, Canonical, and Yamaha R&amp;D.</strong> I design voice, multimodal &amp; AI-enhanced experiences that keep people at the center.</p>
+    <div class="hero-actions">
+      <a href="#work" class="h-btn h-btn-fill">View My Work</a>
+      <a href="/cdn-cgi/l/email-protection#5929382d2b303a303877293837282c3c2f38193e34383035773a3634" class="h-btn h-btn-ghost">Say Hello</a>
+    </div>
+    <div class="hero-cos">
+      <div class="hero-cos-l">Previously at</div>
+      <div class="chips">
+        <span class="chip">Amazon Alexa</span>
+        <span class="chip">HP Inc.</span>
+        <span class="chip">Canonical</span>
+        <span class="chip">Yamaha R&amp;D</span>
+        <span class="chip">Belkin</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="work-header" id="work">
+  <span class="work-title">Selected Work</span>
+  <span class="work-sub">15+ years · Voice · Multimodal · AI</span>
+</div>
+
+<div class="grid">
+
+  <a href="cook-along-case-study.html" class="card c1">
+    <img class="card-img" src="images/cook-along.jpg" alt="Alexa Cook Along" style="object-position:center 40%;">
+    <div class="card-overlay"></div>
+    <div class="card-num">01</div>
+    <div class="card-info">
+      <div class="card-tag">Amazon · Voice · Multimodal</div>
+      <div class="card-title">Alexa Cook Along</div>
+      <div class="card-sub">Lead UX Designer · Santa Clara, CA</div>
+    </div>
+    <div class="fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+  </a>
+
+  <a href="alexa-email-case-study.html" class="card c2">
+    <img class="card-img" src="images/alexa-email.jpg" alt="Alexa Email" style="object-position:right center;">
+    <div class="card-overlay"></div>
+    <div class="card-num">02</div>
+    <div class="card-info">
+      <div class="card-tag">Amazon · Voice · Identity</div>
+      <div class="card-title">Alexa Email</div>
+      <div class="card-sub">Lead UX Designer · Santa Clara, CA</div>
+    </div>
+    <div class="fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+  </a>
+
+  <a href="alexa-search-case-study.html" class="card c3">
+    <img class="card-img" src="images/alexa-search.jpg" alt="Alexa Search">
+    <div class="card-overlay"></div>
+    <div class="card-num">03</div>
+    <div class="card-info">
+      <div class="card-tag">Amazon · Personal Data</div>
+      <div class="card-title">Alexa Search</div>
+      <div class="card-sub">Lead UX Designer</div>
+    </div>
+    <div class="fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+  </a>
+
+  <a href="hp-sprout-3d-case-study.html" class="card c4">
+    <img class="card-img" src="images/hp-sprout-3d.jpg" alt="HP Sprout 3D Capture">
+    <div class="card-overlay"></div>
+    <div class="card-num">04</div>
+    <div class="card-info">
+      <div class="card-tag">HP Inc. · Hardware · Innovation</div>
+      <div class="card-title">HP Sprout 3D Capture</div>
+      <div class="card-sub">UX Design Manager · Palo Alto, CA</div>
+    </div>
+    <div class="fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+  </a>
+
+  <a href="#" class="card c5">
+    <img class="card-img" src="images/hp-sprout-walkup.jpg" alt="HP Sprout Walk-UP">
+    <div class="card-overlay"></div>
+    <div class="card-num">05</div>
+    <div class="card-info">
+      <div class="card-tag">HP Inc. · Touch · Spatial</div>
+      <div class="card-title">HP Sprout Walk-UP</div>
+      <div class="card-sub">UX Design Manager · Palo Alto, CA</div>
+    </div>
+    <div class="fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+  </a>
+
+  <a href="#" class="card c6">
+    <img class="card-img" src="images/yamaha.jpg" alt="Yamaha Future Keyboard">
+    <div class="card-overlay"></div>
+    <div class="card-num">06</div>
+    <div class="card-info">
+      <div class="card-tag">Yamaha R&amp;D · Music · Ecosystem</div>
+      <div class="card-title">Yamaha Future Keyboard</div>
+      <div class="card-sub">Lead UX Designer · London, UK</div>
+    </div>
+    <div class="fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+  </a>
+
+  <a href="#" class="card c7">
+    <img class="card-img" src="images/ubuntu-touch.jpg" alt="Ubuntu Touch">
+    <div class="card-overlay"></div>
+    <div class="card-num">07</div>
+    <div class="card-info">
+      <div class="card-tag">Canonical · Mobile OS</div>
+      <div class="card-title">Ubuntu Touch</div>
+      <div class="card-sub">UX Lead Designer · London, UK</div>
+    </div>
+    <div class="fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+  </a>
+
+  <a href="#" class="card c8">
+    <img class="card-img" src="images/ubuntu-pay.jpg" alt="Ubuntu Pay">
+    <div class="card-overlay"></div>
+    <div class="card-num">08</div>
+    <div class="card-info">
+      <div class="card-tag">Canonical · eCommerce</div>
+      <div class="card-title">Ubuntu Pay</div>
+      <div class="card-sub">UX Lead Designer · London, UK</div>
+    </div>
+    <div class="fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+  </a>
+
+  <a href="#" class="card c9">
+    <img class="card-img" src="images/belkin-wemo.jpg" alt="Belkin WeMo Schedules">
+    <div class="card-overlay"></div>
+    <div class="card-num">09</div>
+    <div class="card-info">
+      <div class="card-tag">Belkin · IoT · Smart Home</div>
+      <div class="card-title">Belkin WeMo</div>
+      <div class="card-sub">UX Lead Designer · Los Angeles, CA</div>
+    </div>
+    <div class="fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+  </a>
+
+  <a href="#" class="card c10">
+    <img class="card-img" src="images/glowing-citizens.jpg" alt="Glowing Citizens" style="object-position:center 30%;">
+    <div class="card-overlay"></div>
+    <div class="card-num">10</div>
+    <div class="card-info">
+      <div class="card-tag">Umeå Institute · MFA Thesis · Speculative</div>
+      <div class="card-title">Glowing Citizens</div>
+      <div class="card-sub">MFA Graduation Project · Umeå, Sweden</div>
+    </div>
+    <div class="fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+  </a>
+
+</div>
+
+<footer>
+  <div>
+    <div class="f-name">Patricia Panqueva</div>
+    <div class="f-role">Senior UX Designer · Bay Area, CA</div>
+  </div>
+  <div class="f-links">
+    <a href="/patricia-panqueva-resume.pdf" target="_blank" class="f-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      Résumé
+    </a>
+    <a href="https://www.linkedin.com/in/patriciapanqueva" target="_blank" class="f-link">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+    <a href="mailto:patricia.panqueva@gmail.com" class="f-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Email
+    </a>
+
+  </div>
+  <span class="f-copy">© 2026 — All Rights Reserved</span>
+</footer>
+
+<script data-cfasync="false" sr

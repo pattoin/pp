@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glowing Citizens — Patricia Panqueva</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f2ee;
+    --ink: #1a1814;
+    --muted: #6b6560;
+    --accent: #C8006E;
+    --accent-dark: #96004f;
+    --rule: #d8d4ce;
+    --card-bg: #eeeae4;
+    --dark: #0f0d10;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: var(--bg); border-bottom: 1px solid var(--rule); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero { position: relative; height: 80vh; min-height: 520px; overflow: hidden; background: var(--dark); }
+  .hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; display: block; object-position: center 30%; }
+  .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 56px 80px; background: linear-gradient(to top, rgba(10,8,14,0.95) 0%, rgba(10,8,14,0.1) 65%); }
+  .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 9vw, 110px); line-height: 0.93; color: #fff; letter-spacing: 0.02em; margin-bottom: 24px; }
+  .hero-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 500; }
+  .hero-meta-value { font-size: 14px; color: rgba(255,255,255,0.85); }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+
+  .section-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 20px; display: block; }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 4vw, 52px); letter-spacing: 0.04em; line-height: 1.05; margin-bottom: 24px; color: var(--ink); }
+  p { color: var(--muted); margin-bottom: 20px; font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 500; }
+
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .stat-box { background: var(--card-bg); padding: 28px 24px; }
+  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; color: var(--accent); letter-spacing: 0.02em; margin-bottom: 6px; }
+  .stat-label { font-size: 12px; font-weight: 500; letter-spacing: 0.05em; color: var(--muted); text-transform: uppercase; }
+
+  .full-img { width: 100%; display: block; }
+  .img-caption { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; margin-top: 12px; font-style: italic; }
+  .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 40px 0; }
+  .img-grid-2 img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+
+  /* DARK STRIP */
+  .dark-strip { background: var(--dark); padding: 72px 80px; }
+  .dark-strip .section-label { color: #fff; }
+  .dark-strip h2 { color: #fff; }
+  .dark-strip p { color: rgba(255,255,255,0.55); }
+  .dark-strip strong { color: rgba(255,255,255,0.9); }
+
+  /* ACCENT STRIP */
+  .accent-strip { background: var(--accent); padding: 72px 80px; }
+  .accent-strip .section-label { color: rgba(255,255,255,0.65); }
+  .accent-strip h2 { color: #fff; }
+  .accent-strip p { color: rgba(255,255,255,0.75); }
+  .accent-strip strong { color: #fff; }
+
+  /* PULL QUOTE */
+  .pull-quote { border-left: 3px solid var(--accent); padding: 24px 36px; margin: 40px 0; background: var(--card-bg); }
+  .pull-quote blockquote { font-size: 20px; font-weight: 300; line-height: 1.55; color: var(--ink); font-style: italic; margin-bottom: 16px; }
+  .pull-quote cite { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-style: normal; font-weight: 600; }
+
+  .two-col-text { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+
+  /* PILLARS */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .pillar { background: var(--card-bg); padding: 36px 28px; position: relative; overflow: hidden; }
+  .pillar-num { font-family: 'Bebas Neue', sans-serif; font-size: 80px; line-height: 1; color: var(--rule); position: absolute; bottom: 16px; right: 20px; }
+  .pillar-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 12px; }
+  .pillar-body { font-size: 14px; color: var(--muted); line-height: 1.6; position: relative; z-index: 1; }
+
+  /* PROBE STRIP */
+  .probe-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .probe-card { background: var(--dark); padding: 32px 28px; }
+  .probe-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: #fff; margin-bottom: 10px; }
+  .probe-body { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+  /* PASS FEATURE CARDS */
+  .feature-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 40px; }
+  .feature-card { background: rgba(255,255,255,0.12); padding: 28px 20px; }
+  .feature-title { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.06em; color: #fff; margin-bottom: 8px; }
+  .feature-body { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
+  /* OUTCOMES */
+  .outcome-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .outcome-card { background: var(--accent); padding: 36px 28px; color: #fff; }
+  .outcome-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; margin-bottom: 12px; }
+  .outcome-card p { color: rgba(255,255,255,0.75); font-size: 14px; margin: 0; }
+
+  /* ROLE */
+  .role-list { list-style: none; margin-top: 16px; }
+  .role-list li { padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 15px; color: var(--muted); display: flex; gap: 16px; align-items: baseline; }
+  .role-list li::before { content: '→'; color: var(--accent); font-size: 14px; flex-shrink: 0; }
+
+  /* BOTTOM NAV */
+  .case-nav { padding: 60px 80px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--rule); }
+  .case-nav a { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--ink); text-decoration: none; transition: color 0.2s; }
+  .case-nav a:hover { color: var(--accent); }
+  .case-nav .back { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+</style>
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Patricia Panqueva</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="gc9-2000x1569.png" alt="Glowing Citizens — transparent digital travel pass held up against the city">
+  <div class="hero-overlay">
+    <span class="hero-tag">MFA Interaction Design · Umeå Institute of Design · 2006</span>
+    <h1 class="hero-title">Glowing<br>Citizens</h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-label">Role</span><span class="hero-meta-value">UX Designer — MFA Graduation Project</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Location</span><span class="hero-meta-value">Umeå, Sweden</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Type</span><span class="hero-meta-value">Civic Commerce · Smart City · Interaction Design</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Era</span><span class="hero-meta-value">Pre-smartphone — 2006</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section">
+  <div class="container">
+    <div class="intro-grid">
+      <div>
+        <span class="section-label">Overview</span>
+        <h2>The City as<br>an Interface</h2>
+        <p>In 2006 — years before the App Store, before NFC payments, before location-aware advertising — I designed a system that used the city itself as a commerce platform. <strong>Glowing Citizens</strong> reimagined the humble transit pass as an intelligent, disposable digital device: a transparent card that responded to the urban environment around it.</p>
+        <p>As you moved through the city, the pass became a window onto it — surfacing contextual promotions, local gems, and community offers from the gyms, cafés, dance studios, and libraries you passed. No apps to open, no screens to unlock. Just your city, quietly glowing with relevance.</p>
+        <p>This was my MFA graduation project at Umeå Institute of Design — a speculative design vision grounded in rigorous field research and participatory co-design methods.</p>
+      </div>
+      <div>
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div class="stat-number">2006</div>
+            <div class="stat-label">One year before the iPhone</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Layers: transit, commerce, community</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">MFA</div>
+            <div class="stat-label">Graduation project — Umeå Institute of Design</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">The city as a dynamic, living interface</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CONCEPT -->
+<div class="dark-strip">
+  <span class="section-label">The Vision</span>
+  <h2>"A Window to See<br>Through the Buildings"</h2>
+  <p style="max-width:700px;font-size:18px;line-height:1.65;">Glowing Citizens proposed a <strong>lightweight, disposable digital pass</strong> — a daily or monthly transit ticket redesigned as an interactive portal into city life. As commuters moved through the urban landscape, the pass responded to their location, surfacing contextual offers and promotions from nearby places — without ever requiring them to stop, tap, or search.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-top:48px;">
+    <div style="background:rgba(255,255,255,0.06);padding:32px 28px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:#fff;margin-bottom:12px;">TRANSIT PASS</div>
+      <p style="font-size:14px;margin:0;color:rgba(255,255,255,0.55);">The physical form factor everyone already carries — a daily or monthly bus/tram ticket — redesigned as a connected device.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);padding:32px 28px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:#fff;margin-bottom:12px;">CITY INTERFACE</div>
+      <p style="font-size:14px;margin:0;color:rgba(255,255,255,0.55);">Buildings, shops, civic spaces broadcast their offers and identity. The pass receives and filters them — turning the streetscape into a relevant, personal feed.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);padding:32px 28px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:#fff;margin-bottom:12px;">COMMERCE LAYER</div>
+      <p style="font-size:14px;margin:0;color:rgba(255,255,255,0.55);">A dance studio shares its new Salsa class — with a music clip. A café offers a free coffee. A gym promotes a day pass. All contextual, all ambient, all frictionless.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PASS DESIGN -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">The Artifact</span>
+    <h2>A Transparent Pass<br>That Glows with the City</h2>
+    <p style="max-width:640px;">The physical design of the pass was central to the concept. Transparent, thin, and beautiful — it was designed to feel like holding a piece of the city itself. The generative visual patterns on each pass reflected the character and energy of different venues and promotions.</p>
+  </div>
+  <div class="img-grid-2" style="margin:40px 0 0;">
+    <img src="gc9-1691x1327.png" alt="Transparent Glowing Citizens pass held up against the city street" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
+    <img src="gc9-2000x1569.png" alt="Green transparent pass with city storefront behind it" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
+  </div>
+  <div class="container">
+    <p class="img-caption">The transparent pass held against the city — literally a window onto urban life. Location-aware promotions from nearby venues appeared on the pass display as you moved through the street.</p>
+    <div style="margin-top:40px;">
+      <img class="full-img" src="gc5-1886x1256.jpg" alt="Pink and yellow generative pass designs — the visual language of Glowing Citizens">
+      <p class="img-caption">The pass visual language — generative, fluid, and identity-coded. Each venue or promotion produced its own unique visual pattern, making the pass a canvas as much as a functional device.</p>
+    </div>
+    <div style="margin-top:4px;">
+      <img class="full-img" src="gc6-1-1691x966.png" alt="Three pass states: browsing, detail, media playback">
+      <p class="img-caption">Three pass interaction states — browsing nearby offers, reading a promotion in detail, and playing a media preview (a salsa music clip from a dance studio). All navigable on the pass itself.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Research Methods</span>
+    <h2>Understanding How<br>We Experience Motion</h2>
+    <p style="max-width:640px;">Before designing anything, I needed to understand how people perceive and notice things while moving through the city. I used two complementary research methods — Urban Probes and Participatory Design — to build a foundation of real insight.</p>
+    <div class="probe-cards">
+      <div class="probe-card">
+        <div class="probe-title">Urban Probes</div>
+        <div class="probe-body">Participants documented their daily commuting journeys through photography — capturing what caught their eye, what they noticed, what they missed. This revealed the rhythm of urban attention: what rises above the noise of motion, and what doesn't.</div>
+      </div>
+      <div class="probe-card">
+        <div class="probe-title">Idea Cubes</div>
+        <div class="probe-body">Participatory design workshops using dice covered in imagery from technology, urban life, and social moments. Participants rolled the cubes and collaboratively constructed future scenarios — generating use cases and edge cases I couldn't have imagined alone.</div>
+      </div>
+      <div class="probe-card">
+        <div class="probe-title">Visual Synthesis</div>
+        <div class="probe-body">Photographic sequences from probe participants were printed and assembled into long horizontal timelines — a physical representation of the commuter experience that revealed patterns in attention, motion blur, and environmental awareness.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH PHOTOS -->
+<div style="margin:0;">
+  <img class="full-img" src="gc-4-1-1691x846.png" alt="Urban probes photographic timeline — commuter experience research">
+  <div class="container"><p class="img-caption">Urban Probes output — participants' commute photographs assembled into a continuous timeline. The sequence reveals what captures attention in transit: signage, light, faces, the blur of passing architecture.</p></div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="img-grid-2">
+      <div>
+        <img src="gc2-1691x846.jpg" alt="Idea Cubes participatory design workshop" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
+        <p class="img-caption">Idea Cubes workshop — participants rolled dice covered in imagery to generate user scenarios collaboratively. The game format lowered barriers and produced unexpectedly rich use cases.</p>
+      </div>
+      <div>
+        <img src="gc10-1400x799.png" alt="Exploring motion — how we experience things on the move" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
+        <p class="img-caption">Motion research — exploring how the city appears differently at walking pace vs. transit speed. Key insight: ambient, peripheral information is more accessible in motion than detailed text.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTION DESIGN -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Interaction Design</span>
+    <h2>Reacting to Places,<br>Not to Notifications</h2>
+    <div class="two-col-text">
+      <div>
+        <p>A key design principle was that Glowing Citizens should be <strong>ambient, not interruptive</strong>. The pass didn't buzz, ping, or demand attention. Instead, it glowed softly when something nearby was relevant — inviting a glance rather than demanding a tap.</p>
+        <p>Promotions were tailored to place type: gyms and sports centers, cafés, libraries, dance studios, educational centres. A dance studio's salsa class promotion included a music clip — so as you walked past, you could actually hear the rhythm before deciding whether to engage.</p>
+      </div>
+      <div>
+        <p>The interaction model was deliberately <strong>simple and sequential</strong>: proximity triggers a glow, a glance reveals the offer, a tap plays a preview, a second tap saves or redeems. No account creation, no app switching, no friction.</p>
+        <p>The pass was also <strong>designed to expire</strong> — daily or monthly, like a transit ticket. This disposability was a feature, not a limitation: it kept the system lightweight, privacy-preserving, and anchored to the physical rhythm of city life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXT SCENARIOS -->
+<div class="accent-strip">
+  <span class="section-label">Usage Scenarios</span>
+  <h2>Juan Gets a Free Coffee.<br>On the Go.</h2>
+  <p style="max-width:680px;font-size:18px;line-height:1.65;">The scenario that anchored the project: <strong>Juan is commuting to work.</strong> As his tram passes a café, his pass glows. He glances down — a free coffee promotion, valid for 20 minutes. He taps. At the next stop, he redeems it. He didn't search, didn't browse, didn't even take his phone out. The city offered something useful. He said yes.</p>
+  <div class="feature-row">
+    <div class="feature-card">
+      <div class="feature-title">Free Coffee</div>
+      <div class="feature-body">Café nearby offers a morning promotion. The pass detects proximity and surfaces the offer at exactly the right moment.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-title">Salsa Class</div>
+      <div class="feature-body">Dance studio broadcasts its new class — with a 10-second music preview. You hear the rhythm before you decide.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-title">Gym Day Pass</div>
+      <div class="feature-body">Sports centre offers a one-day trial as you pass by. Tap to save, redeem on your way home.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-title">Library Event</div>
+      <div class="feature-body">Community centre shares a free workshop happening this evening. The city surfaces civic life, not just commerce.</div>
+    </div>
+  </div>
+  <div style="margin-top:40px;">
+    <img class="full-img" src="gc1-1-1691x846.png" alt="IKSU sports centre scenario — pass interaction sequence while walking past">
+    <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:12px;font-style:italic;">IKSU Aqua — a sports and wellness centre in Umeå. As a commuter walks past, the pass surfaces an IKSU Day Pass offer. The sequence shows the pass progressing through offer states as proximity increases.</p>
+  </div>
+</div>
+
+<!-- VISUAL DESIGN -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Visual Design Language</span>
+    <h2>Passes That Carry<br>the Identity of the City</h2>
+    <p style="max-width:640px;">Each pass was designed with a generative visual identity tied to its validity period and usage context. The patterns were fluid, organic, and beautiful — making the pass an object people would want to hold and look at, not just tap and pocket.</p>
+    <div style="margin-top:40px;">
+      <img class="full-img" src="gc5-1492x994.jpeg" alt="Pink and orange generative pass — held in hand with UI states below">
+      <p class="img-caption">The physical pass and its digital states — generative ink-like patterns identify the pass period and personality. UI states below show the progression from ambient glow to full offer detail.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Significance & Impact</span>
+    <h2>Ahead of Its Time</h2>
+    <div class="outcome-row">
+      <div class="outcome-card">
+        <h3>Pre-Smartphone Vision</h3>
+        <p>Designed in 2006 — a year before the iPhone — Glowing Citizens anticipated location-aware commerce, NFC interaction, and ambient computing by nearly a decade.</p>
+      </div>
+      <div class="outcome-card" style="background:var(--accent-dark);">
+        <h3>MFA Distinction</h3>
+        <p>Selected as a graduation project at Umeå Institute of Design — one of Europe's leading interaction design programmes — demonstrating research rigour and design vision.</p>
+      </div>
+      <div class="outcome-card" style="background:var(--dark);">
+        <h3>City as Platform</h3>
+        <p>Established a conceptual framework — the city as a dynamic commerce and civic interface — that anticipated smart city thinking still being explored today.</p>
+      </div>
+    </div>
+    <div class="pull-quote" style="margin-top:40px;">
+      <blockquote>"An interactive travel pass — a window to see through the buildings." The city isn't a backdrop to daily life. It's the interface itself.</blockquote>
+      <cite>Glowing Citizens — MFA Thesis, Umeå Institute of Design, 2006</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ROLE + LEARNINGS -->
+<section class="section">
+  <div class="container">
+    <div class="two-col-text">
+      <div>
+        <span class="section-label">My Role</span>
+        <h2>Solo Designer,<br>Full Spectrum</h2>
+        <ul class="role-list">
+          <li>Sole designer and researcher on the project</li>
+          <li>Designed and ran Urban Probes field research with commuters</li>
+          <li>Created and facilitated Idea Cubes participatory design workshops</li>
+          <li>Synthesised research into design principles and interaction models</li>
+          <li>Designed the physical pass form factor and generative visual language</li>
+          <li>Prototyped interaction states and usage scenario illustrations</li>
+          <li>Produced the full MFA thesis and presented at Umeå Institute of Design</li>
+        </ul>
+      </div>
+      <div>
+        <span class="section-label">Key Learnings</span>
+        <h2>Ambient Design<br>is the Hardest Kind</h2>
+        <p>Glowing Citizens taught me that the most powerful interactions are the ones that ask the least of you. <strong>Ambient, contextual, peripheral</strong> — the pass was designed to exist at the edge of attention, not the centre of it. That's a profoundly different design challenge than building an app people actively choose to open.</p>
+        <p>It also taught me the power of <strong>research methods as design tools</strong>. Urban Probes didn't just inform the design — they revealed a way of seeing the city that I couldn't have found through interviews or surveys alone. The photographs participants took told stories about attention, habit, and desire that changed everything I thought I knew about the problem.</p>
+        <p>And finally: <strong>speculative design is still design.</strong> Even without a client or a launch date, the rigour of research, iteration, and scenario validation produces work that is credible, provocative, and lasting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="case-nav">
+  <a class="back" href="index.html">← All Projects</a>
+  <a href="yamaha-future-keyboard-case-study.html">Yamaha Future Keyboard →</a>
+</div>
+
+</body>
+</html>

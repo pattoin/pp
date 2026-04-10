@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ubuntu Touch — Patricia Panqueva</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f2ee; --ink: #1a1814; --muted: #6b6560;
+    --accent: #E95420; --accent-dark: #b83e18;
+    --rule: #d8d4ce; --card-bg: #eeeae4; --dark: #1a0a04;
+    --ubuntu-plum: #2C001E;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: var(--bg); border-bottom: 1px solid var(--rule); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero { position: relative; height: 80vh; min-height: 520px; overflow: hidden; background: var(--ubuntu-plum); }
+  .hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; display: block; }
+  .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 56px 80px; background: linear-gradient(to top, rgba(44,0,30,0.97) 0%, rgba(44,0,30,0.1) 65%); }
+  .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 9vw, 110px); line-height: 0.93; color: #fff; letter-spacing: 0.02em; margin-bottom: 24px; }
+  .hero-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 500; }
+  .hero-meta-value { font-size: 14px; color: rgba(255,255,255,0.85); }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+
+  .section-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 20px; display: block; }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 4vw, 52px); letter-spacing: 0.04em; line-height: 1.05; margin-bottom: 24px; color: var(--ink); }
+  p { color: var(--muted); margin-bottom: 20px; font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 500; }
+
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .stat-box { background: var(--card-bg); padding: 28px 24px; }
+  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; color: var(--accent); letter-spacing: 0.02em; margin-bottom: 6px; }
+  .stat-label { font-size: 12px; font-weight: 500; letter-spacing: 0.05em; color: var(--muted); text-transform: uppercase; }
+
+  /* LIGHTBOX IMAGES */
+  .zoomable { cursor: zoom-in; transition: opacity 0.2s; display: block; width: 100%; }
+  .zoomable:hover { opacity: 0.92; }
+  .img-caption { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; margin-top: 12px; font-style: italic; }
+  .img-caption-light { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; margin-top: 12px; font-style: italic; }
+
+  /* LIGHTBOX OVERLAY */
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; padding: 32px; cursor: zoom-out; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
+  .lightbox-close { position: fixed; top: 24px; right: 32px; color: #fff; font-size: 32px; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; line-height: 1; background: none; border: none; font-family: sans-serif; }
+  .lightbox-close:hover { opacity: 1; }
+
+  /* SCOPES SECTION — parchment bg, accent border cards */
+  .scopes-section { background: var(--bg); padding: 80px 0; border-bottom: 1px solid var(--rule); }
+  .scope-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 40px; }
+  .scope-card { background: var(--card-bg); padding: 32px 24px; border-top: 3px solid var(--accent); }
+  .scope-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 8px; }
+  .scope-body { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .scope-icon { font-size: 26px; margin-bottom: 14px; }
+
+  /* PLUM STRIP — only for intro quote/statement */
+  .plum-strip { background: var(--ubuntu-plum); padding: 72px 80px; }
+  .plum-strip .section-label { color: var(--accent); }
+  .plum-strip h2 { color: #fff; }
+  .plum-strip p { color: rgba(255,255,255,0.6); }
+  .plum-strip strong { color: rgba(255,255,255,0.95); }
+
+  .pull-quote { border-left: 3px solid var(--accent); padding: 24px 36px; margin: 40px 0; background: var(--card-bg); }
+  .pull-quote blockquote { font-size: 20px; font-weight: 300; line-height: 1.55; color: var(--ink); font-style: italic; margin-bottom: 16px; }
+  .pull-quote cite { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-style: normal; font-weight: 600; }
+
+  .two-col-text { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+
+  /* PRINCIPLES */
+  .principles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 40px; }
+  .principle { background: var(--card-bg); padding: 32px 24px; border-top: 3px solid var(--accent); }
+  .principle-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; color: var(--rule); margin-bottom: 12px; }
+  .principle-text { font-size: 14px; color: var(--muted); line-height: 1.6; font-style: italic; }
+
+  /* PROCESS STEPS */
+  .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .process-step { background: var(--card-bg); padding: 36px 28px; position: relative; }
+  .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 1; color: var(--rule); position: absolute; top: 20px; right: 24px; }
+  .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 12px; }
+  .step-body { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* OUTCOMES */
+  .outcome-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .outcome-card { background: var(--accent); padding: 36px 28px; color: #fff; }
+  .outcome-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; margin-bottom: 12px; }
+  .outcome-card p { color: rgba(255,255,255,0.75); font-size: 14px; margin: 0; }
+
+  .role-list { list-style: none; margin-top: 16px; }
+  .role-list li { padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 15px; color: var(--muted); display: flex; gap: 16px; align-items: baseline; }
+  .role-list li::before { content: '→'; color: var(--accent); font-size: 14px; flex-shrink: 0; }
+
+  .case-nav { padding: 60px 80px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--rule); }
+  .case-nav a { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--ink); text-decoration: none; transition: color 0.2s; }
+  .case-nav a:hover { color: var(--accent); }
+  .case-nav .back { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openLightbox(src, alt) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+<nav>
+  <a class="nav-logo" href="index.html">Patricia Panqueva</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="ubuntu-phone1-750x412.jpg" alt="Ubuntu Phone — three devices showing the OS">
+  <div class="hero-overlay">
+    <span class="hero-tag">Canonical UK · London · Launched 2013</span>
+    <h1 class="hero-title">Ubuntu<br>Touch</h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-label">Role</span><span class="hero-meta-value">UX Lead Designer</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Platform</span><span class="hero-meta-value">Mobile OS — Ubuntu Phone</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Focus</span><span class="hero-meta-value">Scopes — a new navigation & content concept</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Shipped</span><span class="hero-meta-value">March 2013</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section">
+  <div class="container">
+    <div class="intro-grid">
+      <div>
+        <span class="section-label">Overview</span>
+        <h2>Reinventing How a Phone Organises Your World</h2>
+        <p>In 2012, Canonical set out to build a mobile OS that didn't just copy iOS or Android. Ubuntu Touch was an ambitious attempt to rethink the smartphone experience from the ground up — not just the visual layer, but the fundamental model of how people navigate, discover, and interact with their content.</p>
+        <p>The centrepiece of that vision was <strong>Scopes</strong> — a radical new concept for content organisation and navigation. Instead of a grid of app icons, Ubuntu Touch proposed a world of contextual, swipeable content surfaces: Music, Videos, People, Apps, News. Each Scope surfaced the most relevant content for that context, blending personal data and public discovery into one seamless experience.</p>
+        <p>I was part of the core team that conceived, sketched, and refined the Scopes concept — from initial whiteboard ideas through to the shipped OS.</p>
+      </div>
+      <div>
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-number">5</div><div class="stat-label">Core scopes: Home, Music, Videos, Apps, People</div></div>
+          <div class="stat-box"><div class="stat-number">2013</div><div class="stat-label">Shipped — announced at CES, launched globally</div></div>
+          <div class="stat-box"><div class="stat-number">1</div><div class="stat-label">Tap — to get to any content, anywhere</div></div>
+          <div class="stat-box"><div class="stat-number">∞</div><div class="stat-label">Swipe — new navigation gesture replacing home buttons</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCOPES CONCEPT — parchment bg -->
+<section class="scopes-section">
+  <div class="container">
+    <span class="section-label">The Scopes Concept</span>
+    <h2>Not Apps. Scopes.</h2>
+    <p style="max-width:680px;">Traditional smartphone home screens present apps as isolated silos — you open an app to get to your content. Ubuntu Touch flipped this: <strong>content comes to you</strong>, organised by context. Swipe left or right to move between Scopes. Each one is a curated, live surface of the content most relevant to that moment.</p>
+    <div class="scope-grid">
+      <div class="scope-card">
+        <div class="scope-icon">🏠</div>
+        <div class="scope-name">Home</div>
+        <div class="scope-body">Your personal hub — frequent apps, local weather, and a personalised overview of everything that matters right now.</div>
+      </div>
+      <div class="scope-card">
+        <div class="scope-icon">🎵</div>
+        <div class="scope-name">Music</div>
+        <div class="scope-body">Recently played, frequently played, popular videos, top charts — personal listening and public discovery in one scope.</div>
+      </div>
+      <div class="scope-card">
+        <div class="scope-icon">🎬</div>
+        <div class="scope-name">Videos</div>
+        <div class="scope-body">My videos alongside popular clips — local content and online discovery unified into a single scrollable surface.</div>
+      </div>
+      <div class="scope-card">
+        <div class="scope-icon">📱</div>
+        <div class="scope-name">Apps</div>
+        <div class="scope-body">Recent and installed apps surfaced contextually — the app launcher reimagined as a living, intelligent scope.</div>
+      </div>
+    </div>
+    <div style="margin-top: 40px;">
+      <img class="zoomable" src="u-touch-2000x903.png" alt="Ubuntu Touch — four phones showing Home, Music, Videos and Apps scopes" onclick="openLightbox(this.src, this.alt)">
+      <p class="img-caption">The shipped Scopes experience — Home, Music, Videos, and Apps. Tap image to enlarge. ↗</p>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN PRINCIPLES -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Research & Design Principles</span>
+    <h2>Four Principles That<br>Shaped Every Decision</h2>
+    <p style="max-width:640px;">User research with smartphone users revealed a consistent pattern: people wanted their content immediately, without friction. These four principles guided every design decision across the Scopes system.</p>
+    <div class="principles">
+      <div class="principle">
+        <div class="principle-num">01</div>
+        <div class="principle-text">"While on the move people need to have access to all their online and offline content"</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">02</div>
+        <div class="principle-text">One Tap to My Content — the shortest possible path between intent and information</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">03</div>
+        <div class="principle-text">Easy Navigation — swipe gestures replace hierarchical menus and app-switching overhead</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">04</div>
+        <div class="principle-text">Visually Engaging — each Scope is a rich visual surface, not a list of links or icons</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN PROCESS -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Design Process</span>
+    <h2>Sketching a New<br>Interaction Model</h2>
+    <p style="max-width:640px;">The Scopes concept didn't arrive fully formed. It was sketched, argued over, prototyped, discarded, and rebuilt — many times. The team moved fast, iterating on paper and in code, running user testing sessions to validate which content organisations felt natural.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <div class="step-title">Concept Sketching</div>
+        <p class="step-body">Initial sketches explored how different content types — music, people, news, apps — could each have their own visual language and information hierarchy while feeling part of a coherent whole.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <div class="step-title">User Testing & Iteration</div>
+        <p class="step-body">Prototypes were tested with smartphone users to validate the swipe navigation model, content organisation within each Scope, and the balance between personal and public content.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <div class="step-title">Future Patterns</div>
+        <p class="step-body">Beyond shipped v1, I explored next-generation interaction patterns — new models that pushed the Scopes concept further with contextual action overlays and card-based navigation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC SCOPE SKETCHES -->
+<div style="margin:0; background: var(--card-bg); padding: 0;">
+  <img class="zoomable" src="music-scope-2-2000x954.png" alt="Music Scope early sketches — recently played, tap interaction, play in music app" onclick="openLightbox(this.src, this.alt)" style="width:100%;display:block;">
+  <div class="container"><p class="img-caption">Music Scope sketch sequence — browse → tap a track → reveal play options. Tap image to enlarge. ↗</p></div>
+</div>
+
+<!-- FUTURE PATTERNS -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Future Concepts</span>
+    <h2>New Patterns for<br>the Next Ubuntu Phone</h2>
+    <div class="two-col-text">
+      <div>
+        <p>Beyond shipping Scopes v1, I explored conceptual interaction patterns for the next generation of the Ubuntu phone. These sketches proposed a <strong>card-based content surface</strong> — rich, stacked cards combining Evernote notes, flight offers, and contextual project information in a single unified view.</p>
+        <p>The right-hand variant introduced a <strong>persistent action sidebar</strong> — a vertical strip of contextual actions (search, location, mail, call, chat, camera) that could be revealed without leaving the content surface.</p>
+      </div>
+      <div>
+        <p>These explorations pushed the core Scopes philosophy further: <strong>content-first, action-on-demand</strong>. Rather than navigating to tools and apps, the tools come to the content — surfaced contextually, dismissed when not needed.</p>
+        <p>The Budapest Project card shown in the sketch — combining a flight offer, a note, and a location-aware reminder — demonstrated how a single Scope surface could unify content from completely different sources into a coherent, task-relevant view.</p>
+      </div>
+    </div>
+    <div style="margin-top: 40px;">
+      <img class="zoomable" src="up1-2000x954.png" alt="New patterns for Ubuntu Touch — card-based navigation with contextual action sidebar" onclick="openLightbox(this.src, this.alt)" style="width:100%;display:block;">
+      <p class="img-caption">New patterns for Ubuntu Touch — conceptual ideas for the next phone. Left: card-based content surface. Right: contextual action sidebar revealed on swipe. Tap to enlarge. ↗</p>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Outcomes & Impact</span>
+    <h2>A New Paradigm<br>for Mobile</h2>
+    <div class="outcome-row">
+      <div class="outcome-card">
+        <h3>Shipped 2013</h3>
+        <p>Ubuntu Touch launched globally in March 2013 — the first major OS to propose Scopes as an alternative to the app-icon home screen paradigm.</p>
+      </div>
+      <div class="outcome-card" style="background:var(--accent-dark);">
+        <h3>CES Announcement</h3>
+        <p>The Ubuntu Phone was announced at CES to significant industry attention — recognised as a genuinely novel approach to mobile interaction design.</p>
+      </div>
+      <div class="outcome-card" style="background:var(--ubuntu-plum);">
+        <h3>Content-First Vision</h3>
+        <p>The Scopes concept — content over apps, context over hierarchy — anticipated the direction mobile OS design would move in the following decade.</p>
+      </div>
+    </div>
+    <div class="pull-quote" style="margin-top: 40px;">
+      <blockquote>"A groundbreaking approach to discovering both personal and public content — providing a seamless and intuitive way to navigate various scopes, enhancing overall interaction with the device."</blockquote>
+      <cite>Ubuntu Touch — Scopes Design Vision, Canonical UK, 2013</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ROLE + LEARNINGS -->
+<section class="section">
+  <div class="container">
+    <div class="two-col-text">
+      <div>
+        <span class="section-label">My Role</span>
+        <h2>UX Lead Designer<br>on the OS Team</h2>
+        <ul class="role-list">
+          <li>Contributed to the core team designing the Ubuntu Touch OS experience</li>
+          <li>Led design of the Scopes concept — People, Music, News, Apps, Home Scopes</li>
+          <li>Created initial sketches and interaction models for all core Scopes</li>
+          <li>Iterated on prototypes based on user testing feedback</li>
+          <li>Designed the Music Scope interaction model — browse, tap, play, queue</li>
+          <li>Explored next-generation interaction patterns for future Ubuntu phone concepts</li>
+          <li>Worked within Canonical's open-source design process across a distributed team</li>
+        </ul>
+      </div>
+      <div>
+        <span class="section-label">Key Learnings</span>
+        <h2>Designing a New<br>Mental Model</h2>
+        <p>Ubuntu Touch was one of the hardest design challenges I've worked on — not because of technical complexity, but because we were asking users to <strong>unlearn a mental model they'd had for years</strong>. The app icon grid is deeply ingrained. Proposing something different requires extraordinary clarity.</p>
+        <p>The Scopes project taught me that <strong>new paradigms need to earn their complexity</strong>. Every Scope had to be immediately understandable — what is this? what can I do here? — while also being genuinely different from anything users had seen before.</p>
+        <p>Working at the OS level meant design decisions had <strong>system-wide consequences</strong>. A navigation pattern that worked beautifully in one Scope had to work across all of them. Consistency wasn't a nice-to-have — it was the foundation of the entire experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="case-nav">
+  <a class="back" href="index.html">← All Projects</a>
+  <a href="wemo-case-study.html">Belkin WeMo →</a>
+</div>
+
+</body>
+</html>

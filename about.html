@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Patricia Panqueva</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f2ee; --ink: #1a1814; --muted: #6b6560;
+    --rule: #d8d4ce; --card-bg: #eeeae4; --dark: #0f0f0f;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: var(--bg); border-bottom: 1px solid var(--rule); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-cta { padding: 8px 20px !important; background: var(--ink) !important; color: #fff !important; font-size: 12px !important; font-weight: 600 !important; letter-spacing: 0.1em !important; }
+  .nav-cta:hover { opacity: 0.8; color: #fff !important; }
+
+  .hero { background: var(--dark); display: flex; min-height: 88vh; }
+  .hero-panel { width: 520px; min-height: 88vh; flex-shrink: 0; background: var(--bg); padding: 64px 52px 52px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .hero-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; display: block; }
+  .hero-h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 6vw, 80px); line-height: 0.95; letter-spacing: 0.03em; color: var(--ink); margin-bottom: 24px; }
+  .hero-h1 em { display: block; background: var(--ink); color: #fff; padding: 2px 12px; font-style: normal; width: fit-content; margin-bottom: 4px; }
+  .hero-quote { font-size: 14px; font-style: italic; font-weight: 300; line-height: 1.7; color: var(--muted); margin-bottom: 32px; border-left: 3px solid var(--rule); padding-left: 16px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .stat-box { background: var(--card-bg); padding: 20px 16px; text-align: center; }
+  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 42px; line-height: 1; color: var(--ink); letter-spacing: 0.02em; margin-bottom: 4px; }
+  .stat-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; }
+  .hero-photo { flex: 1; overflow: hidden; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+  .section-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 20px; display: block; }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 4vw, 52px); letter-spacing: 0.04em; line-height: 1.05; margin-bottom: 24px; color: var(--ink); }
+  p { color: var(--muted); margin-bottom: 20px; font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 500; }
+
+  .how-list { margin-top: 40px; }
+  .how-row { display: grid; grid-template-columns: 52px 1fr; border-bottom: 1px solid var(--rule); padding: 24px 0; align-items: start; }
+  .how-num { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--rule); padding-top: 4px; letter-spacing: 0.04em; }
+  .how-inner { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: start; }
+  .how-title-wrap { display: flex; align-items: center; gap: 12px; }
+  .how-icon { width: 32px; height: 32px; background: var(--ink); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .how-icon svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .how-title { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .how-body { font-size: 14px; color: var(--muted); line-height: 1.65; font-weight: 300; }
+
+  .soft-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .soft-card { background: var(--card-bg); padding: 32px 28px; }
+  .soft-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .soft-icon svg { width: 18px; height: 18px; stroke: var(--ink); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .soft-label { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 8px; }
+  .soft-desc { font-size: 14px; font-weight: 300; line-height: 1.6; color: var(--muted); }
+
+  .tl { margin-top: 40px; border-top: 1px solid var(--rule); }
+  .tl-row { display: grid; grid-template-columns: 100px 1fr; border-bottom: 1px solid var(--rule); transition: background 0.15s; }
+  .tl-row:hover { background: var(--card-bg); }
+  .tl-yr { padding: 20px 16px 20px 0; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.04em; color: var(--muted); display: flex; align-items: center; border-right: 1px solid var(--rule); }
+  .tl-body { padding: 20px 0 20px 24px; }
+  .tl-role { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .tl-co { font-size: 13px; color: var(--muted); font-weight: 300; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .sg { background: var(--card-bg); padding: 28px 24px; }
+  .sg-title { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { padding: 4px 10px; border: 1.5px solid rgba(10,10,10,.18); font-size: 11px; font-weight: 500; color: var(--muted); transition: all 0.15s; cursor: default; }
+  .tag:hover { border-color: var(--ink); color: var(--ink); }
+
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 40px; }
+  .edu-card { background: var(--card-bg); padding: 32px 28px; }
+  .edu-yr { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .edu-deg { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; color: var(--ink); margin-bottom: 4px; }
+  .edu-sch { font-size: 14px; color: var(--muted); margin-bottom: 12px; font-weight: 300; }
+  .edu-note { font-size: 13px; font-weight: 300; line-height: 1.6; color: var(--muted); }
+  .award { display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: #fff; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; margin-top: 14px; }
+
+  .countries { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 32px; }
+  .country { padding: 8px 16px; border: 1.5px solid rgba(10,10,10,.2); font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.06em; color: var(--ink); transition: all 0.15s; cursor: default; }
+  .country:hover { background: var(--ink); color: #fff; }
+
+  .cta-band { background: var(--dark); padding: 72px 80px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 4vw, 52px); letter-spacing: 0.04em; color: #fff; line-height: 1.0; }
+  .cta-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 8px; font-weight: 300; }
+  .cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .cbtn { display: inline-flex; align-items: center; padding: 12px 28px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: all 0.15s; }
+  .cbtn-w { background: #fff; color: var(--ink); }
+  .cbtn-w:hover { background: #e8e4de; }
+  .cbtn-o { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.35); }
+  .cbtn-o:hover { border-color: #fff; }
+
+  .case-nav { padding: 48px 80px; display: flex; justify-content: flex-start; align-items: center; border-top: 1px solid var(--rule); }
+  .case-nav a { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .case-nav a:hover { color: var(--ink); }
+
+  @media(max-width:700px){
+    nav { padding: 0 24px; }
+    .hero { min-height: auto; flex-direction: column; }
+    .hero-panel { width: 100%; min-height: auto; padding: 48px 24px 40px; }
+    .hero-photo { min-height: 260px; }
+    .container { padding: 0 24px; }
+    .section { padding: 56px 0; }
+    .how-inner { grid-template-columns: 1fr; gap: 8px; }
+    .soft-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .cta-band { padding: 48px 24px; }
+    .case-nav { padding: 36px 24px; }
+  }
+  @media(max-width:480px){
+    .soft-grid, .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Patricia Panqueva</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Work</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#94e4f5e0e6fdf7fdf5bae4f5fae5e1f1e2f5d4f3f9f5fdf8baf7fbf9" class="nav-cta">Say Hello</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-panel">
+    <span class="hero-eyebrow">About Me</span>
+    <h1 class="hero-h1">The pleasure of<br><em>immersing</em><br>in someone else's world</h1>
+    <p class="hero-quote">"Design is the joy of feeling uncomfortable — and diving deep into another person's world."</p>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="stat-number">15+</div><div class="stat-label">Years</div></div>
+      <div class="stat-box"><div class="stat-number">20M+</div><div class="stat-label">Users</div></div>
+      <div class="stat-box"><div class="stat-number">9</div><div class="stat-label">Countries</div></div>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="about-hero.jpg" alt="Patricia Panqueva">
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">Who I Am</span>
+    <h2>Human-Centered,<br>Globally Shaped</h2>
+    <div style="max-width:680px;">
+      <p>I'm a <strong>bilingual (English / Spanish)</strong> Senior UX Designer with 15+ years crafting <strong>multimodal and AI-enhanced experiences</strong> across voice assistants, open source, IoT, music technology, and consumer products.</p>
+      <p>Growing up in Colombia and living across <strong>9 countries on 4 continents</strong> didn't just give me perspective — it gave me a lived understanding of how culture, language, and context shape what feels natural in a product. I design for the full spectrum of human diversity, not just a default user.</p>
+      <p>Being <strong>bilingual</strong> means I bring nuance to every culture I design for — and every team I work with. <strong>Understand people first, design second.</strong> The process always starts with people — their context, motivations, and the moments that matter.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">How I Work</span>
+    <h2>A Very Experienced Designer<br>Asks Better Questions</h2>
+    <p style="max-width:600px;">I'm always asking: how can this be clearer? Easier? More helpful for the person actually using it?</p>
+    <div class="how-list">
+      <div class="how-row">
+        <div class="how-num">01</div>
+        <div class="how-inner">
+          <div class="how-title-wrap"><div class="how-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div><span class="how-title">Deep research</span></div>
+          <div class="how-body">Ethnographic studies, participatory design, behavioral insights. The real problem is rarely the obvious one.</div>
+        </div>
+      </div>
+      <div class="how-row">
+        <div class="how-num">02</div>
+        <div class="how-inner">
+          <div class="how-title-wrap"><div class="how-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><span class="how-title">Creative exploration</span></div>
+          <div class="how-body">Concept ideation, storytelling, rapid visualization — from napkin sketch to working prototype.</div>
+        </div>
+      </div>
+      <div class="how-row">
+        <div class="how-num">03</div>
+        <div class="how-inner">
+          <div class="how-title-wrap"><div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><span class="how-title">Practical execution</span></div>
+          <div class="how-body">Wireframes, multimodal prototypes, implementation specs. I bridge design vision and engineering reality.</div>
+        </div>
+      </div>
+      <div class="how-row">
+        <div class="how-num">04</div>
+        <div class="how-inner">
+          <div class="how-title-wrap"><div class="how-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><span class="how-title">Empathy first</span></div>
+          <div class="how-body">I immerse in users' worlds — their frustrations, habits, and joys. Understanding people deeply IS the process.</div>
+        </div>
+      </div>
+      <div class="how-row">
+        <div class="how-num">05</div>
+        <div class="how-inner">
+          <div class="how-title-wrap"><div class="how-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><span class="how-title">Prototyping, iteration & AI</span></div>
+          <div class="how-body">I prototype early and often — lo-fi to hi-fi, voice to multimodal — and use AI to accelerate each iteration cycle. Faster loops mean better decisions, earlier. The human perspective stays at the center, always.</div>
+        </div>
+      </div>
+      <div class="how-row">
+        <div class="how-num">06</div>
+        <div class="how-inner">
+          <div class="how-title-wrap"><div class="how-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="how-title">Cross-functional leadership</span></div>
+          <div class="how-body">I align PM, engineering, research, and legal not just to ship — but to ship the right thing. Increasingly, I design for and with AI agents — shaping agentic workflows where humans and AI collaborate seamlessly.</div>
+        </div>
+      </div>
+      <div class="how-row">
+        <div class="how-num">07</div>
+        <div class="how-inner">
+          <div class="how-title-wrap"><div class="how-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><span class="how-title">Bridging physical & digital</span></div>
+          <div class="how-body">I'm passionate about the space where physical and digital meet — environments that respond to people, everyday products that feel natural because they respect the way humans actually live.</div>
+        </div>
+      </div>
+      <div class="how-row">
+        <div class="how-num">08</div>
+        <div class="how-inner">
+          <div class="how-title-wrap"><div class="how-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="how-title">Ethical technology design</span></div>
+          <div class="how-body">Technology is only as good as the values it carries. I think deeply about privacy, inclusivity, unintended consequences, and long-term impact. Great design isn't just usable — it's responsible.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">Soft Skills</span>
+    <h2>Leadership &<br>The Human Side</h2>
+    <p style="max-width:600px;">Great design is a team sport. The technical skills get you in the room — the human skills determine what you build together.</p>
+    <div class="soft-grid">
+      <div class="soft-card">
+        <div class="soft-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="soft-label">Empathy</div>
+        <div class="soft-desc">I genuinely care about the people I design for — and the people I design with.</div>
+      </div>
+      <div class="soft-card">
+        <div class="soft-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="soft-label">Curiosity</div>
+        <div class="soft-desc">I never stop asking why. What's the real need? What's simpler? What haven't we tried yet?</div>
+      </div>
+      <div class="soft-card">
+        <div class="soft-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="soft-label">Clarity</div>
+        <div class="soft-desc">I communicate complex ideas simply — in design, writing, presentations, and across languages.</div>
+      </div>
+      <div class="soft-card">
+        <div class="soft-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="soft-label">Adaptability</div>
+        <div class="soft-desc">9 countries, 6 companies, countless teams. I find common ground fast and shift gears without friction.</div>
+      </div>
+      <div class="soft-card">
+        <div class="soft-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="soft-label">Communication</div>
+        <div class="soft-desc">Bilingual, cross-cultural, fluent in executive storytelling and hands-on collaboration.</div>
+      </div>
+      <div class="soft-card">
+        <div class="soft-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="soft-label">Resilience</div>
+        <div class="soft-desc">I thrive in ambiguity. When there's no playbook, I build one — and bring the team along.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">Experience</span>
+    <h2>Where I've Worked</h2>
+    <div class="tl">
+      <div class="tl-row"><div class="tl-yr">2023 →</div><div class="tl-body"><div class="tl-role">Founder & Experience Strategist — Onceh Design</div><div class="tl-co">AI · Hardware · Stealth · San Jose, CA</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2017–19</div><div class="tl-body"><div class="tl-role">Sr. UX Designer, Voice & Multimodal — Amazon Alexa</div><div class="tl-co">Alexa Household Organization · Santa Clara, CA</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2014–17</div><div class="tl-body"><div class="tl-role">UX / UI Design Manager — HP Inc.</div><div class="tl-co">R&D Immersive Computer Group · Palo Alto, CA</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2014</div><div class="tl-body"><div class="tl-role">UX Designer — Belkin International</div><div class="tl-co">WeMo Ecosystem · Los Angeles, CA</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2011–13</div><div class="tl-body"><div class="tl-role">UX Lead Designer — Canonical</div><div class="tl-co">Ubuntu Touch, Ubuntu Pay · London, UK</div></div></div>
+      <div class="tl-row"><div class="tl-yr">2008–11</div><div class="tl-body"><div class="tl-role">UX Designer — Yamaha Music R&D</div><div class="tl-co">Future Keyboard Project · London, UK</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">Skills & Tools</span>
+    <h2>What I Bring</h2>
+    <div class="skills-grid">
+      <div class="sg"><div class="sg-title">UX Leadership</div><div class="tags"><span class="tag">Experience Vision</span><span class="tag">Design Strategy</span><span class="tag">Roadmap Influence</span><span class="tag">Team Mentorship</span><span class="tag">Stakeholder Storytelling</span><span class="tag">Go-to-Market</span></div></div>
+      <div class="sg"><div class="sg-title">Specialization</div><div class="tags"><span class="tag">Voice UX</span><span class="tag">Multimodal Design</span><span class="tag">AI Product Design</span><span class="tag">Hardware UX</span><span class="tag">Systems Thinking</span><span class="tag">Journey Mapping</span></div></div>
+      <div class="sg"><div class="sg-title">Prototyping</div><div class="tags"><span class="tag">Lo-fi to Hi-fi</span><span class="tag">Voice Prototyping</span><span class="tag">Multimodal Prototyping</span><span class="tag">Rapid Iteration</span><span class="tag">Figma</span><span class="tag">Voiceflow</span></div></div>
+      <div class="sg"><div class="sg-title">UX Methods</div><div class="tags"><span class="tag">Ethnographic Research</span><span class="tag">Participatory Design</span><span class="tag">Wizard of Oz</span><span class="tag">Concept Storytelling</span><span class="tag">Design Systems</span></div></div>
+      <div class="sg"><div class="sg-title">AI & Vibe Coding</div><div class="tags"><span class="tag">Claude Code</span><span class="tag">Figma Make</span><span class="tag">Lovable</span><span class="tag">Cursor</span><span class="tag">LLM Prompt Design</span><span class="tag">ChatGPT</span><span class="tag">Google Stitch</span><span class="tag">Whisk</span></div></div>
+      <div class="sg"><div class="sg-title">Voice Design</div><div class="tags"><span class="tag">Multi-turn Dialog</span><span class="tag">Assistant Personas</span><span class="tag">Agentic Workflows</span><span class="tag">Utterance Design</span><span class="tag">Cross-surface UX</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">Education & Awards</span>
+    <h2>Where I Was Shaped</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-yr">2004 – 2006</div>
+        <div class="edu-deg">MFA — Interaction Design</div>
+        <div class="edu-sch">Umeå Institute of Design, Sweden</div>
+        <div class="edu-note">Advanced prototyping, participatory design, and concept storytelling. Graduation project "Glowing Citizens" explored the city as a contextual interface.</div>
+        <div class="award">🏆 Best Design Process — Microsoft Design Expo 2005</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-yr">1995 – 2001</div>
+        <div class="edu-deg">BA — Industrial Design</div>
+        <div class="edu-sch">Javeriana University, Bogotá, Colombia</div>
+        <div class="edu-note">Human-centered design for social challenges in health, transportation, and education. Built my foundation in physical-digital interaction.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">Global Perspective</span>
+    <h2>Designed Across<br>9 Countries</h2>
+    <p style="max-width:640px;">Working across cultures gave me something no methodology can teach — a genuine understanding of how context shapes what feels intuitive. As a <strong>bilingual Latina designer</strong>, I bring perspectives still underrepresented in tech. That's not just background — it's a <strong>competitive advantage</strong>.</p>
+    <div class="countries">
+      <span class="country">🇨🇴 Colombia</span>
+      <span class="country">🇸🇪 Sweden</span>
+      <span class="country">🇩🇰 Denmark</span>
+      <span class="country">🇩🇪 Germany</span>
+      <span class="country">🇯🇵 Japan</span>
+      <span class="country">🇨🇳 China</span>
+      <span class="country">🇳🇱 Netherlands</span>
+      <span class="country">🇬🇧 UK</span>
+      <span class="country">🇺🇸 USA</span>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div>
+    <div class="cta-title">Let's build something extraordinary</div>
+    <div class="cta-sub">Open to senior & lead UX roles · Remote & hybrid</div>
+  </div>
+  <div class="cta-btns">
+    <a href="index.html" class="cbtn cbtn-w">View My Work</a>
+    <a href="/cdn-cgi/l/email-protection#8bfbeafff9e2e8e2eaa5fbeae5fafeeefdeacbece6eae2e7a5e8e4e6" class="cbtn cbtn-o">Say Hello</a>
+  </div>
