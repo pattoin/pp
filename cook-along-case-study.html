@@ -125,7 +125,7 @@ audio::-webkit-media-controls-panel{background:#001824;}
     All Work
   </a>
   <span class="nav-name">Patricia Panqueva</span>
-  <a href="/cdn-cgi/l/email-protection#53233227213a303a3213233227213a303a3223323d22263625327d303c3e" class="nav-cta">Say Hello</a>
+  <a href="mailto:patricia.panqueva@gmail.com" class="nav-cta">Say Hello</a>
 </nav>
 
 <section class="hero">
@@ -325,29 +325,33 @@ audio::-webkit-media-controls-panel{background:#001824;}
 
 <div class="next">
   <div><div class="nl">Next Project</div><div class="nt">HP Sprout<br>3D Capture</div></div>
-  <a href="#" class="nb">View Case Study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+  <a href="hp-sprout-3d-case-study.html" class="nb">View Case Study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
 </div>
 
 <footer>
   <span class="fn">Patricia Panqueva</span>
   <div class="fl">
     <a href="https://linkedin.com/in/patriciapanqueva" target="_blank">LinkedIn</a>
-    <a href="/cdn-cgi/l/email-protection#b3c3d2c7c1dad0dad2f3c3d2c7c1dad0dad2c3d2ddc2c6d6c5d29dd0dcde">Email</a>
+    <a href="mailto:patricia.panqueva@gmail.com">Email</a>
     <a href="index.html">All Work</a>
   </div>
   <span>© 2026</span>
 </footer>
-
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
   <div class="lb-inner">
-    <img id="lb-img" src="" alt="Storyboard full view">
+    <img id="lb-img" src="" alt="Full view">
     <div class="lb-close" onclick="closeLightbox(event)">&#x2715;</div>
     <div class="lb-hint">Click outside or press ESC to close</div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 function openLightbox(img){document.getElementById('lb-img').src=img.src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
-function closeLightbox(e){if(!e||!e.target.closest('.lb-inner')||e.target.classList.contains('lb-close'
+function closeLightbox(e){if(!e||!e.target.closest('.lb-inner')||e.target.classList.contains('lb-close')){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+</script>
+
+</body>
+</html>

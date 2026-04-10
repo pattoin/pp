@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yamaha Future Keyboard — Patricia Panqueva</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f2ee;
+    --ink: #1a1814;
+    --muted: #6b6560;
+    --accent: #4B2D8F;
+    --accent-dark: #3a2270;
+    --rule: #d8d4ce;
+    --card-bg: #eeeae4;
+    --dark: #111010;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    background: var(--bg); border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    position: relative; height: 80vh; min-height: 520px;
+    overflow: hidden; background: var(--dark);
+  }
+  .hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; display: block; }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 56px 80px;
+    background: linear-gradient(to top, rgba(10,8,8,0.95) 0%, rgba(10,8,8,0.2) 60%);
+  }
+  .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 9vw, 110px); line-height: 0.93; color: #fff; letter-spacing: 0.02em; margin-bottom: 24px; }
+  .hero-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 500; }
+  .hero-meta-value { font-size: 14px; color: rgba(255,255,255,0.85); }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+
+  /* TYPE */
+  .section-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 20px; display: block; }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 4vw, 52px); letter-spacing: 0.04em; line-height: 1.05; margin-bottom: 24px; color: var(--ink); }
+  p { color: var(--muted); margin-bottom: 20px; font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 500; }
+
+  /* INTRO GRID */
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .stat-box { background: var(--card-bg); padding: 28px 24px; }
+  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; color: var(--accent); letter-spacing: 0.02em; margin-bottom: 6px; }
+  .stat-label { font-size: 12px; font-weight: 500; letter-spacing: 0.05em; color: var(--muted); text-transform: uppercase; }
+
+  /* IMAGES */
+  .full-img { width: 100%; display: block; }
+  .img-caption { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; margin-top: 12px; font-style: italic; }
+  .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 40px 0; }
+  .img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin: 40px 0; }
+  .img-grid-2 img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+  .img-grid-3 img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+
+  /* DARK STRIP */
+  .dark-strip { background: var(--dark); padding: 72px 80px; }
+  .dark-strip .section-label { color: #fff; }
+  .dark-strip h2 { color: #fff; }
+  .dark-strip p { color: rgba(255,255,255,0.55); }
+  .dark-strip strong { color: rgba(255,255,255,0.9); }
+
+  /* PULL QUOTE */
+  .pull-quote { border-left: 3px solid var(--accent); padding: 24px 36px; margin: 40px 0; background: var(--card-bg); }
+  .pull-quote blockquote { font-size: 20px; font-weight: 300; line-height: 1.55; color: var(--ink); font-style: italic; margin-bottom: 16px; }
+  .pull-quote cite { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-style: normal; font-weight: 600; }
+
+  /* TWO COL */
+  .two-col-text { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+
+  /* INSIGHT CARDS */
+  .insight-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .insight-card { background: var(--card-bg); padding: 32px 28px; }
+  .insight-icon { font-size: 28px; margin-bottom: 16px; }
+  .insight-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 10px; }
+  .insight-body { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* PROCESS STEPS */
+  .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .process-step { background: var(--card-bg); padding: 36px 28px; position: relative; }
+  .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 1; color: var(--rule); position: absolute; top: 20px; right: 24px; }
+  .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 12px; }
+  .step-body { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* NOTESTAR STRIP */
+  .notestar-strip { background: var(--accent); padding: 72px 80px; }
+  .notestar-strip .section-label { color: rgba(255,255,255,0.6); }
+  .notestar-strip h2 { color: #fff; }
+  .notestar-strip p { color: rgba(255,255,255,0.75); }
+  .notestar-strip strong { color: #fff; }
+
+  /* FEATURE GRID */
+  .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 40px; }
+  .feature-card { background: rgba(255,255,255,0.12); padding: 28px 20px; }
+  .feature-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: #fff; margin-bottom: 8px; }
+  .feature-body { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
+  /* OUTCOMES */
+  .outcome-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 40px; }
+  .outcome-card { background: var(--accent); padding: 36px 28px; color: #fff; }
+  .outcome-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; margin-bottom: 12px; }
+  .outcome-card p { color: rgba(255,255,255,0.75); font-size: 14px; margin: 0; }
+
+  /* ROLE LIST */
+  .role-list { list-style: none; margin-top: 16px; }
+  .role-list li { padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 15px; color: var(--muted); display: flex; gap: 16px; align-items: baseline; }
+  .role-list li::before { content: '→'; color: var(--accent); font-size: 14px; flex-shrink: 0; }
+
+  /* STORYBOARD GRID */
+  .storyboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 40px; }
+  .storyboard-grid img { width: 100%; display: block; }
+
+  /* BOTTOM NAV */
+  .case-nav { padding: 60px 80px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--rule); }
+  .case-nav a { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 12px; transition: color 0.2s; }
+  .case-nav a:hover { color: var(--accent); }
+  .case-nav .back { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+</style>
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Patricia Panqueva</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="Yamaha_Future_Keyboard-meta.png" alt="Yamaha Future Keyboard concept">
+  <div class="hero-overlay">
+    <span class="hero-tag">Yamaha Music R&D · London · 2011</span>
+    <h1 class="hero-title">Yamaha<br>Future<br>Keyboard</h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-label">Role</span><span class="hero-meta-value">UX Designer — Solo Designer in R&D Team</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Platform</span><span class="hero-meta-value">Hardware + iPad App Ecosystem</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Outcome</span><span class="hero-meta-value">NoteStar — Shipped iPad App</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Exhibited</span><span class="hero-meta-value">Music & Tech Expo, Japan</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section">
+  <div class="container">
+    <div class="intro-grid">
+      <div>
+        <span class="section-label">Overview</span>
+        <h2>Making Piano Learning Actually Fun</h2>
+        <p>Jon is bored. He'd rather be on Instagram or playing Xbox than practicing scales his teacher assigned. He's not alone — piano dropout rates are notoriously high, and traditional learning methods haven't meaningfully evolved in decades.</p>
+        <p>Yamaha's R&D team in London asked a radical question: <strong>what if learning piano felt more like a social game than a chore?</strong> I was the sole UX designer embedded in a team of engineers, tasked with reimagining the entire keyboard experience for a generation raised on smartphones, social networks, and on-demand everything.</p>
+        <p>The result was a vision for a connected piano ecosystem — and a shipped iPad app called <strong>NoteStar</strong> — that used popular music, gamification, and social sharing to turn solo practice into something people actually wanted to do.</p>
+      </div>
+      <div>
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-number">1</div><div class="stat-label">UX Designer on the entire R&D team</div></div>
+          <div class="stat-box"><div class="stat-number">4</div><div class="stat-label">Core pillars: learn, simplify, share, loop</div></div>
+          <div class="stat-box"><div class="stat-number">11–15</div><div class="stat-label">Age range of primary user testing group</div></div>
+          <div class="stat-box"><div class="stat-number">🇯🇵</div><div class="stat-label">Exhibited at Yamaha Music & Tech Expo, Japan</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGE -->
+<div class="dark-strip">
+  <span class="section-label">The Problem</span>
+  <h2>The Piano Hasn't Changed.<br>Learners Have.</h2>
+  <p style="max-width:700px;font-size:18px;line-height:1.65;">Traditional piano learning is isolated, rigid, and tied to repertoire nobody under 25 wants to play. Meanwhile, the devices learners already carry — phones, tablets, game controllers — are rich, social, and endlessly motivating. <strong>The gap between how learners live and how they're expected to learn was the core design problem.</strong></p>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-top:48px;">
+    <div style="background:rgba(255,255,255,0.06);padding:32px 28px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:#fff;margin-bottom:12px;">MOTIVATION GAP</div>
+      <p style="font-size:14px;margin:0;">Learners quit because practice feels disconnected from music they love. Classical repertoire doesn't speak to them.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);padding:32px 28px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:#fff;margin-bottom:12px;">ISOLATION GAP</div>
+      <p style="font-size:14px;margin:0;">Piano learning is solitary by default. There's no social loop, no community, no sense that others are learning alongside you.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);padding:32px 28px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:#fff;margin-bottom:12px;">TECHNOLOGY GAP</div>
+      <p style="font-size:14px;margin:0;">The keyboard hardware was unchanged. But learners' existing tech — iPads, phones, game consoles — went completely untapped.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DESIGN PRINCIPLES -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Design Principles</span>
+    <h2>Four Pillars of<br>a New Experience</h2>
+    <p style="max-width:640px;">The user journey wall — built from field research and scenario mapping — revealed four core activities that a future keyboard experience needed to support. Everything we designed mapped back to these.</p>
+    <div style="margin-top:40px;">
+      <img class="full-img" src="yh3-2000x1142.jpg" alt="User journey mapping wall — Simplify, Learn, Share, Loop a Song">
+      <p class="img-caption">Journey mapping wall: four key user activities — Simplify a Song, Learn a Song, Share a Song, Loop a Song — each validated through user scenarios and paper prototyping sessions.</p>
+    </div>
+    <div class="insight-row" style="margin-top:40px;">
+      <div class="insight-card">
+        <div class="insight-icon">🎵</div>
+        <div class="insight-title">Learn a Song</div>
+        <div class="insight-body">Learn any song you love — not what a teacher assigns. Interactive sheet music scrolls in sync with playback, annotations from other learners surface contextual tips.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">✂️</div>
+        <div class="insight-title">Simplify a Song</div>
+        <div class="insight-body">Strip a score to its essentials — remove key signatures, reduce complexity — so beginners can start playing real songs on day one without being overwhelmed.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">🔁</div>
+        <div class="insight-title">Loop a Song</div>
+        <div class="insight-body">Drag to set a loop region over any difficult passage. Practice that one bar until it clicks — without losing your place or restarting the whole piece.</div>
+      </div>
+    </div>
+    <div class="insight-row" style="margin-top:4px;">
+      <div class="insight-card" style="grid-column:1/2;">
+        <div class="insight-icon">📤</div>
+        <div class="insight-title">Share a Song</div>
+        <div class="insight-body">Record and share performances directly to social networks. Friends can listen, react, and send the score back — turning a solo performance into a conversation.</div>
+      </div>
+      <div class="insight-card" style="grid-column:2/4;background:var(--ink);">
+        <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.7;">
+          <strong style="color:rgba(255,255,255,0.9);font-weight:500;">The social hypothesis:</strong> people motivate people. If your friend just shared a performance of a song you both love, you're more likely to open the app and try it yourself. We designed the entire sharing loop — from recording a performance to posting it to social networks and receiving it as a playable score — as a first-class feature, not an afterthought.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKETCHES + STORYBOARDS -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Sketching & Storyboarding</span>
+    <h2>From Scenarios<br>to Storyboards</h2>
+    <p style="max-width:640px;">As the only designer among engineers, I led all UX ideation — sketching scenarios, mapping interaction flows, and building storyboards that communicated the vision to the team and to Yamaha stakeholders.</p>
+  </div>
+  <div style="margin-top:40px;">
+    <img class="full-img" src="yh1-2000x1502.jpeg" alt="Early sketches, storyboards and user scenario notes">
+    <div class="container"><p class="img-caption">Early sketching phase — scenario storyboards mapping Jenny and Marcelo's learning journeys, annotation flows, and social moments. Notes read: "Learning together is more fun!"</p></div>
+  </div>
+  <div class="container">
+    <div class="storyboard-grid" style="margin-top:40px;">
+      <div>
+        <img src="yh16-1980x1309.png" alt="Storyboard: score simplification feature">
+        <p class="img-caption">Score simplification — a beginner removes sharps/flats to play a stripped version of a song they love, with the original always one tap away.</p>
+      </div>
+      <div>
+        <img src="yh14-1800x1190.png" alt="Storyboard: song discovery and play">
+        <p class="img-caption">Song discovery — selecting a popular track, the keyboard signals "I'm ready", and the score loads with lyrics and notation synchronized.</p>
+      </div>
+    </div>
+    <div class="storyboard-grid">
+      <div>
+        <img src="yh17-1800x1190.png" alt="Storyboard: sharing a performance to social networks">
+        <p class="img-caption">Social sharing — Lisa shares her performance of Lady Gaga's Alejandro via the app; friends receive it as a playable score, not just a recording.</p>
+      </div>
+      <div>
+        <img src="yh15-1800x1190.png" alt="Storyboard: Phill learns with Xbox controller on TV">
+        <p class="img-caption">Multi-screen learning — Phill controls the TV app with his Xbox controller and learns from other performers' annotated tips, then plays on his Yamaha keyboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAPER PROTOTYPING -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Paper Prototyping</span>
+    <h2>Built with Paper,<br>Validated Fast</h2>
+    <p style="max-width:640px;">With no design tools budget and an engineering-heavy team, paper prototyping was the fastest way to test interaction ideas, gather feedback, and iterate before writing a single line of code.</p>
+  </div>
+  <div class="img-grid-3" style="margin:40px 0 0;">
+    <div>
+      <img src="yh4-2000x1142.jpg" alt="Paper prototype: song looping UI with drag handles" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
+      <div class="container" style="padding:0;"><p class="img-caption">Loop region prototype — blue acetate overlay + red dot handles to drag start/end points on sheet music. Tested gesture intuitiveness before digital implementation.</p></div>
+    </div>
+    <div>
+      <img src="yh5-2000x1501.jpg" alt="Paper scrolling prototype on tablet with sheet music strip" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
+      <div class="container" style="padding:0;"><p class="img-caption">Scrolling sheet music prototype — a physical paper strip threaded through a tablet frame simulated the continuous score scroll interaction before any code was written.</p></div>
+    </div>
+    <div>
+      <img src="yh6-2000x1501.jpg" alt="Paper prototype: song library and in-app shopping" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
+      <div class="container" style="padding:0;"><p class="img-caption">Song library + integrated shopping — paper prototype for browsing and purchasing scores, with animated overlay cards tested by swapping printed panels.</p></div>
+    </div>
+  </div>
+  <div class="container" style="margin-top:4px;">
+    <img class="full-img" src="yh12-1492x1076.png" alt="Tangible paper prototype for instrument and genre selection">
+    <p class="img-caption">Tangible prototype — physical cutout instruments (grand piano, guitar) were moved on a printed surface to explore genre and instrument selection gestures.</p>
+  </div>
+</section>
+
+<!-- SOCIAL + FLOW -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Interaction Design</span>
+    <h2>Flows That Connect<br>Playing to Sharing</h2>
+    <div class="two-col-text">
+      <div>
+        <p>A core design challenge was making the social layer feel native to the instrument — not bolted on. We mapped the full social flow: from recording a performance segment, to browsing your own history, to sharing to Facebook and receiving back a playable score.</p>
+        <p>The user flow diagrams went through multiple iterations before we landed on a model that felt <strong>as natural as posting a photo</strong> — but rooted in the musical moment just experienced.</p>
+      </div>
+      <div>
+        <p>Annotations were another key interaction: other learners could leave tips at specific bars — "try different hand positions on the difficult chords at bar 58" — surfaced contextually as you played through the score.</p>
+        <p>This created a <strong>community knowledge layer</strong> on top of every song: you were never practicing alone, even when physically alone.</p>
+      </div>
+    </div>
+    <div class="img-grid-2" style="margin-top:40px;">
+      <div>
+        <img src="yh10-2000x1142.jpg" alt="User flow diagram for social network connection and sharing" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
+        <p class="img-caption">Social flow: Performance Viewer → Your Performances → Share Widget → Facebook. Annotations, tips, and scores flow back the other way.</p>
+      </div>
+      <div>
+        <img src="yh9-2000x1142.jpg" alt="Large visual menus for easy song selection" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
+        <p class="img-caption">Large visual song menus — designed for quick recognition without typing, with album art, artist, and favoriting at a glance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTESTAR STRIP -->
+<div class="notestar-strip">
+  <span class="section-label">The Shipped Product</span>
+  <h2>NoteStar</h2>
+  <p style="max-width:680px;font-size:18px;line-height:1.65;">The vision crystallized into <strong>NoteStar</strong> — Yamaha's iPad app featuring hands-free, smooth-flowing digital sheet music, real audio backing tracks, lead vocals, and social sharing. It was the direct output of the Future Keyboard research.</p>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-title">Hands-Free Scrolling</div>
+      <div class="feature-body">Sheet music scrolls automatically in sync with playback — no page turns, no interruptions, no losing your place mid-song.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-title">Popular Music First</div>
+      <div class="feature-body">Learn the songs you already love — pop, rock, chart hits — not classical repertoire chosen by a teacher.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-title">Backing Tracks & Vocals</div>
+      <div class="feature-body">Real audio backing tracks and lead vocals play alongside your piano, so practice sessions feel like actual music, not exercises.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-title">Social Performance</div>
+      <div class="feature-body">Record, share, and receive performances from friends. Turn solo practice into a connected, motivating community experience.</div>
+    </div>
+  </div>
+  <div style="margin-top:40px;">
+    <img class="full-img" src="yh19-2000x1142.png" alt="NoteStar app — hi-fi prototype with popular music content">
+  </div>
+</div>
+
+<!-- USER TESTING -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">User Testing & Exhibition</span>
+    <h2>Tested with Teens,<br>Shown in Japan</h2>
+    <p style="max-width:640px;">We brought hi-fi prototypes with popular music content to a group of mothers and teenagers aged 11 to 15. Observed behind one-way glass, their reactions — the spontaneous collaboration, the immediate reach for familiar songs — validated the core design hypothesis: <strong>motivation follows content and community, not curriculum.</strong></p>
+  </div>
+  <div class="img-grid-2" style="margin:40px 0 0;">
+    <img src="yh11-1975x1112.jpg" alt="Hi-fi prototype user testing session with teenagers" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
+    <img src="yh18-1800x1789.png" alt="Observers watching user testing through one-way glass" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div>
+  <div class="container">
+    <p class="img-caption">User testing with teens aged 11–15 and their parents — observed through one-way glass. Spontaneous moments of collaborative play and peer motivation confirmed the social design direction.</p>
+    <div class="pull-quote" style="margin-top:40px;">
+      <blockquote>"Learning together is more fun!" — a recurring insight from the scenario sketching phase, confirmed in every testing session. When a peer played something recognizable, others immediately wanted to join or try it themselves.</blockquote>
+      <cite>Research insight — Yamaha Future Keyboard user testing, London 2011</cite>
+    </div>
+    <p>The refined prototype was then <strong>exhibited at Yamaha's Music & Tech showcase in Japan</strong>, marking the beginning of a cultural shift toward a modernized piano experience within the company — and directly informing the direction of NoteStar's development.</p>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Outcomes & Impact</span>
+    <h2>What the Future<br>Keyboard Proved</h2>
+    <div class="outcome-row">
+      <div class="outcome-card">
+        <h3>NoteStar Ships</h3>
+        <p>The research vision directly produced NoteStar, Yamaha's iPad sheet music app — a real, shipped product used by piano learners worldwide.</p>
+      </div>
+      <div class="outcome-card" style="background:var(--accent-dark);">
+        <h3>Japan Exhibition</h3>
+        <p>The Future Keyboard prototype was selected for Yamaha's Music & Tech showcase in Japan — the highest internal validation for an R&D concept.</p>
+      </div>
+      <div class="outcome-card" style="background:var(--dark);">
+        <h3>Cultural Shift</h3>
+        <p>The project marked a turning point in Yamaha's internal approach to digital music learning — validating social, popular-music-first design as a viable product direction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLE + LEARNINGS -->
+<section class="section">
+  <div class="container">
+    <div class="two-col-text">
+      <div>
+        <span class="section-label">My Role</span>
+        <h2>Solo UX in an<br>Engineering Team</h2>
+        <ul class="role-list">
+          <li>Sole UX designer embedded in Yamaha R&D team of engineers</li>
+          <li>Led all user research, scenario definition, and persona development</li>
+          <li>Sketched and storyboarded the full ecosystem vision</li>
+          <li>Designed and ran paper prototyping workshops for rapid iteration</li>
+          <li>Mapped interaction flows for social sharing, score browsing, and performance review</li>
+          <li>Facilitated user testing with teenagers and parents; synthesized insights</li>
+          <li>Developed hi-fi prototypes presented at Yamaha's Japan exhibition</li>
+        </ul>
+      </div>
+      <div>
+        <span class="section-label">Key Learnings</span>
+        <h2>Designing for<br>Motivation</h2>
+        <p>This project taught me that <strong>motivation is a design problem</strong>. The piano itself wasn't broken — the experience around it was. Once we put popular music at the center, added a social loop, and let learners control their own journey, everything shifted.</p>
+        <p>Working as the only designer in an engineering team sharpened my ability to <strong>translate UX thinking into terms engineers could build from</strong>. Paper prototypes, storyboards, and flow diagrams had to do heavy lifting — they weren't just design artifacts, they were communication tools.</p>
+        <p>And the most powerful insight of all: <strong>people motivate people.</strong> No gamification mechanic we designed matched the motivational pull of seeing a friend share a performance of a song you both knew.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="case-nav">
+  <a class="back" href="index.html">← All Projects</a>
+  <a href="hp-sprout-walkup-case-study.html">HP Sprout Walk-UP →</a>
+</div>
+
+</body>
+</html>
