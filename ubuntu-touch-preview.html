@@ -111,6 +111,45 @@
   .case-nav a { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--ink); text-decoration: none; transition: color 0.2s; }
   .case-nav a:hover { color: var(--accent); }
   .case-nav .back { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+
+  /* ── TABLET 900px ── */
+  @media(max-width:900px){
+    nav { padding: 0 24px; }
+    .hero-overlay { padding: 40px 32px; }
+    .container { padding: 0 24px; }
+    .section { padding: 56px 0; }
+    .intro-grid, .two-col-text { grid-template-columns: 1fr; gap: 40px; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .img-grid-2 { grid-template-columns: 1fr 1fr; }
+    .img-grid-3 { grid-template-columns: 1fr 1fr; }
+    .scope-grid, .principles { grid-template-columns: 1fr 1fr; }
+    .process-steps, .outcome-row { grid-template-columns: 1fr 1fr; }
+    .case-nav { padding: 40px 24px; }
+  }
+
+  /* ── MOBILE 480px ── */
+  @media(max-width:480px){
+    nav { padding: 0 16px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 11px; }
+    .hero { min-height: auto; }
+    .hero-overlay { padding: 32px 20px; }
+    .hero-title { font-size: clamp(48px, 14vw, 80px); }
+    .container { padding: 0 16px; }
+    .section { padding: 40px 0; }
+    h2 { font-size: clamp(28px, 8vw, 40px); }
+    .intro-grid, .two-col-text { grid-template-columns: 1fr; gap: 32px; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .img-grid-2 { grid-template-columns: 1fr; }
+    .img-grid-3 { grid-template-columns: 1fr; }
+    .scope-grid, .principles { grid-template-columns: 1fr 1fr; }
+    .process-steps, .outcome-row { grid-template-columns: 1fr; }
+    .pull-quote { padding: 20px; }
+    .case-nav { padding: 32px 16px; flex-direction: column; gap: 16px; align-items: flex-start; }
+    div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+    div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
+    div[style*="grid-template-columns:repeat(4"] { grid-template-columns: 1fr 1fr !important; }
+  }
 </style>
 </head>
 <body>
