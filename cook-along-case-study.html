@@ -103,8 +103,7 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
 .lb-close{position:absolute;top:-14px;right:-14px;width:36px;height:36px;background:var(--wht);border:2px solid var(--blk);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:700;color:var(--blk);transition:background .15s;}
 .lb-close:hover{background:var(--blk);color:var(--wht);}
 .lb-hint{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);white-space:nowrap;}
-@media(max-width:700px){
-  .hero-ov{padding:32px 24px;}.role-strip{padding:0 24px;}.content{padding:48px 20px;}
+.role-strip{padding:0 24px;}.content{padding:48px 20px;}
   .stats{grid-template-columns:1fr 1fr;}.ig,.test-grid,.wfs{grid-template-columns:1fr;}
   .timg.tw{grid-column:span 1;}.next{padding:40px 24px;}nav{padding:0 16px;}
 }
@@ -114,6 +113,27 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
 audio{display:block;width:100%;height:28px;accent-color:var(--acc);}
 audio::-webkit-media-controls-panel{background:#001824;}
 
+
+@media(max-width:900px){
+  nav{padding:0 24px;}
+  .content{padding:60px 24px;}
+  .role-strip{padding:0 24px;}
+  .next{padding:40px 24px;}
+  .stats{grid-template-columns:1fr 1fr;}
+  .tension-grid,.pp-grid,.ig,.test-grid,.wfs{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  nav{padding:0 16px;}
+  .hero-inner,.hero-text{padding:32px 20px;}
+  h1{font-size:clamp(48px,14vw,80px);}
+  h2{font-size:clamp(28px,8vw,40px);}
+  .content{padding:40px 16px;}
+  .role-strip{padding:0 16px;}
+  .next{padding:32px 16px;flex-direction:column;align-items:flex-start;}
+  .stats{grid-template-columns:1fr;}
+  div[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
+}
 </style>
 <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -125,7 +145,7 @@ audio::-webkit-media-controls-panel{background:#001824;}
     All Work
   </a>
   <span class="nav-name">Patricia Panqueva</span>
-  <a href="mailto:patricia.panqueva@gmail.com" class="nav-cta">Say Hello</a>
+  <a href="/cdn-cgi/l/email-protection#e5958491978c868c84cb95848b9490809384a58288848c89cb868a88" class="nav-cta">Say Hello</a>
 </nav>
 
 <section class="hero">
@@ -332,7 +352,7 @@ audio::-webkit-media-controls-panel{background:#001824;}
   <span class="fn">Patricia Panqueva</span>
   <div class="fl">
     <a href="https://linkedin.com/in/patriciapanqueva" target="_blank">LinkedIn</a>
-    <a href="mailto:patricia.panqueva@gmail.com">Email</a>
+    <a href="/cdn-cgi/l/email-protection#7f0f1e0b0d161c161e510f1e110e0a1a091e3f18121e1613511c1012">Email</a>
     <a href="index.html">All Work</a>
   </div>
   <span>© 2026</span>
@@ -345,13 +365,8 @@ audio::-webkit-media-controls-panel{background:#001824;}
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 function openLightbox(img){document.getElementById('lb-img').src=img.src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
-function closeLightbox(e){if(!e||!e.target.closest('.lb-inner')||e.target.classList.contains('lb-close')){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
-</script>
-
-</body>
-</html>
+function closeLightbox(e){if(!e||!e.target.closest('.lb-inner')||e.target.classList.contains('lb-clos

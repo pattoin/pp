@@ -47,7 +47,8 @@ nav.scrolled{height:44px;}
   transition:opacity .15s;
 }
 .nav-cta:hover{opacity:.8;}
-@media(max-width:560px){.nav-link.hm{display:none;}}
+@media(max-width:640px){.nav-link.hm{display:none;}}
+@media(max-width:400px){.nav-cta{display:none;}}
 
 /* ── HERO ── */
 .hero{
@@ -110,9 +111,12 @@ nav.scrolled{height:44px;}
   transition:all .15s;
 }
 .chip:hover{border-color:var(--ink);color:var(--ink);}
-@media(max-width:700px){
-  .hero{min-height:auto;}
-  .hero-panel{width:100%;min-height:auto;padding:48px 24px 40px;background:rgba(244,242,238,.96);}
+@media(max-width:768px){
+  .hero{min-height:auto;flex-direction:column;}
+  .hero-panel{width:100%;min-height:auto;padding:40px 24px 36px;background:rgba(244,242,238,.97);}
+  .hero-desc{max-width:100%;}
+  .hero-actions{flex-direction:column;gap:10px;}
+  .h-btn{justify-content:center;text-align:center;}
 }
 
 /* ── WORK HEADER ── */
@@ -233,14 +237,30 @@ footer{
 .f-link:hover{color:var(--white);}
 .f-link svg{width:12px;height:12px;flex-shrink:0;}
 .f-copy{font-size:.6rem;color:rgba(255,255,255,.18);white-space:nowrap;}
+/* ── TABLET 900px ── */
 @media(max-width:900px){
   .grid{grid-template-columns:repeat(2,1fr);}
-  .c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10{grid-column:span 1;height:220px;}
-  .c1,.c10{grid-column:span 2;height:280px;}
+  .c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10{grid-column:span 1;height:240px;}
+  .c1,.c10{grid-column:span 2;height:300px;}
   .card-title{font-size:1.1rem!important;}
-  footer{height:auto;padding:16px;flex-wrap:wrap;}
-  .f-copy{width:100%;text-align:center;}
   .work-header{flex-direction:column;gap:6px;}
+  footer{height:auto;padding:16px 20px;flex-wrap:wrap;gap:12px;}
+  .f-copy{width:100%;text-align:center;padding-top:4px;}
+}
+
+/* ── MOBILE 480px ── */
+@media(max-width:480px){
+  nav{padding:0 16px;}
+  .grid{grid-template-columns:1fr;}
+  .c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10{grid-column:span 1;height:200px;}
+  .c1,.c10{grid-column:span 1;height:220px;}
+  .card-title{font-size:1rem!important;}
+  .card-num{font-size:2.8rem;}
+  .work-header{padding:32px 16px 16px;}
+  .work-title{font-size:2.5rem;}
+  footer{padding:14px 16px;flex-direction:column;align-items:flex-start;gap:10px;}
+  .f-links{flex-wrap:wrap;gap:4px;}
+  .f-copy{width:100%;text-align:left;padding-top:0;}
 }
 </style>
 <link rel="icon" type="image/png" href="favicon.png">
