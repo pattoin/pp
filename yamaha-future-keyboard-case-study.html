@@ -25,19 +25,28 @@
     font-size: 17px;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    padding-top: 52px;
   }
 
   /* NAV */
   nav {
-    position: sticky; top: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    height: 52px;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px; height: 64px;
-    background: var(--bg); border-bottom: 1px solid var(--rule);
+    padding: 0 28px;
+    background: var(--bg);
+    border-bottom: 1.5px solid rgba(10,10,10,.12);
+    transition: height .3s ease;
   }
-  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--ink); }
+  nav.scrolled { height: 44px; }
+  .nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: .08em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+  .nav-link { padding: 6px 14px; font-size: .72rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .15s; }
+  .nav-link:hover { color: var(--ink); }
+  .nav-cta { margin-left: 8px; padding: 7px 20px; background: var(--ink); color: #fff; font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; transition: opacity .15s; border: 1.5px solid var(--ink); }
+  .nav-cta:hover { opacity: .8; }
+  @media(max-width:640px){ .nav-link.hm { display: none; } }
+  @media(max-width:400px){ .nav-cta { display: none; } }
 
   /* HERO */
   .hero {
@@ -146,23 +155,84 @@
   .case-nav a { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 12px; transition: color 0.2s; }
   .case-nav a:hover { color: var(--accent); }
   .case-nav .back { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+
+  /* FOOTER */
+  .site-footer { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 40px 48px; background: var(--ink); border-top: 1.5px solid rgba(10,10,10,.12); gap: 24px; }
+  .f-left { display: flex; flex-direction: column; gap: 6px; }
+  .f-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: .08em; color: #fff; line-height: 1; }
+  .f-role { font-size: .68rem; color: rgba(255,255,255,.6); letter-spacing: .1em; text-transform: uppercase; }
+  .f-center { display: flex; align-items: center; justify-content: center; }
+  .f-icons { display: flex; gap: 12px; align-items: center; }
+  .f-icon-link { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; color: #fff; text-decoration: none; transition: background .18s, color .18s; }
+  .f-icon-link:hover { background: rgba(255,255,255,.12); }
+  .f-icon-link svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .f-copy { font-size: .6rem; color: rgba(255,255,255,.5); white-space: nowrap; letter-spacing: .08em; text-align: right; align-self: center; }
+  .insight-card.span-wide { grid-column: 2 / 4; }
+  @media(max-width:640px){ .insight-card.span-wide { grid-column: span 1; } }
+  @media(max-width:900px){ .problem-grid { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:640px){ .problem-grid { grid-template-columns: 1fr; } }
+  @media(max-width:900px){
+    .container { padding: 0 32px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 48px; }
+    .two-col-text { grid-template-columns: 1fr; gap: 40px; }
+    .insight-row { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .feature-grid { grid-template-columns: 1fr 1fr; }
+    .outcome-row { grid-template-columns: 1fr; }
+    .dark-strip { padding: 56px 32px; }
+    .notestar-strip { padding: 56px 32px; }
+    .hero-overlay { padding: 40px 32px; }
+    .case-nav { padding: 40px 32px; }
+    .site-footer { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
+    .f-copy { text-align: left; }
+    .f-center { justify-content: flex-start; }
+  }
+
+  /* ── MOBILE 640px ── */
+  @media(max-width:640px){
+    .container { padding: 0 20px; }
+    .section { padding: 56px 0; }
+    .intro-grid { gap: 36px; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .insight-row { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .img-grid-2 { grid-template-columns: 1fr; }
+    .img-grid-3 { grid-template-columns: 1fr; }
+    .storyboard-grid { grid-template-columns: 1fr; }
+    .dark-strip { padding: 48px 20px; }
+    .notestar-strip { padding: 48px 20px; }
+    .hero-overlay { padding: 32px 20px; }
+    .hero-meta { gap: 20px; }
+    .case-nav { padding: 32px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
+    .pull-quote { padding: 20px 24px; }
+    .pull-quote blockquote { font-size: 17px; }
+  }
+
+  /* ── MOBILE 480px ── */
+  @media(max-width:480px){
+    nav { padding: 0 16px; }
+    .site-footer { padding: 28px 16px; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .hero { min-height: 420px; }
+  }
 </style>
 <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
-<nav>
-  <a class="nav-logo" href="index.html">Patricia Panqueva</a>
+<nav id="nav">
+  <a href="index.html" class="nav-name">Patricia Panqueva</a>
   <ul class="nav-links">
-    <li><a href="about.html">About</a></li>
-    <li><a href="index.html">Work</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#work" class="nav-link hm">Work</a></li>
+    <li><a href="about.html" class="nav-link hm">About</a></li>
+    <li><a href="mailto:hello@patriciapanqueva.com" class="nav-cta">Say Hello</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-img" src="Yamaha_Future_Keyboard-meta.png" alt="Yamaha Future Keyboard concept">
+  <img class="hero-img" src="images/Yamaha_Future_Keyboard-meta.png" alt="Yamaha Future Keyboard concept">
   <div class="hero-overlay">
     <span class="hero-tag">Yamaha Music R&D · London · 2011</span>
     <h1 class="hero-title">Yamaha<br>Future<br>Keyboard</h1>
@@ -203,7 +273,7 @@
   <span class="section-label">The Problem</span>
   <h2>The Piano Hasn't Changed.<br>Learners Have.</h2>
   <p style="max-width:700px;font-size:18px;line-height:1.65;">Traditional piano learning is isolated, rigid, and tied to repertoire nobody under 25 wants to play. Meanwhile, the devices learners already carry — phones, tablets, game controllers — are rich, social, and endlessly motivating. <strong>The gap between how learners live and how they're expected to learn was the core design problem.</strong></p>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-top:48px;">
+  <div class="problem-grid">
     <div style="background:rgba(255,255,255,0.06);padding:32px 28px;">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:#fff;margin-bottom:12px;">MOTIVATION GAP</div>
       <p style="font-size:14px;margin:0;">Learners quit because practice feels disconnected from music they love. Classical repertoire doesn't speak to them.</p>
@@ -226,7 +296,7 @@
     <h2>Four Pillars of<br>a New Experience</h2>
     <p style="max-width:640px;">The user journey wall — built from field research and scenario mapping — revealed four core activities that a future keyboard experience needed to support. Everything we designed mapped back to these.</p>
     <div style="margin-top:40px;">
-      <img class="full-img" src="yh3-2000x1142.jpg" alt="User journey mapping wall — Simplify, Learn, Share, Loop a Song">
+      <img class="full-img" src="images/yh3-2000x1142.jpg" alt="User journey mapping wall — Simplify, Learn, Share, Loop a Song">
       <p class="img-caption">Journey mapping wall: four key user activities — Simplify a Song, Learn a Song, Share a Song, Loop a Song — each validated through user scenarios and paper prototyping sessions.</p>
     </div>
     <div class="insight-row" style="margin-top:40px;">
@@ -252,7 +322,7 @@
         <div class="insight-title">Share a Song</div>
         <div class="insight-body">Record and share performances directly to social networks. Friends can listen, react, and send the score back — turning a solo performance into a conversation.</div>
       </div>
-      <div class="insight-card" style="grid-column:2/4;background:var(--ink);">
+      <div class="insight-card span-wide" style="background:var(--ink);">
         <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.7;">
           <strong style="color:rgba(255,255,255,0.9);font-weight:500;">The social hypothesis:</strong> people motivate people. If your friend just shared a performance of a song you both love, you're more likely to open the app and try it yourself. We designed the entire sharing loop — from recording a performance to posting it to social networks and receiving it as a playable score — as a first-class feature, not an afterthought.
         </div>
@@ -269,27 +339,27 @@
     <p style="max-width:640px;">As the only designer among engineers, I led all UX ideation — sketching scenarios, mapping interaction flows, and building storyboards that communicated the vision to the team and to Yamaha stakeholders.</p>
   </div>
   <div style="margin-top:40px;">
-    <img class="full-img" src="yh1-2000x1502.jpeg" alt="Early sketches, storyboards and user scenario notes">
+    <img class="full-img" src="images/yh1-2000x1502.jpeg" alt="Early sketches, storyboards and user scenario notes">
     <div class="container"><p class="img-caption">Early sketching phase — scenario storyboards mapping Jenny and Marcelo's learning journeys, annotation flows, and social moments. Notes read: "Learning together is more fun!"</p></div>
   </div>
   <div class="container">
     <div class="storyboard-grid" style="margin-top:40px;">
       <div>
-        <img src="yh16-1980x1309.png" alt="Storyboard: score simplification feature">
+        <img src="images/yh16-1980x1309.png" alt="Storyboard: score simplification feature">
         <p class="img-caption">Score simplification — a beginner removes sharps/flats to play a stripped version of a song they love, with the original always one tap away.</p>
       </div>
       <div>
-        <img src="yh14-1800x1190.png" alt="Storyboard: song discovery and play">
+        <img src="images/yh14-1800x1190.png" alt="Storyboard: song discovery and play">
         <p class="img-caption">Song discovery — selecting a popular track, the keyboard signals "I'm ready", and the score loads with lyrics and notation synchronized.</p>
       </div>
     </div>
     <div class="storyboard-grid">
       <div>
-        <img src="yh17-1800x1190.png" alt="Storyboard: sharing a performance to social networks">
+        <img src="images/yh17-1800x1190.png" alt="Storyboard: sharing a performance to social networks">
         <p class="img-caption">Social sharing — Lisa shares her performance of Lady Gaga's Alejandro via the app; friends receive it as a playable score, not just a recording.</p>
       </div>
       <div>
-        <img src="yh15-1800x1190.png" alt="Storyboard: Phill learns with Xbox controller on TV">
+        <img src="images/yh15-1800x1190.png" alt="Storyboard: Phill learns with Xbox controller on TV">
         <p class="img-caption">Multi-screen learning — Phill controls the TV app with his Xbox controller and learns from other performers' annotated tips, then plays on his Yamaha keyboard.</p>
       </div>
     </div>
@@ -305,20 +375,20 @@
   </div>
   <div class="img-grid-3" style="margin:40px 0 0;">
     <div>
-      <img src="yh4-2000x1142.jpg" alt="Paper prototype: song looping UI with drag handles" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
+      <img src="images/yh4-2000x1142.jpg" alt="Paper prototype: song looping UI with drag handles" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
       <div class="container" style="padding:0;"><p class="img-caption">Loop region prototype — blue acetate overlay + red dot handles to drag start/end points on sheet music. Tested gesture intuitiveness before digital implementation.</p></div>
     </div>
     <div>
-      <img src="yh5-2000x1501.jpg" alt="Paper scrolling prototype on tablet with sheet music strip" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
+      <img src="images/yh5-2000x1501.jpg" alt="Paper scrolling prototype on tablet with sheet music strip" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
       <div class="container" style="padding:0;"><p class="img-caption">Scrolling sheet music prototype — a physical paper strip threaded through a tablet frame simulated the continuous score scroll interaction before any code was written.</p></div>
     </div>
     <div>
-      <img src="yh6-2000x1501.jpg" alt="Paper prototype: song library and in-app shopping" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
+      <img src="images/yh6-2000x1501.jpg" alt="Paper prototype: song library and in-app shopping" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
       <div class="container" style="padding:0;"><p class="img-caption">Song library + integrated shopping — paper prototype for browsing and purchasing scores, with animated overlay cards tested by swapping printed panels.</p></div>
     </div>
   </div>
   <div class="container" style="margin-top:4px;">
-    <img class="full-img" src="yh12-1492x1076.png" alt="Tangible paper prototype for instrument and genre selection">
+    <img class="full-img" src="images/yh12-1492x1076.png" alt="Tangible paper prototype for instrument and genre selection">
     <p class="img-caption">Tangible prototype — physical cutout instruments (grand piano, guitar) were moved on a printed surface to explore genre and instrument selection gestures.</p>
   </div>
 </section>
@@ -340,11 +410,11 @@
     </div>
     <div class="img-grid-2" style="margin-top:40px;">
       <div>
-        <img src="yh10-2000x1142.jpg" alt="User flow diagram for social network connection and sharing" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
+        <img src="images/yh10-2000x1142.jpg" alt="User flow diagram for social network connection and sharing" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
         <p class="img-caption">Social flow: Performance Viewer → Your Performances → Share Widget → Facebook. Annotations, tips, and scores flow back the other way.</p>
       </div>
       <div>
-        <img src="yh9-2000x1142.jpg" alt="Large visual menus for easy song selection" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
+        <img src="images/yh9-2000x1142.jpg" alt="Large visual menus for easy song selection" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
         <p class="img-caption">Large visual song menus — designed for quick recognition without typing, with album art, artist, and favoriting at a glance.</p>
       </div>
     </div>
@@ -375,7 +445,7 @@
     </div>
   </div>
   <div style="margin-top:40px;">
-    <img class="full-img" src="yh19-2000x1142.png" alt="NoteStar app — hi-fi prototype with popular music content">
+    <img class="full-img" src="images/yh19-2000x1142.png" alt="NoteStar app — hi-fi prototype with popular music content">
   </div>
 </div>
 
@@ -387,8 +457,8 @@
     <p style="max-width:640px;">We brought hi-fi prototypes with popular music content to a group of mothers and teenagers aged 11 to 15. Observed behind one-way glass, their reactions — the spontaneous collaboration, the immediate reach for familiar songs — validated the core design hypothesis: <strong>motivation follows content and community, not curriculum.</strong></p>
   </div>
   <div class="img-grid-2" style="margin:40px 0 0;">
-    <img src="yh11-1975x1112.jpg" alt="Hi-fi prototype user testing session with teenagers" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
-    <img src="yh18-1800x1789.png" alt="Observers watching user testing through one-way glass" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
+    <img src="images/yh11-1975x1112.jpg" alt="Hi-fi prototype user testing session with teenagers" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
+    <img src="images/yh18-1800x1789.png" alt="Observers watching user testing through one-way glass" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
   </div>
   <div class="container">
     <p class="img-caption">User testing with teens aged 11–15 and their parents — observed through one-way glass. Spontaneous moments of collaborative play and peer motivation confirmed the social design direction.</p>
@@ -455,5 +525,29 @@
   <a href="hp-sprout-walkup-case-study.html">HP Sprout Walk-UP →</a>
 </div>
 
+<footer class="site-footer">
+  <div class="f-left">
+    <div class="f-name">Patricia Panqueva</div>
+    <div class="f-role">Senior UX Designer · Bay Area, CA</div>
+  </div>
+  <div class="f-center">
+    <div class="f-icons">
+      <a href="https://www.linkedin.com/in/patriciapanqueva" target="_blank" class="f-icon-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="mailto:hello@patriciapanqueva.com" class="f-icon-link" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="f-copy">© 2026 — All Rights Reserved</div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
 </body>
 </html>
