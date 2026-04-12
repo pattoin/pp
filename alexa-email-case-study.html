@@ -5,24 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alexa Email — Patricia Panqueva</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Condensed:wght@700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-:root{--blk:#0a0a0a;--wht:#fff;--gry:#9a9690;--sur:#eeece8;--acc:#F0B400;--acc-l:#FEF8E1;--acc-d:#B58A00;--bdr:1px solid #e8e8e8;--max:860px;}
-body{background:#f4f2ee;color:#0a0a0a;font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+html{scroll-behavior:smooth}
+:root{--blk:#0d0d0d;--wht:#fff;--gry:#757575;--sur:#f5f5f5;--acc:#F0B400;--acc-l:#FEF8E1;--acc-d:#B58A00;--bdr:1px solid #e8e8e8;--max:860px;}
+body{background:var(--wht);color:var(--blk);font-family:'Roboto',sans-serif;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:var(--wht);border-bottom:var(--bdr);display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
 .nav-back{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--gry);font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:color .15s;}
 .nav-back:hover{color:var(--blk)}.nav-back svg{width:16px;height:16px;}
-.nav-name{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:.9rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em;}
-.nav-cta{font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--gry);text-decoration:none;padding:8px 16px;transition:all .15s;min-height:44px;display:inline-flex;align-items:center;}
+.nav-name{font-family:'Roboto Condensed',sans-serif;font-size:.9rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em;}
+.nav-cta{font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--gry);text-decoration:none;padding:8px 16px;border-radius:20px;transition:all .15s;}
 .nav-cta:hover{background:var(--blk);color:var(--wht);}
 .hero{margin-top:56px;height:80vh;min-height:500px;position:relative;overflow:hidden;background:#1a1200;}
 .hero img{width:100%;height:100%;object-fit:cover;object-position:right center;opacity:.5;}
 .hero-ov{position:absolute;inset:0;background:linear-gradient(160deg,rgba(13,26,53,.1) 0%,rgba(13,26,53,.96) 72%);display:flex;flex-direction:column;justify-content:flex-end;padding:64px;}
 .hero-tag{font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
 .hero-tag::before{content:'';display:block;width:24px;height:2px;background:var(--acc);}
-h1.hero-title{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;text-transform:uppercase;color:var(--wht);margin-bottom:28px;}
+h1.hero-title{font-family:'Roboto Condensed',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;text-transform:uppercase;color:var(--wht);margin-bottom:28px;}
 .hero-meta{display:flex;gap:32px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:24px;}
 .hmi{display:flex;flex-direction:column;gap:3px;}
 .hml{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);}
@@ -36,195 +36,85 @@ h1.hero-title{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size
 .cs{margin-bottom:72px;}
 .slabel{font-size:.62rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
 .slabel::before{content:'';display:block;width:20px;height:2px;background:var(--acc);}
-.stitle{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1;text-transform:uppercase;margin-bottom:16px;}
+.stitle{font-family:'Roboto Condensed',sans-serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:900;letter-spacing:-.02em;line-height:1.05;text-transform:uppercase;margin-bottom:20px;}
 .body{font-size:1rem;font-weight:300;line-height:1.82;color:#2a2a2a;margin-bottom:16px;}
 .body strong{font-weight:500;color:var(--blk)}.body em{color:var(--acc-d);font-style:italic;}
-.div{width:48px;height:3px;background:var(--acc);margin:64px 0;}
+.div{width:48px;height:3px;background:var(--acc);margin:64px 0;border-radius:2px;}
 .pq{border-left:4px solid var(--acc);padding:8px 0 8px 28px;margin:36px 0;}
 .pq p{font-size:1.15rem;font-style:italic;font-weight:300;line-height:1.65;color:#1a1a1a;}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;overflow:hidden;margin:36px 0;}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border-radius:8px;overflow:hidden;margin:36px 0;}
 .stat{background:var(--sur);padding:28px 20px;text-align:center;}
-.stat-n{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:2.6rem;font-weight:900;letter-spacing:-.03em;color:var(--acc);line-height:1;margin-bottom:6px;}
+.stat-n{font-family:'Roboto Condensed',sans-serif;font-size:2.6rem;font-weight:900;letter-spacing:-.03em;color:var(--acc);line-height:1;margin-bottom:6px;}
 .stat-l{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gry);}
-.artifact{margin:32px 0;border:var(--bdr);overflow:hidden;}
+.artifact{margin:32px 0;border:var(--bdr);border-radius:10px;overflow:hidden;}
 .artifact-header{background:var(--blk);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;}
 .artifact-title{font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);}
-.artifact-tag{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--acc);color:#1a1200;padding:3px 8px;white-space:nowrap;}
-.artifact img{width:100%;display:block;cursor:zoom-in;transition:opacity .2s;max-width:100%;height:auto;}
+.artifact-tag{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--acc);color:#1a1200;padding:3px 8px;border-radius:3px;white-space:nowrap;}
+.artifact img{width:100%;display:block;cursor:zoom-in;transition:opacity .2s;}
 .artifact img:hover{opacity:.92;}
 .artifact-cap{padding:12px 20px;font-size:.76rem;color:var(--gry);font-style:italic;border-top:var(--bdr);}
 .tension-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0;}
-.tc{background:var(--sur);padding:22px;border-left:4px solid var(--acc);}
+.tc{background:var(--sur);border-radius:8px;padding:22px;border-left:4px solid var(--acc);}
 .tc-label{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin-bottom:6px;}
 .tc-title{font-size:.9rem;font-weight:500;color:var(--blk);margin-bottom:5px;}
 .tc-body{font-size:.82rem;font-weight:300;line-height:1.6;color:#555;}
-.process{border:var(--bdr);overflow:hidden;margin:24px 0;}
+.process{border:var(--bdr);border-radius:8px;overflow:hidden;margin:24px 0;}
 .ps{display:grid;grid-template-columns:48px 1fr;border-bottom:var(--bdr);transition:background .15s;}
 .ps:last-child{border-bottom:none}.ps:hover{background:var(--acc-l);}
-.ps-n{background:var(--acc);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:.95rem;font-weight:900;color:#1a1200;}
+.ps-n{background:var(--acc);display:flex;align-items:center;justify-content:center;font-family:'Roboto Condensed',sans-serif;font-size:.95rem;font-weight:900;color:#1a1200;}
 .ps-body{padding:16px 20px;}
 .ps-title{font-size:.88rem;font-weight:500;margin-bottom:3px;color:var(--blk);}
 .ps-desc{font-size:.8rem;font-weight:300;color:#555;line-height:1.6;}
 .pp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0;}
-.pp{background:var(--acc-l);padding:22px;border-top:3px solid var(--acc);}
-.pp-icon{width:36px;height:36px;background:var(--acc);display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.pp{background:var(--acc-l);border-radius:8px;padding:22px;border-top:3px solid var(--acc);}
+.pp-icon{width:36px;height:36px;border-radius:6px;background:var(--acc);display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
 .pp-icon svg{width:18px;height:18px;stroke:#1a1200;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
-.pp-title{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:.85rem;font-weight:900;text-transform:uppercase;margin-bottom:6px;color:var(--acc-d);}
+.pp-title{font-family:'Roboto Condensed',sans-serif;font-size:.85rem;font-weight:900;text-transform:uppercase;margin-bottom:6px;color:var(--acc-d);}
 .pp-body{font-size:.8rem;font-weight:400;line-height:1.6;color:#333;}
-.ub{background:var(--acc-l);padding:28px;margin:24px 0;}
+.ub{background:var(--acc-l);border-radius:8px;padding:28px;margin:24px 0;}
 .ul{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:14px;}
 .utterances{display:flex;flex-wrap:wrap;gap:8px;}
-.utt{background:var(--wht);border:1.5px solid rgba(26,115,232,.25);padding:7px 16px;font-size:.84rem;color:var(--acc-d);font-style:italic;}
-.ob{background:var(--acc);padding:40px;margin:24px 0;color:#1a1200;}
+.utt{background:var(--wht);border:1.5px solid rgba(26,115,232,.25);border-radius:100px;padding:7px 16px;font-size:.84rem;color:var(--acc-d);font-style:italic;}
+.ob{background:var(--acc);border-radius:10px;padding:40px;margin:24px 0;color:#1a1200;}
 .ob .slabel{color:rgba(0,0,0,.45)}.ob .slabel::before{background:rgba(0,0,0,.3);}
 .ob p{font-size:1rem;font-weight:300;line-height:1.8;color:rgba(0,0,0,.72);margin-bottom:14px;}
 .ob p:last-child{margin-bottom:0}.ob strong{color:#1a1200;font-weight:500;}
 .lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;}
 .lightbox.open{display:flex;}
 .lb-inner{position:relative;max-width:95vw;max-height:92vh;}
-.lb-inner img{max-width:100%;max-height:92vh;object-fit:contain;display:block;}
-.lb-close{position:absolute;top:-14px;right:-14px;width:44px;height:44px;background:var(--wht);border:2px solid var(--blk);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:700;color:var(--blk);transition:background .15s;touch-action:manipulation;}
+.lb-inner img{max-width:100%;max-height:92vh;object-fit:contain;border-radius:6px;display:block;}
+.lb-close{position:absolute;top:-14px;right:-14px;width:36px;height:36px;border-radius:50%;background:var(--wht);border:2px solid var(--blk);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:700;color:var(--blk);transition:background .15s;}
 .lb-close:hover{background:var(--blk);color:var(--wht);}
 .lb-hint{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);white-space:nowrap;}
 .next{background:var(--blk);padding:64px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
 .nl{font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px;}
-.nt{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:2.2rem;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;color:var(--wht);line-height:1.0;}
-.nb{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--acc);color:#1a1200;text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:background .15s;}
+.nt{font-family:'Roboto Condensed',sans-serif;font-size:2.2rem;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;color:var(--wht);line-height:1.0;}
+.nb{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--acc);color:#1a1200;border-radius:4px;text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:background .15s;}
 .nb:hover{background:var(--acc-d)}.nb svg{width:16px;height:16px;}
 footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;font-size:.72rem;letter-spacing:.06em;}
-.fn{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-weight:900;font-size:.82rem;color:var(--wht);text-transform:uppercase;}
+.fn{font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:.82rem;color:var(--wht);text-transform:uppercase;}
 .fl{display:flex;gap:20px;}.fl a{color:rgba(255,255,255,.3);text-decoration:none;transition:color .15s;}.fl a:hover{color:var(--wht);}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.vis{opacity:1;transform:none;}
-/* ── RESPONSIVE ───────────────────────────────────────── */
-
-/* Tablet: 768–900px */
-@media(max-width:900px){
-  :root{--max:100%;}
-  .img-trio{grid-template-columns:1fr !important;}
-  .hero-ov{padding:48px 40px;}
-  h1.hero-title{font-size:clamp(2.8rem,8vw,5rem);}
-  .hero-meta{gap:20px;}
-  .role-strip{padding:0 40px;}
-  .content{padding:64px 40px;}
-  .tension-grid{grid-template-columns:1fr 1fr;}
-  .pp-grid{grid-template-columns:1fr 1fr;}
-  .stats{grid-template-columns:repeat(3,1fr);}
-  .next{padding:48px 40px;}
-  footer{padding:0 40px;}
-  nav{padding:0 24px;}
-}
-
-/* Large Mobile: 600–767px */
-@media(max-width:767px){
-  nav{padding:0 20px;height:52px;}
-  .nav-name{font-size:.78rem;}
-  .nav-cta{padding:6px 12px;font-size:.72rem;}
-  .hero{height:70vh;min-height:440px;}
-  .hero-ov{padding:32px 20px;}
-  h1.hero-title{font-size:clamp(2.4rem,9vw,4rem);letter-spacing:-.02em;}
-  .hero-tag{font-size:.62rem;margin-bottom:10px;}
-  .hero-meta{gap:16px;padding-top:18px;}
-  .hml{font-size:.58rem;}
-  .hmv{font-size:.8rem;}
-  .role-strip{padding:0 20px;}
-  .rc{font-size:.65rem;padding:11px 16px 11px 0;}
-  .content{padding:48px 20px;}
-  .cs{margin-bottom:56px;}
-  .slabel{font-size:.58rem;}
-  .stitle{font-size:clamp(1.7rem,5vw,2.4rem);}
-  .body{font-size:.95rem;}
-  .stats{grid-template-columns:1fr 1fr;gap:2px;}
-  .stat-n{font-size:2.2rem;}
-  .stat-l{font-size:.65rem;}
-  .tension-grid{grid-template-columns:1fr;}
-  .pp-grid{grid-template-columns:1fr 1fr;}
-  .pq{padding:8px 0 8px 20px;margin:28px 0;}
-  .pq p{font-size:1rem;}
-  .ob{padding:28px 24px;}
-  .artifact-header{flex-wrap:wrap;gap:6px;padding:10px 16px;}
-  .artifact-cap{padding:10px 16px;font-size:.72rem;}
-  .process{margin:20px 0;}
-  .ps{grid-template-columns:40px 1fr;}
-  .ps-n{font-size:.85rem;}
-  .ps-title{font-size:.84rem;}
-  .ps-desc{font-size:.76rem;}
-  .ub{padding:22px 20px;}
-  .utterances{gap:6px;}
-  .utt{font-size:.78rem;padding:6px 12px;}
-  .next{padding:36px 20px;flex-direction:column;gap:20px;align-items:flex-start;}
-  .nt{font-size:1.8rem;}
-  footer{padding:0 20px;height:auto;min-height:56px;flex-wrap:wrap;gap:8px;padding-top:12px;padding-bottom:12px;}
-  .fl{gap:14px;}
-  .div{margin:48px 0;}
-}
-
-/* Small Mobile: ≤480px */
-@media(max-width:480px){
-  nav{padding:0 16px;height:50px;}
-  .nav-back svg{display:none;}
-  .nav-cta{display:none;}
-  .hero{height:65vh;min-height:400px;}
-  .hero-ov{padding:24px 16px;}
-  h1.hero-title{font-size:clamp(2rem,10vw,3.2rem);}
-  .hero-meta{flex-direction:column;gap:12px;padding-top:16px;}
-  .hmi{flex-direction:row;align-items:center;gap:8px;}
-  .hml{min-width:72px;}
-  .role-strip{padding:0 16px;}
-  .rc{font-size:.6rem;padding:10px 12px 10px 0;}
-  .content{padding:40px 16px;}
-  .stitle{font-size:clamp(1.5rem,6vw,2rem);}
-  .stats{grid-template-columns:1fr;}
-  .stat{padding:22px 16px;}
-  .stat-n{font-size:2.8rem;}
-  .tension-grid{grid-template-columns:1fr;}
-  .pp-grid{grid-template-columns:1fr;}
-  .tc{padding:18px;}
-  .pp{padding:18px;}
-  .ob{padding:22px 18px;}
-  .ob p{font-size:.92rem;}
-  .artifact-header{padding:10px 14px;}
-  .artifact-tag{font-size:.54rem;}
-  .ps{grid-template-columns:36px 1fr;}
-  .ps-n{font-size:.8rem;}
-  .ps-body{padding:14px 16px;}
-  .ub{padding:18px 16px;margin:18px 0;}
-  .ul{font-size:.58rem;letter-spacing:.18em;}
-  .utt{font-size:.76rem;padding:5px 10px;}
-  .next{padding:28px 16px;}
-  .nt{font-size:1.6rem;}
-  .nb{padding:12px 20px;font-size:.76rem;}
-  footer{padding:12px 16px;font-size:.66rem;}
-  .fn{font-size:.76rem;}
-  .fl{gap:10px;}
-  .div{margin:40px 0;}
-  /* VUI dialog block on mobile */
-  [style*="padding:24px 28px"]{padding:18px 16px !important;font-size:.76rem !important;line-height:1.8 !important;}
-}
-
-/* Extra small: ≤360px */
-@media(max-width:360px){
-  .nav-name{font-size:.72rem;}
-  h1.hero-title{font-size:clamp(1.8rem,11vw,2.8rem);}
-  .content{padding:32px 14px;}
-  .stitle{font-size:clamp(1.3rem,7vw,1.8rem);}
-  .hmi{flex-direction:column;gap:2px;align-items:flex-start;}
+@media(max-width:700px){
+  .hero-ov{padding:32px 24px;}.role-strip{padding:0 24px;}.content{padding:48px 20px;}
+  .stats{grid-template-columns:1fr 1fr;}.tension-grid,.pp-grid{grid-template-columns:1fr;}
+  .next{padding:40px 24px;}nav{padding:0 16px;}
 }
 </style>
-<link rel="icon" type="image/png" href="favicon.png">
 </head>
-<body style="background:#f4f2ee">
+<body>
 <nav>
   <a href="index.html" class="nav-back">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     All Work
   </a>
   <span class="nav-name">Patricia Panqueva</span>
-  <a href="/cdn-cgi/l/email-protection#1f6f7e6b6d767c767e316f7e716e6a7a697e5f78727e7673317c7072" class="nav-cta">Say Hello</a>
+  <a href="/cdn-cgi/l/email-protection#5121302523383238307f21303f202434273011363c30383d7f323e3c" class="nav-cta">Say Hello</a>
 </nav>
 
 <section class="hero">
-  <img src="images/hero-bg.jpg" alt="Person on sofa asking Alexa to check email">
+  <img src="images/em-hero.jpg" alt="Person on sofa asking Alexa to check email">
   <div class="hero-ov">
     <div class="hero-tag">Amazon Alexa · Voice UI · Identity Design · 2018</div>
     <h1 class="hero-title">Alexa<br>Email</h1>
@@ -339,7 +229,7 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
         <span class="artifact-title">Storyboard — Scene 1: Mary, single, 32, in a rush to get to the office</span>
         <span class="artifact-tag">HHO CX Design</span>
       </div>
-      <img src="images/storyboard-scene1.jpg" alt="Alexa Email storyboard — Mary waking up to Alexa reading an important email" onclick="openLightbox(this)">
+      <img src="images/em-storyboard.jpg" alt="Alexa Email storyboard — Mary waking up to Alexa reading an important email" onclick="openLightbox(this)">
       <div class="artifact-cap">Alarm goes off, Mary stops it. Alexa proactively surfaces an important email from Tom. Mary asks Alexa to continue reading as she walks to the bathroom — the device follows her across surfaces.</div>
     </div>
 
@@ -359,7 +249,7 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
         <span class="artifact-title">UserTesting.com — Keynote conversation prototype testing</span>
         <span class="artifact-tag">Online Research · 8 Participants</span>
       </div>
-      <img src="images/img-03.jpg" alt="UserTesting.com prototype results showing Option 1 preferred 6 out of 8" onclick="openLightbox(this)">
+      <img src="images/em-usertesting.jpg" alt="UserTesting.com prototype results showing Option 1 preferred 6 out of 8" onclick="openLightbox(this)">
       <div class="artifact-cap">Participants listened to 3 audio response options for "What's my email?" and voted. Option 1 (6/8) won — the more detailed, context-rich response. This directly validated the metadata-first approach.</div>
     </div>
 
@@ -368,7 +258,7 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
         <span class="artifact-title">Response Pattern — Winning dialogue template</span>
         <span class="artifact-tag">Voice Design</span>
       </div>
-      <img src="images/img-04.jpg" alt="Response pattern template showing inbox owner, unread count, and important emails" onclick="openLightbox(this)">
+      <img src="images/em-response.jpg" alt="Response pattern template showing inbox owner, unread count, and important emails" onclick="openLightbox(this)">
       <div class="artifact-cap">"For [inbox owner], from the last 24 hours you have X unread emails, X marked important. The first [important] email is from [sender], [subject]. Do you want to [read, reply, forward, delete, archive or next]?"</div>
     </div>
   </section>
@@ -385,7 +275,7 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
         <span class="artifact-title">Voice Enrollment Option 1 — Guided phrase reading</span>
         <span class="artifact-tag">HHO CX Design · Amazon Confidential</span>
       </div>
-      <img src="images/img-05.jpg" alt="Voice Enrollment Option 1" onclick="openLightbox(this)">
+      <img src="images/em-enroll1.jpg" alt="Voice Enrollment Option 1" onclick="openLightbox(this)">
       <div class="artifact-cap">Select a device → choose from household devices → tap Next to start → read 10 phrases aloud. High-accuracy enrollment for primary users. Last screen shows the "Listening..." state with a progress indicator and the phrase to read.</div>
     </div>
 
@@ -394,7 +284,7 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
         <span class="artifact-title">Voice Enrollment Option 2 — VUI-triggered enrollment</span>
         <span class="artifact-tag">HHO CX Design · Amazon Confidential</span>
       </div>
-      <img src="images/img-06.jpg" alt="Voice Enrollment Option 2" onclick="openLightbox(this)">
+      <img src="images/em-enroll2.jpg" alt="Voice Enrollment Option 2" onclick="openLightbox(this)">
       <div class="artifact-cap">Say "Alexa, learn my voice" to start enrollment passively. Lower friction for secondary household users. The open design question — "HOW DO WE KNOW IT'S DONE?" — shows the honest challenges we were actively working through.</div>
     </div>
 
@@ -403,7 +293,7 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
         <span class="artifact-title">Voice Code — Optional 4-digit security layer</span>
         <span class="artifact-tag">HHO CX Design · Amazon Confidential</span>
       </div>
-      <img src="images/img-07.jpg" alt="Voice code setup flow" onclick="openLightbox(this)">
+      <img src="images/em-voicecode.jpg" alt="Voice code setup flow" onclick="openLightbox(this)">
       <div class="artifact-cap">After enrollment, users can optionally set a 4-digit voice code as a second authentication factor for email access. Confirms "Alexa can now check and play your emails without asking who you are" — privacy protection without mandatory friction.</div>
     </div>
   </section>
@@ -420,7 +310,7 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
         <span class="artifact-title">Redlines — Identity confirmation &amp; account linking</span>
         <span class="artifact-tag">Elements · React Native · Bridge</span>
       </div>
-      <img src="images/img-08.jpg" alt="Redlines — identity confirmation and account linking" onclick="openLightbox(this)">
+      <img src="images/em-redline1.jpg" alt="Redlines — identity confirmation and account linking" onclick="openLightbox(this)">
       <div class="artifact-cap">Identity confirmation ("Are you Juanita Trex?"), account service selection (Google, Microsoft, Apple, Exchange), OAuth consent with data permissions, and account-added confirmation. Top row shows annotated redlines, bottom row shows clean final UI.</div>
     </div>
 
@@ -429,7 +319,7 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
         <span class="artifact-title">Redlines — Email &amp; Calendar settings states</span>
         <span class="artifact-tag">Elements · React Native · Bridge</span>
       </div>
-      <img src="images/img-09.jpg" alt="Redlines — email and calendar settings" onclick="openLightbox(this)">
+      <img src="images/em-redline2.jpg" alt="Redlines — email and calendar settings" onclick="openLightbox(this)">
       <div class="artifact-cap">Five settings states: no account linked, both email and calendar linked, calendar only, email only, and new calendar events view. Each state shows account-specific settings including Alexa notifications, voice restrictions toggle, voice code, and linked calendar management.</div>
     </div>
   </section>
@@ -441,26 +331,26 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
     <h2 class="stitle">Account Settings & Email Access Controls</h2>
     <p class="body">These are the actual production screens from the Alexa mobile app — showing the granular email access controls, account-specific settings, and the full post-linking settings state. This is the UI layer where users manage what Alexa can see and do with their email.</p>
 
-    <div class="img-trio" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:28px 0;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:28px 0;">
       <div class="artifact" style="margin:0;">
         <div class="artifact-header">
           <span class="artifact-title">Email access — account linking</span>
         </div>
-        <img src="images/img-12.jpg" alt="Google account linking with email access toggles" onclick="openLightbox(this)">
+        <img src="images/em-settings1.jpg" alt="Google account linking with email access toggles" onclick="openLightbox(this)">
         <div class="artifact-cap">OAuth consent screen with granular email access toggles — retailers, airlines. Users control exactly what Alexa can see.</div>
       </div>
       <div class="artifact" style="margin:0;">
         <div class="artifact-header">
           <span class="artifact-title">Full settings — linked account</span>
         </div>
-        <img src="images/img-11.jpg" alt="Account-specific settings with all toggles" onclick="openLightbox(this)">
+        <img src="images/em-settings2.jpg" alt="Account-specific settings with all toggles" onclick="openLightbox(this)">
         <div class="artifact-cap">Post-linking settings: email signature, email access, Alexa notifications, voice restrictions, and linked calendars — all per-account.</div>
       </div>
       <div class="artifact" style="margin:0;">
         <div class="artifact-header">
           <span class="artifact-title">Email access — service selection</span>
         </div>
-        <img src="images/img-12.jpg" alt="Email and calendar service toggles" onclick="openLightbox(this)">
+        <img src="images/em-settings3.jpg" alt="Email and calendar service toggles" onclick="openLightbox(this)">
         <div class="artifact-cap">Service-level toggles for email and calendar access — users choose which Google services Alexa can access before connecting.</div>
       </div>
     </div>
@@ -479,8 +369,8 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
         <span class="artifact-title">Multi-Modal Echo Show — Final UI design</span>
         <span class="artifact-tag">Echo Show · Multimodal</span>
       </div>
-      <img src="images/img-13.jpg" alt="Echo Show displaying Mary's email from Expedia" onclick="openLightbox(this)">
-      <div class="artifact-cap">The screen shows the full email content while Alexa reads. Account identity ("Mary's Email · <a href="/cdn-cgi/l/email-protection#cdbdacb9bfa4aea4ace3bdaca3bcb8a8bbac8daaa0aca4a1e3aea2a0"><span class="__cf_email__" data-cfemail="f989988d8b909a9098d7899897888c9c8f98b99e94989095d79a9694">[email&#160;protected]</span></a>") is persistent — always showing whose inbox is active. Voice hint at the bottom teaches navigation without interrupting the reading flow.</div>
+      <img src="images/em-echoshow.jpg" alt="Echo Show displaying Mary's email from Expedia" onclick="openLightbox(this)">
+      <div class="artifact-cap">The screen shows the full email content while Alexa reads. Account identity ("Mary's Email · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c6aba7b4bf86a1aba7afaae8a5a9ab">[email&#160;protected]</a>") is persistent — always showing whose inbox is active. Voice hint at the bottom teaches navigation without interrupting the reading flow.</div>
     </div>
 
     <div class="artifact">
@@ -488,7 +378,7 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
         <span class="artifact-title">Multi-Modal Echo Show — Redlines sample</span>
         <span class="artifact-tag">Multimodal Knight HHO · Alexa Design System</span>
       </div>
-      <img src="images/img-14.jpg" alt="Echo Show redlines showing list control with speech hint" onclick="openLightbox(this)">
+      <img src="images/em-redlines2.jpg" alt="Echo Show redlines showing list control with speech hint" onclick="openLightbox(this)">
       <div class="artifact-cap">Production redlines for the Multimodal Knight HHO Email List Control — header component (C1), list item primary double inverted (C2), speech hint bottom left (C3), and blended background layer (C4). Sender, timestamp, and subject headline displayed in the priority view. Navigation hint: "Try: Alexa, read, reply, delete, archive email, or next."</div>
     </div>
   </section>
@@ -581,7 +471,7 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
 
 <div class="next">
   <div><div class="nl">Next Project</div><div class="nt">Alexa<br>Search</div></div>
-  <a href="alexa-search-case-study.html" class="nb">View Case Study
+  <a href="#" class="nb">View Case Study
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
   </a>
 </div>
@@ -590,11 +480,12 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
   <span class="fn">Patricia Panqueva</span>
   <div class="fl">
     <a href="https://linkedin.com/in/patriciapanqueva" target="_blank">LinkedIn</a>
-    <a href="/cdn-cgi/l/email-protection#b4c4d5c0c6ddd7ddd59ac4d5dac5c1d1c2d5f4d3d9d5ddd89ad7dbd9">Email</a>
+    <a href="/cdn-cgi/l/email-protection#93e3f2e7e1faf0faf2bde3f2fde2e6f6e5f2d3f4fef2faffbdf0fcfe">Email</a>
     <a href="index.html">All Work</a>
   </div>
   <span>© 2026</span>
 </footer>
+
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
   <div class="lb-inner">
     <img id="lb-img" src="" alt="Full view">
@@ -606,4 +497,4 @@ footer{background:var(--blk);border-top:1px solid #222;color:rgba(255,255,255,.3
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-function openLightbox(img){document.getElementById('lb-img').src=img.src;document.getElementById('lightbox').classList.ad
+function openLightbox(img){document.getElementById('lb-img').src=img.src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='
