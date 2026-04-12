@@ -30,33 +30,46 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV */
+  /* NAV — matches index.html */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px;
-    height: 64px;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    height: 52px;
     background: var(--bg);
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 1.5px solid rgba(10,10,10,.12);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 28px;
+    transition: height .3s ease;
   }
-  .nav-logo {
+  nav.scrolled { height: 44px; }
+  .nav-name {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 0.08em;
-    color: var(--ink);
+    font-size: 1.25rem; letter-spacing: .08em;
+    color: var(--ink); text-decoration: none;
+  }
+  .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+  .nav-link {
+    padding: 6px 14px;
+    font-size: .72rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    transition: color .15s;
+  }
+  .nav-link:hover { color: var(--ink); }
+  .nav-cta {
+    margin-left: 8px;
+    padding: 7px 20px;
+    background: var(--ink); color: var(--white);
+    font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
     text-decoration: none;
+    transition: opacity .15s;
+    border: 1.5px solid var(--ink);
   }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a {
-    font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--muted);
-    text-decoration: none; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--ink); }
+  .nav-cta:hover { opacity: .8; }
+  @media(max-width:640px){ .nav-link.hm { display: none; } }
+  @media(max-width:400px){ .nav-cta { display: none; } }
 
   /* HERO */
   .hero {
-    margin-top: 64px;
+    margin-top: 52px;
     position: relative;
     height: 72vh;
     min-height: 480px;
@@ -324,18 +337,55 @@
     .challenge-strip, .system-section, .case-nav { padding: 48px 24px; }
     .img-grid-2, .img-grid-3 { grid-template-columns: 1fr; }
   }
+
+  /* ── FOOTER — matches index.html ── */
+  footer {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 40px 48px;
+    background: var(--ink);
+    border-top: 1.5px solid rgba(10,10,10,.12);
+    gap: 24px;
+  }
+  .f-left { display: flex; flex-direction: column; gap: 6px; }
+  .f-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem; letter-spacing: .08em; color: #fff;
+    line-height: 1;
+  }
+  .f-role { font-size: .68rem; color: rgba(255,255,255,.6); letter-spacing: .1em; text-transform: uppercase; }
+  .f-center { display: flex; align-items: center; justify-content: center; }
+  .f-icons { display: flex; gap: 12px; align-items: center; }
+  .f-icon-link {
+    display: flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px;
+    color: #fff; text-decoration: none;
+    transition: background .18s, color .18s;
+  }
+  .f-icon-link:hover { background: rgba(255,255,255,.12); }
+  .f-icon-link svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .f-copy { font-size: .6rem; color: rgba(255,255,255,.5); white-space: nowrap; letter-spacing: .08em; text-align: right; align-self: center; }
+  @media(max-width:900px) {
+    footer { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
+    .f-copy { text-align: left; align-self: auto; }
+    .f-center { align-items: flex-start; }
+  }
+  @media(max-width:480px) {
+    footer { padding: 28px 16px; gap: 24px; }
+  }
 </style>
 <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="index.html">Patricia Panqueva</a>
+<nav id="nav">
+  <a href="index.html" class="nav-name">Patricia Panqueva</a>
   <ul class="nav-links">
-    <li><a href="About.html">About</a></li>
-    <li><a href="index.html">Work</a></li>
-    <li><a href="Contact.html">Contact</a></li>
+    <li><a href="index.html#work" class="nav-link hm">Work</a></li>
+    <li><a href="about.html" class="nav-link hm">About</a></li>
+    <li><a href="mailto:hello@patriciapanqueva.com" class="nav-cta">Say Hello</a></li>
   </ul>
 </nav>
 
@@ -619,6 +669,31 @@
   <a class="back" href="index.html">← All Projects</a>
   <a href="hp-sprout-3d-case-study.html">HP Sprout 3D Capture →</a>
 </div>
+<!-- FOOTER -->
+<footer>
+  <div class="f-left">
+    <div class="f-name">Patricia Panqueva</div>
+    <div class="f-role">Senior UX Designer · Bay Area, CA</div>
+  </div>
+  <div class="f-center">
+    <div class="f-icons">
+      <a href="https://www.linkedin.com/in/patriciapanqueva" target="_blank" class="f-icon-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="mailto:hello@patriciapanqueva.com" class="f-icon-link" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="f-copy">© 2026 — All Rights Reserved</div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
 
 </body>
 </html>
