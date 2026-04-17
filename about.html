@@ -18,23 +18,22 @@
   nav.scrolled { height: 44px; }
   .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
   .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
-  .nav-links a { padding: 6px 14px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-links a, .nav-link-hm { padding: 6px 14px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-link-hm:hover, .nav-links a.active, .nav-link-hm.active { color: var(--ink); }
   .nav-cta { margin-left: 8px; padding: 7px 20px !important; background: var(--ink) !important; color: #fff !important; font-size: 0.72rem !important; font-weight: 600 !important; letter-spacing: 0.12em !important; border: 1.5px solid var(--ink); }
   .nav-cta:hover { opacity: 0.8; color: #fff !important; }
 
-  .hero { background: var(--dark); display: flex; min-height: 65vh; }
-  .hero-panel { width: 520px; min-height: 65vh; flex-shrink: 0; background: var(--bg); padding: 48px 52px 48px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .hero-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; display: block; }
-  .hero-h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 6vw, 80px); line-height: 0.95; letter-spacing: 0.03em; color: var(--ink); margin-bottom: 24px; }
-  .hero-h1 em { display: block; background: var(--ink); color: #fff; padding: 2px 12px; font-style: normal; width: fit-content; margin-bottom: 4px; }
-  .hero-quote { font-size: 14px; font-style: italic; font-weight: 300; line-height: 1.7; color: var(--muted); margin-bottom: 32px; border-left: 3px solid var(--rule); padding-left: 16px; }
-  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-  .stat-box { background: var(--card-bg); padding: 20px 16px; text-align: center; }
-  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 42px; line-height: 1; color: var(--ink); letter-spacing: 0.02em; margin-bottom: 4px; }
-  .stat-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; }
-  .hero-photo { flex: 1; overflow: hidden; }
-  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .hero { position: relative; height: 80vh; min-height: 520px; overflow: hidden; background: var(--dark); }
+  .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: 0.5; display: block; }
+  .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 56px 80px; background: linear-gradient(to top, rgba(10,8,8,0.95) 0%, rgba(10,8,8,0.15) 65%); }
+  .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 9vw, 110px); line-height: 0.93; color: #fff; letter-spacing: 0.02em; margin-bottom: 8px; }
+  .hero-title em { display: block; background: #fff; color: var(--dark); padding: 2px 12px; font-style: normal; width: fit-content; margin-bottom: 4px; }
+  .hero-quote { font-size: 14px; font-style: italic; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.5); margin-bottom: 32px; border-left: 2px solid rgba(255,255,255,0.25); padding-left: 16px; max-width: 560px; }
+  .hero-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 500; }
+  .hero-meta-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; line-height: 1; color: #fff; letter-spacing: 0.02em; }
 
   .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
   .section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
@@ -102,21 +101,33 @@
   .case-nav a { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .case-nav a:hover { color: var(--ink); }
 
+  @media(max-width:640px){ .nav-link-hm { display: none; } }
+  @media(max-width:400px){ .nav-cta { display: none; } }
+
+  @media(max-width:900px){
+    .container { padding: 0 32px; }
+    .soft-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
+    .cta-band { padding: 56px 48px; }
+  }
   @media(max-width:700px){
     nav { padding: 0 16px; }
-    .hero { min-height: auto; flex-direction: column; }
-    .hero-panel { width: 100%; min-height: auto; padding: 48px 24px 40px; }
-    .hero-photo { min-height: 200px; }
+    .hero-overlay { padding: 40px 32px; }
     .container { padding: 0 24px; }
     .section { padding: 56px 0; }
     .how-inner { grid-template-columns: 1fr; gap: 8px; }
-    .soft-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
     .edu-grid { grid-template-columns: 1fr; }
     .cta-band { padding: 48px 24px; }
     .case-nav { padding: 36px 24px; }
+    footer { grid-template-columns: 1fr !important; padding: 32px 24px !important; gap: 24px !important; }
+    footer > div:last-child { text-align: left !important; }
+    footer > div:nth-child(2) { justify-content: flex-start !important; }
   }
   @media(max-width:480px){
+    .hero { min-height: 420px; }
+    .hero-overlay { padding: 32px 20px; }
+    .hero-meta { gap: 20px; }
     .soft-grid, .skills-grid { grid-template-columns: 1fr; }
+    footer { padding: 28px 16px !important; }
   }
 </style>
 <link rel="icon" type="image/png" href="favicon.png">
@@ -126,27 +137,25 @@
 <nav id="nav">
   <a class="nav-logo" href="index.html">Patricia Panqueva</a>
   <ul class="nav-links">
-    <li><a href="index.html">Work</a></li>
-    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="index.html" class="nav-link-hm">Work</a></li>
+    <li><a href="about.html" class="nav-link-hm active">About</a></li>
     <li><a href="mailto:patricia.panqueva@gmail.com" class="nav-cta">Say Hello</a></li>
   </ul>
 </nav>
 
-<div class="hero">
-  <div class="hero-panel">
-    <span class="hero-eyebrow">About Me</span>
-    <h1 class="hero-h1">The pleasure of<br><em>immersing</em><br>in someone else's world</h1>
+<section class="hero">
+  <img class="hero-img" src="images/me.JPG" alt="Patricia Panqueva">
+  <div class="hero-overlay">
+    <span class="hero-tag">About Me</span>
+    <h1 class="hero-title">The pleasure of<br><em>immersing</em><br>in someone else's world</h1>
     <p class="hero-quote">"Design is the joy of feeling uncomfortable — and diving deep into another person's world."</p>
-    <div class="stat-grid">
-      <div class="stat-box"><div class="stat-number">15+</div><div class="stat-label">Years</div></div>
-      <div class="stat-box"><div class="stat-number">20M+</div><div class="stat-label">Users</div></div>
-      <div class="stat-box"><div class="stat-number">9</div><div class="stat-label">Countries</div></div>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-label">Experience</span><span class="hero-meta-value">15+ Years</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Users Reached</span><span class="hero-meta-value">20M+</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Countries</span><span class="hero-meta-value">9</span></div>
     </div>
   </div>
-  <div class="hero-photo">
-    <img src="images/me.JPG" alt="Patricia Panqueva">
-  </div>
-</div>
+</section>
 
 <section class="section">
   <div class="container">
