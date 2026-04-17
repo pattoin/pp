@@ -12,9 +12,10 @@
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; padding-top: 52px; }
 
-  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; background: var(--bg); border-bottom: 1px solid var(--rule); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; background: var(--bg); border-bottom: 1px solid var(--rule); transition: height .3s ease; }
+  nav.scrolled { height: 44px; }
   .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
   .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
   .nav-links a { padding: 6px 14px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
@@ -122,12 +123,12 @@
 </head>
 <body>
 
-<nav>
+<nav id="nav">
   <a class="nav-logo" href="index.html">Patricia Panqueva</a>
   <ul class="nav-links">
     <li><a href="index.html">Work</a></li>
     <li><a href="about.html" class="active">About</a></li>
-    <li><a href="/cdn-cgi/l/email-protection#b9c9d8cdcbd0dad0d897c9d8d7c8ccdccfd8f9ded4d8d0d597dad6d4" class="nav-cta">Say Hello</a></li>
+    <li><a href="mailto:patricia.panqueva@gmail.com" class="nav-cta">Say Hello</a></li>
   </ul>
 </nav>
 
@@ -343,7 +344,7 @@
   </div>
   <div class="cta-btns">
     <a href="index.html" class="cbtn cbtn-w">View My Work</a>
-    <a href="/cdn-cgi/l/email-protection#0d7d6c797f646e646c237d6c637c78687b6c4d6a606c6461236e6260" class="cbtn cbtn-o">Say Hello</a>
+    <a href="mailto:patricia.panqueva@gmail.com" class="cbtn cbtn-o">Say Hello</a>
   </div>
 </div>
 </div>
@@ -365,6 +366,13 @@
   </div>
   <div style="font-size:0.6rem;color:rgba(255,255,255,0.5);white-space:nowrap;letter-spacing:0.08em;text-align:right;align-self:center;">© 2026 — All Rights Reserved</div>
 </footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
 
 </body>
 </html>
