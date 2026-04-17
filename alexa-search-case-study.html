@@ -373,8 +373,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <!-- swap hero-bg for: <img class="hero-img" src="images/pds-hero.jpg" alt="Alexa Personal Data Search"> -->
+  <img class="hero-img" src="images/pds-hero.jpg" alt="Alexa Personal Data Search — Echo Spot">
   <div class="hero-overlay">
     <span class="hero-tag">Amazon Alexa · 2017–2019</span>
     <h1 class="hero-title">Alexa Personal<br>Data Search</h1>
@@ -887,21 +886,7 @@
         <p>The core happy path was designed early. The harder work — and the work that most shaped the final system — was designing for what happened when things went wrong or got complicated. Two edge cases in particular required dedicated prototyping and testing cycles.</p>
       </div>
 
-      <!-- EDGE CASE 1: Long Memory List -->
-      <div style="margin-top:40px;">
-        <div class="img-block" style="aspect-ratio:16/9;">
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="26" height="22" rx="1" stroke-width="1.5"/><line x1="3" y1="11" x2="29" y2="11" stroke-width="1.5"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="13" cy="8" r="1.5" fill="currentColor"/></svg>
-          <span>Long Memory list navigation prototype</span>
-          <span style="opacity:.5;text-transform:none;font-size:.68rem;">images/pds-memory-nav.png</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;flex-wrap:wrap;gap:8px;">
-          <p class="img-caption" style="margin:0;">Prototype — Long Memory list navigation</p>
-          <span style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);">Edge Case · Echo Show</span>
-        </div>
-        <p style="font-size:14px;color:var(--muted);margin-top:12px;max-width:680px;font-weight:300;">When a query returns many Memories results, users need a way to navigate a long list without losing context. This prototype explores scroll behaviour, ordinal anchoring across screens, and how Alexa re-orients the user after a pause in the interaction.</p>
-      </div>
-
-      <!-- EDGE CASE 2: Zero Result -->
+      <!-- EDGE CASE: Zero Result -->
       <div style="margin-top:40px;">
         <img src="images/pds-show-zero.png" alt="Response Pattern — No Memory found · Zero result · Echo Show" class="full-img" style="cursor:zoom-in;">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;flex-wrap:wrap;gap:8px;">
@@ -1043,6 +1028,23 @@ Want me to set one?"</div>
               <p class="response-insight"><strong>Alexa names the domains she searched.</strong> This was the most important zero-state decision. By naming where she looked, Alexa shifts blame from the user ("I must have forgotten to say it right") to the system ("nothing was found across these specific places"). It's an honesty signal that builds trust — and sets accurate expectations for the feature's scope.</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL UI: Multi-Surface -->
+    <section class="section" id="final-ui">
+      <span class="section-label">Final UI · Multi-Surface</span>
+      <h2>Show &amp; Echo Spot —<br>"What did I tell you about Amy?"</h2>
+
+      <div style="margin-top:32px;display:flex;flex-direction:column;gap:4px;">
+        <div>
+          <img src="images/pds-show-amy.jpg" alt='Multi-Modal Echo Show — "What did I tell you about Amy?"' class="full-img" style="cursor:zoom-in;">
+          <p class="img-caption" style="margin-top:12px;">Multi-Modal Echo Show — unified PDS result across Calendar, Reminders, and Memories domains in a single scrollable list.</p>
+        </div>
+        <div>
+          <img src="images/pds-amy-multisurface.png" alt='Show & Echo Spot — "What did I tell you about Amy?" — Final UI · Multi-Surface' class="full-img" style="cursor:zoom-in;">
+          <p class="img-caption" style="margin-top:12px;">Both surfaces show the same unified PDS result. The Echo Show renders a scrollable list with domain labels. The Echo Spot adapts to a circular form factor, prioritising the first result and offering scroll for the rest.</p>
         </div>
       </div>
     </section>
