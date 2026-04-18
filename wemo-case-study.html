@@ -15,11 +15,13 @@
   html { scroll-behavior: smooth; }
   body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
-  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: var(--bg); border-bottom: 1px solid var(--rule); }
+  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; background: var(--bg); border-bottom: 1px solid var(--rule); }
   .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+  .nav-links a { padding: 6px 14px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--ink); }
+  .nav-cta { margin-left: 8px; padding: 7px 20px; background: var(--ink); color: #fff !important; font-size: 0.72rem !important; font-weight: 600 !important; letter-spacing: 0.12em !important; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--ink); transition: opacity 0.15s; }
+  .nav-cta:hover { opacity: 0.8; }
 
   /* HERO — phone mockup style */
   .hero { background: var(--dark); padding: 80px 0 0; }
@@ -109,17 +111,81 @@
   .case-nav a { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--ink); text-decoration: none; transition: color 0.2s; }
   .case-nav a:hover { color: var(--accent); }
   .case-nav .back { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+
+  /* ── FOOTER ── */
+  footer {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 40px 48px;
+    background: var(--ink);
+    gap: 24px;
+  }
+  .f-left { display: flex; flex-direction: column; gap: 6px; }
+  .f-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.08em; color: #fff; line-height: 1; }
+  .f-role { font-size: 0.68rem; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; text-transform: uppercase; }
+  .f-center { display: flex; align-items: center; justify-content: center; }
+  .f-icons { display: flex; gap: 12px; align-items: center; }
+  .f-icon-link { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; color: #fff; text-decoration: none; transition: background 0.18s; }
+  .f-icon-link:hover { background: rgba(255,255,255,0.12); }
+  .f-icon-link svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .f-copy { font-size: 0.6rem; color: rgba(255,255,255,0.5); white-space: nowrap; letter-spacing: 0.08em; text-align: right; align-self: center; }
+
+  /* ── TABLET 900px ── */
+  @media(max-width:900px){
+    nav { padding: 0 24px; }
+    .hero-overlay, .hero-content { padding: 40px 32px; }
+    .container { padding: 0 24px; }
+    .section { padding: 56px 0; }
+    .intro-grid, .two-col-text { grid-template-columns: 1fr; gap: 40px; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .img-grid-2 { grid-template-columns: 1fr 1fr; }
+    .img-grid-3 { grid-template-columns: 1fr 1fr; }
+    .state-row, .process-steps, .outcome-row, .tool-row, .challenge-cards { grid-template-columns: 1fr 1fr; }
+    .phone-grid { grid-template-columns: repeat(2, 1fr); }
+    .phone-grid-3 { grid-template-columns: 1fr 1fr; }
+    .hero-content { grid-template-columns: 1fr; }
+    .case-nav { padding: 40px 24px; }
+    footer { grid-template-columns: 1fr; padding: 32px 24px; gap: 24px; }
+    .f-copy { text-align: left; align-self: auto; }
+    .f-center { justify-content: flex-start; }
+  }
+
+  /* ── MOBILE 480px ── */
+  @media(max-width:480px){
+    nav { padding: 0 16px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 11px; }
+    .hero { min-height: auto; }
+    .hero-overlay, .hero-content { padding: 32px 20px; }
+    .hero-title { font-size: clamp(48px, 14vw, 80px); }
+    .container { padding: 0 16px; }
+    .section { padding: 40px 0; }
+    h2 { font-size: clamp(28px, 8vw, 40px); }
+    .intro-grid, .two-col-text { grid-template-columns: 1fr; gap: 32px; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .img-grid-2 { grid-template-columns: 1fr; }
+    .img-grid-3 { grid-template-columns: 1fr; }
+    .state-row, .process-steps, .outcome-row, .tool-row, .challenge-cards { grid-template-columns: 1fr; }
+    .phone-grid, .phone-grid-3 { grid-template-columns: 1fr 1fr; }
+    .hero-content { grid-template-columns: 1fr; gap: 32px; }
+    .pull-quote { padding: 20px 20px; }
+    .pull-quote blockquote { font-size: 16px; }
+    .case-nav { padding: 32px 16px; flex-direction: column; gap: 16px; align-items: flex-start; }
+    div[style*="grid-template-columns:repeat(3"] { display: grid; grid-template-columns: 1fr !important; }
+    div[style*="grid-template-columns:1fr 1fr 1fr"] { display: grid; grid-template-columns: 1fr !important; }
+    div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+  }
 </style>
-<link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
 <nav>
   <a class="nav-logo" href="index.html">Patricia Panqueva</a>
   <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="index.html">Work</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a class="nav-cta" href="mailto:patricia@patriciapanqueva.com">Say Hello</a></li>
   </ul>
 </nav>
 
@@ -137,7 +203,7 @@
       </div>
     </div>
     <div class="hero-phone">
-      <img src="wm-proto-p3.jpg" alt="WeMo scheduling screen — hi-fi prototype">
+      <img src="images/wemo-hero-phone.jpg" alt="WeMo scheduling screen — hi-fi prototype">
     </div>
   </div>
 </div>
@@ -194,19 +260,19 @@
     <p style="max-width:640px;">These screens are from the clickable InVision prototype — used for user testing and stakeholder walkthroughs. They show the full scheduling flow: from the device list, through schedule creation, to the time-mode picker with its slider interaction.</p>
     <div class="phone-grid">
       <div>
-        <img src="wm-proto-p2.jpg" alt="WeMo device list — Switch, Mr Coffee Brewer, Holmes Heater, Smart LED Bulb">
+        <img src="images/wemo-prototype-screen-1.jpg" alt="WeMo device list — Switch, Mr Coffee Brewer, Holmes Heater, Smart LED Bulb">
         <p class="img-caption">Device list — all WeMo devices visible at a glance with status and power control.</p>
       </div>
       <div>
-        <img src="wm-proto-p3.jpg" alt="Schedule overview — on at 06:00am, off at sunset, Mon–Fri, apply to other devices">
+        <img src="images/wemo-hero-phone.jpg" alt="Schedule overview — on at 06:00am, off at sunset, Mon–Fri, apply to other devices">
         <p class="img-caption">Schedule overview — clock on, sunset off, weekdays selected, apply to multiple devices.</p>
       </div>
       <div>
-        <img src="wm-proto-p8.jpg" alt="Schedule — on at sunset, off at 08:00pm, weekdays">
+        <img src="images/wemo-schedule-overview.jpg" alt="Schedule — on at sunset, off at 08:00pm, weekdays">
         <p class="img-caption">Sunset trigger — the device turns on exactly at sunset and off at 08:00pm.</p>
       </div>
       <div>
-        <img src="wm-proto-p20.jpg" alt="Time picker — sunset mode on top, clock slider on bottom">
+        <img src="images/wemo-schedule-sunset.jpg" alt="Time picker — sunset mode on top, clock slider on bottom">
         <p class="img-caption">Time-mode picker — sunset selected (green), clock time below with horizontal slider.</p>
       </div>
     </div>
@@ -219,7 +285,7 @@
   <h2>Three Modes,<br>One Intuition</h2>
   <p style="max-width:680px;font-size:18px;line-height:1.65;">The time visualization exploration was about finding a single interaction model that could express clock time, sunrise, and sunset — without switching to separate UI paradigms for each. <strong>The horizontal slider + large type combination</strong> let users scrub through time modes naturally, with the active selection dominating the screen.</p>
   <div style="margin-top:40px;">
-    <img class="full-img" src="wm10-2-2000x1125.png" alt="Time visualization exploration — four scheduling states side by side" style="border-radius:8px;">
+    <img class="full-img" src="images/wemo-visualization-exploration.png" alt="Time visualization exploration — four scheduling states side by side" style="border-radius:8px;">
     <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:12px;font-style:italic;">Four states: clock-based (06:00am), sun-based (5 min after sunset), unscheduled, and the picker in active use — all using the same visual language so users always know where they are.</p>
   </div>
 </div>
@@ -252,7 +318,7 @@
 
 <!-- PAPER PROTOTYPES -->
 <div style="margin:0;">
-  <img class="full-img" src="wm5-2000x776.jpg" alt="Paper prototype sketches — WeMo app states for Mr. Coffee device">
+  <img class="full-img" src="images/wemo-paper-prototypes.jpg" alt="Paper prototype sketches — WeMo app states for Mr. Coffee device">
   <div class="container"><p class="img-caption">Early paper sketches — "Mr Coffee Ready", "Mr Coffee Brewing", "Mr Coffee Brewing is Done (Enjoy!)" — three device states colour-coded before any digital implementation.</p></div>
 </div>
 
@@ -263,8 +329,8 @@
     <h2>Apply Once,<br>Schedule Everything</h2>
     <p style="max-width:640px;">A key UX insight: users shouldn't have to create the same schedule separately for every device. The wireframe flow for <strong>"Apply this schedule to other similar devices"</strong> solved a real pain point — set your schedule once, then extend it across multiple devices in a single step.</p>
     <div class="img-grid-2">
-      <img src="wm4-2000x1495.jpg" alt="Wireframe flow: apply schedule to multiple WeMo devices">
-      <img src="wm4-1492x1115.jpeg" alt="Close-up wireframe: schedule settings with sunset trigger and day selection">
+      <img src="images/wemo-apply-schedule-wireframe-1.jpg" alt="Wireframe flow: apply schedule to multiple WeMo devices">
+      <img src="images/wemo-wireframe-flow.jpg" alt="Close-up wireframe: schedule settings with sunset trigger and day selection">
     </div>
     <p class="img-caption">Step 3 — "Apply the schedule to other similar devices." Notes read "Explore Options..." — a live annotation from a testing session with handwritten user names below.</p>
   </div>
@@ -277,8 +343,8 @@
     <h2>Designed for<br>Engineering Handoff</h2>
     <p style="max-width:640px;">Beyond prototyping, I produced detailed UI specifications — annotated wireframes with numbered modules, states, strings, and actions — for the engineering team. Each component was documented with its default state, enabled/disabled variations, and exact interaction behaviour.</p>
     <div class="img-grid-2" style="margin-top:40px;">
-      <img src="Mortin_specs_2.JPG" alt="WeMo UI spec sheet — Mortein product, peekaboo drawer, intensity controls" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:top;">
-      <img src="Mortin_specs.JPG" alt="WeMo UI spec sheet — overflow menu, schedule list, branding component" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:top;">
+      <img src="images/wemo-engineering-handoff-1.jpg" alt="WeMo UI spec sheet — Mortein product, peekaboo drawer, intensity controls" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:top;">
+      <img src="images/wemo-spec-sheet.jpg" alt="WeMo UI spec sheet — overflow menu, schedule list, branding component" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:top;">
     </div>
     <p class="img-caption">InVision-annotated spec sheets — numbered modules (1–30), states, strings, and actions documented for each component. The Mortein product integration shows the breadth of the WeMo ecosystem: custom device branding, intensity controls, peekaboo drawers, and in-app cartridge ordering.</p>
   </div>
@@ -364,5 +430,22 @@
   <a href="glowing-citizens-case-study.html">Glowing Citizens →</a>
 </div>
 
+<footer>
+  <div class="f-left">
+    <div class="f-name">Patricia Panqueva</div>
+    <div class="f-role">Senior UX Designer · Bay Area, CA</div>
+  </div>
+  <div class="f-center">
+    <div class="f-icons">
+      <a href="https://www.linkedin.com/in/patriciapanqueva" target="_blank" class="f-icon-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="/cdn-cgi/l/email-protection#53233227213a303a3213233227213a303a3223323d22263625327d303c3e" class="f-icon-link" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="f-copy">© 2026 — All Rights Reserved</div>
+</footer>
 </body>
 </html>
