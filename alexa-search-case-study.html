@@ -92,8 +92,25 @@
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; color: var(--accent); letter-spacing: .02em; margin-bottom: 6px; }
   .stat-desc { font-size: 12px; font-weight: 500; letter-spacing: .05em; color: var(--muted); text-transform: uppercase; }
 
+  /* ── IMAGES ── */
+  .full-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: zoom-in;
+  }
+  .img-caption {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: .04em;
+    margin-top: 12px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
   /* ── SILO DIAGRAM ── */
   .diagram-wrap { width: 100%; margin: 40px 0; background: var(--dark); padding: 48px 40px; overflow: hidden; }
+  .diagram-wrap svg { width: 100%; height: auto; display: block; }
 
   /* ── PROBLEM CARDS ── */
   .problem-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 40px; }
@@ -367,11 +384,14 @@
     .pull-quote { padding: 20px; }
     .pull-quote blockquote { font-size: 17px; }
     .callout { padding: 16px 20px; }
-    .diagram-wrap { padding: 32px 20px; }
+    .diagram-wrap { padding: 24px 16px; }
     .reflection-grid { grid-template-columns: 1fr; }
     .insights-grid { grid-template-columns: 1fr; }
     h2 { font-size: clamp(28px, 7vw, 40px); }
     p { font-size: 15px; }
+    /* images */
+    .full-img { width: 100%; height: auto; }
+    .img-caption { font-size: 11px; }
   }
 
   /* ── RESPONSIVE 480 ── */
@@ -442,6 +462,11 @@
         <p>Alexa users had accumulated personal data across a growing number of domains — calendar events, reminders, lists, email, contacts, shopping orders. Each domain had its own skill, its own utterance pattern, its own mental model. To find something, you had to already know where it lived.</p>
         <p>I was the lead UX designer for Alexa Personal Data Search (PDS) — a 0→1 feature. Research surfaced a clear frustration: users couldn't reliably distinguish between a calendar event and a reminder. They knew they had asked Alexa to remember something — they just couldn't remember what they called it. And Alexa had no way to help them find it across domains.</p>
         <p><strong>Alexa Personal Data Search was the answer:</strong> a unified, domain-agnostic search experience that let users find any personal information — regardless of where it was stored — with a single natural language query.</p>
+      </div>
+
+      <div style="margin-top:40px;">
+        <img src="images/pds-user-memory.png" alt="User trying to recall where he stored something in Alexa — Calendar, List, Reminders, or Memories" class="full-img" style="cursor:zoom-in;">
+        <p class="img-caption" style="margin-top:12px;">The core user problem: he knows he asked Alexa to remember something. He just can't recall if it was a Calendar event, a Reminder, a List item, or a Memory — and Alexa had no way to search across all of them.</p>
       </div>
 
       <div class="stat-row">
