@@ -13,24 +13,23 @@ html{scroll-behavior:smooth}
 body{background:#f4f2ee;color:#0a0a0a;font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;background:#f4f2ee;border-bottom:1.5px solid rgba(10,10,10,.12);display:flex;align-items:center;justify-content:space-between;padding:0 28px;transition:height .3s ease;}
 nav.scrolled{height:44px;}
-.nav-name{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.08em;color:#0a0a0a;text-decoration:none;}
+.nav-name{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.08em;color:#1a1814;text-decoration:none;}
 .nav-links{display:flex;align-items:center;gap:0;list-style:none;}
-.nav-link{padding:6px 14px;font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#9a9690;text-decoration:none;transition:color .15s;}
-.nav-link:hover{color:#0a0a0a;}
-.nav-cta{margin-left:8px;padding:7px 20px;background:#0a0a0a;color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:opacity .15s;border:1.5px solid #0a0a0a;}
+.nav-link{padding:6px 14px;font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#6b6560;text-decoration:none;transition:color .15s;}
+.nav-link:hover{color:#1a1814;}
+.nav-cta{margin-left:8px;padding:7px 20px;background:#1a1814;color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:opacity .15s;border:1.5px solid #1a1814;}
 .nav-cta:hover{opacity:.8;}
 @media(max-width:640px){.nav-link.hm{display:none;}}
 @media(max-width:400px){.nav-cta{display:none;}}
-.hero{margin-top:52px;height:80vh;min-height:500px;position:relative;overflow:hidden;background:#001824;}
-.hero img{width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:.65;}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,24,36,.2) 0%,rgba(0,24,36,.95) 75%);display:flex;flex-direction:column;justify-content:flex-end;padding:64px;}
-.hero-tag{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
-.hero-tag::before{content:'';display:block;width:32px;height:2px;background:var(--acc);flex-shrink:0;}
-h1.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,10vw,120px);line-height:0.9;letter-spacing:0.02em;color:var(--wht);margin-bottom:28px;}
-.hero-meta{display:flex;gap:32px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:24px;}
-.hmi{display:flex;flex-direction:column;gap:3px;}
-.hml{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);}
-.hmv{font-size:.84rem;font-weight:400;color:rgba(255,255,255,.82);}
+.hero{margin-top:52px;height:80vh;min-height:520px;position:relative;overflow:hidden;background:#001824;}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:.65;display:block;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,24,36,.95) 0%,rgba(0,24,36,.2) 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:56px 80px;}
+.hero-tag{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#fff;margin-bottom:16px;}
+h1.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,110px);line-height:0.93;letter-spacing:0.02em;color:#fff;margin-bottom:24px;}
+.hero-meta{display:flex;gap:40px;flex-wrap:wrap;}
+.hero-meta-item{display:flex;flex-direction:column;gap:4px;}
+.hero-meta-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);font-weight:500;}
+.hero-meta-value{font-size:14px;color:rgba(255,255,255,0.85);}
 .role-strip{background:var(--acc);padding:0 64px;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;}
 .role-strip::-webkit-scrollbar{display:none}
 .rc{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.9);padding:13px 20px 13px 0;white-space:nowrap;}
@@ -84,10 +83,10 @@ h1.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,10vw,120p
 .ob p{font-size:1rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,.88);margin-bottom:14px;}
 .ob p:last-child{margin-bottom:0}.ob strong{color:var(--wht);font-weight:500;}
 .div{width:48px;height:3px;background:var(--acc);margin:72px 0;}
-.case-nav{padding:60px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(10,10,10,.12);}
-.case-nav a{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.06em;color:#0a0a0a;text-decoration:none;transition:color .2s;}
+.case-nav{padding:60px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #d8d4ce;}
+.case-nav a{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.06em;color:#1a1814;text-decoration:none;transition:color .2s;}
 .case-nav a:hover{color:var(--acc);}
-.case-nav .back{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#9a9690;text-decoration:none;}
+.case-nav .back{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#6b6560;text-decoration:none;}
 @media(max-width:900px){.case-nav{padding:40px 24px;}}
 @media(max-width:480px){.case-nav{padding:32px 16px;flex-direction:column;gap:16px;align-items:flex-start;}}
 footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:40px 48px;background:#0a0a0a;border-top:1.5px solid rgba(10,10,10,.12);gap:24px;}
@@ -136,22 +135,22 @@ audio::-webkit-media-controls-panel{background:#001824;}
 <nav id="nav">
   <a href="index.html" class="nav-name">Patricia Panqueva</a>
   <ul class="nav-links">
-    <li><a href="index.html" class="nav-link hm">Work</a></li>
+    <li><a href="index.html#work" class="nav-link hm">Work</a></li>
     <li><a href="about.html" class="nav-link hm">About</a></li>
-    <li><a href="/cdn-cgi/l/email-protection#53233227213a303a3213233227213a303a3223323d22263625327d303c3e" class="nav-cta">Say Hello</a></li>
+    <li><a href="mailto:patricia.panqueva@gmail.com" class="nav-cta">Say Hello</a></li>
   </ul>
 </nav>
 
 <section class="hero">
-  <img src="images/hero-cook-along.jpg" alt="Alexa Cook Along storyboard">
-  <div class="hero-ov">
-    <div class="hero-tag">Amazon Alexa · Voice &amp; Multimodal · 2018</div>
+  <img class="hero-img" src="images/hero-cook-along.jpg" alt="Alexa Cook Along storyboard">
+  <div class="hero-overlay">
+    <span class="hero-tag">Amazon Alexa · Voice &amp; Multimodal · 2018</span>
     <h1 class="hero-title">Alexa<br>Cook Along</h1>
     <div class="hero-meta">
-      <div class="hmi"><span class="hml">My Role</span><span class="hmv">Lead UX — Voice &amp; Multimodal</span></div>
-      <div class="hmi"><span class="hml">Team</span><span class="hmv">Alexa Household Organization</span></div>
-      <div class="hmi"><span class="hml">Surfaces</span><span class="hmv">Echo Show · Echo Spot · Mobile</span></div>
-      <div class="hmi"><span class="hml">Launched</span><span class="hmv">2018 — First Release</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">My Role</span><span class="hero-meta-value">Lead UX — Voice &amp; Multimodal</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Team</span><span class="hero-meta-value">Alexa Household Organization</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Surfaces</span><span class="hero-meta-value">Echo Show · Echo Spot · Mobile</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Launched</span><span class="hero-meta-value">2018 — First Release</span></div>
     </div>
   </div>
 </section>
@@ -339,7 +338,7 @@ audio::-webkit-media-controls-panel{background:#001824;}
 
 <div class="case-nav">
   <a class="back" href="index.html">← All Projects</a>
-  <a href="hp-sprout-3d-case-study.html">HP Sprout 3D Capture →</a>
+  <a href="alexa-search-case-study.html">Alexa Search →</a>
 </div>
 
 <footer>
