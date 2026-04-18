@@ -14,14 +14,14 @@
   html { scroll-behavior: smooth; }
   body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; padding-top: 52px; }
 
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; background: var(--bg); border-bottom: 1px solid var(--rule); transition: height .3s ease; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; background: var(--bg); border-bottom: 1.5px solid rgba(10,10,10,.12); transition: height .3s ease; }
   nav.scrolled { height: 44px; }
-  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
+  .nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
   .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
-  .nav-links a, .nav-link-hm { padding: 6px 14px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover, .nav-link-hm:hover, .nav-links a.active, .nav-link-hm.active { color: var(--ink); }
-  .nav-cta { margin-left: 8px; padding: 7px 20px !important; background: var(--ink) !important; color: #fff !important; font-size: 0.72rem !important; font-weight: 600 !important; letter-spacing: 0.12em !important; border: 1.5px solid var(--ink); }
-  .nav-cta:hover { opacity: 0.8; color: #fff !important; }
+  .nav-link { padding: 6px 14px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .15s; }
+  .nav-link:hover, .nav-link.active { color: var(--ink); }
+  .nav-cta { margin-left: 8px; padding: 7px 20px; background: var(--ink); color: #fff; font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--ink); transition: opacity .15s; }
+  .nav-cta:hover { opacity: .8; }
 
   .hero { position: relative; height: 80vh; min-height: 520px; overflow: hidden; background: var(--dark); }
   .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: 0.5; display: block; transform: scaleX(-1); }
@@ -101,33 +101,47 @@
   .case-nav a { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .case-nav a:hover { color: var(--ink); }
 
-  @media(max-width:640px){ .nav-link-hm { display: none; } }
+  /* FOOTER */
+  .site-footer { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 40px 48px; background: var(--ink); border-top: 1.5px solid rgba(10,10,10,.12); gap: 24px; }
+  .f-left { display: flex; flex-direction: column; gap: 6px; }
+  .f-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: .08em; color: #fff; line-height: 1; }
+  .f-role { font-size: .68rem; color: rgba(255,255,255,.6); letter-spacing: .1em; text-transform: uppercase; }
+  .f-center { display: flex; align-items: center; justify-content: center; }
+  .f-icons { display: flex; gap: 12px; align-items: center; }
+  .f-icon-link { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; color: #fff; text-decoration: none; transition: background .18s, color .18s; }
+  .f-icon-link:hover { background: rgba(255,255,255,.12); }
+  .f-icon-link svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .f-copy { font-size: .6rem; color: rgba(255,255,255,.5); white-space: nowrap; letter-spacing: .08em; text-align: right; align-self: center; }
+
+  @media(max-width:640px){ .nav-link.hm { display: none; } }
   @media(max-width:400px){ .nav-cta { display: none; } }
 
   @media(max-width:900px){
     .container { padding: 0 32px; }
     .soft-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
     .cta-band { padding: 56px 48px; }
-  }
-  @media(max-width:700px){
-    nav { padding: 0 16px; }
     .hero-overlay { padding: 40px 32px; }
-    .container { padding: 0 24px; }
-    .section { padding: 56px 0; }
-    .how-inner { grid-template-columns: 1fr; gap: 8px; }
-    .edu-grid { grid-template-columns: 1fr; }
-    .cta-band { padding: 48px 24px; }
-    .case-nav { padding: 36px 24px; }
-    footer { grid-template-columns: 1fr !important; padding: 32px 24px !important; gap: 24px !important; }
-    footer > div:last-child { text-align: left !important; }
-    footer > div:nth-child(2) { justify-content: flex-start !important; }
+    .case-nav { padding: 36px 32px; }
+    .site-footer { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
+    .f-copy { text-align: left; }
+    .f-center { justify-content: flex-start; }
   }
-  @media(max-width:480px){
-    .hero { min-height: 420px; }
+  @media(max-width:640px){
+    nav { padding: 0 20px; }
+    .container { padding: 0 20px; }
+    .section { padding: 56px 0; }
     .hero-overlay { padding: 32px 20px; }
     .hero-meta { gap: 20px; }
+    .how-inner { grid-template-columns: 1fr; gap: 8px; }
+    .edu-grid { grid-template-columns: 1fr; }
     .soft-grid, .skills-grid { grid-template-columns: 1fr; }
-    footer { padding: 28px 16px !important; }
+    .cta-band { padding: 48px 20px; }
+    .case-nav { padding: 32px 20px; }
+  }
+  @media(max-width:480px){
+    nav { padding: 0 16px; }
+    .hero { min-height: 420px; }
+    .site-footer { padding: 28px 16px; }
   }
 </style>
 <link rel="icon" type="image/png" href="favicon.png">
@@ -135,10 +149,10 @@
 <body>
 
 <nav id="nav">
-  <a class="nav-logo" href="index.html">Patricia Panqueva</a>
+  <a class="nav-name" href="index.html">Patricia Panqueva</a>
   <ul class="nav-links">
-    <li><a href="index.html" class="nav-link-hm">Work</a></li>
-    <li><a href="about.html" class="nav-link-hm active">About</a></li>
+    <li><a href="index.html" class="nav-link hm">Work</a></li>
+    <li><a href="about.html" class="nav-link hm active">About</a></li>
     <li><a href="mailto:patricia.panqueva@gmail.com" class="nav-cta">Say Hello</a></li>
   </ul>
 </nav>
@@ -358,22 +372,22 @@
 </div>
 </div>
 
-<footer style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:40px 48px;background:var(--ink);gap:24px;">
-  <div style="display:flex;flex-direction:column;gap:6px;">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.08em;color:#fff;line-height:1;">Patricia Panqueva</div>
-    <div style="font-size:0.68rem;color:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;">Senior UX Designer · Bay Area, CA</div>
+<footer class="site-footer">
+  <div class="f-left">
+    <div class="f-name">Patricia Panqueva</div>
+    <div class="f-role">Senior UX Designer · Bay Area, CA</div>
   </div>
-  <div style="display:flex;align-items:center;justify-content:center;">
-    <div style="display:flex;gap:12px;align-items:center;">
-      <a href="https://www.linkedin.com/in/patriciapanqueva" target="_blank" style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;color:#fff;text-decoration:none;transition:background 0.18s;" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+  <div class="f-center">
+    <div class="f-icons">
+      <a href="https://www.linkedin.com/in/patriciapanqueva" target="_blank" class="f-icon-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-      <a href="mailto:patricia@patriciapanqueva.com" style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;color:#fff;text-decoration:none;transition:background 0.18s;" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <a href="mailto:patricia.panqueva@gmail.com" class="f-icon-link" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       </a>
     </div>
   </div>
-  <div style="font-size:0.6rem;color:rgba(255,255,255,0.5);white-space:nowrap;letter-spacing:0.08em;text-align:right;align-self:center;">© 2026 — All Rights Reserved</div>
+  <div class="f-copy">© 2026 — All Rights Reserved</div>
 </footer>
 
 <script>
