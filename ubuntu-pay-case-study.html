@@ -28,8 +28,8 @@
       background: var(--bg);
       color: var(--ink);
       font-family: var(--ff-body);
-      font-size: 16px;
-      line-height: 1.65;
+      font-size: 17px;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       padding-top: 52px;
     }
@@ -190,12 +190,12 @@
     }
 
     .section-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
     .section-title {
       font-family: var(--ff-display);
@@ -541,7 +541,6 @@
 
     /* ── Responsive: Mobile 640px ── */
     @media (max-width: 640px) {
-      .nav-link.hm { display: none; }
 
       /* Hero */
       .hero-title { font-size: clamp(52px, 14vw, 72px); }
@@ -594,7 +593,6 @@
       .stats-bar { grid-template-columns: 1fr 1fr; }
       .stat { padding: 24px 16px; }
       .stat:nth-child(odd) { border-right: 1px solid var(--rule); }
-      .stat:nth-child(3) { border-bottom: 1px solid var(--rule); }
       .stat:last-child { border-bottom: none; }
 
       /* Sections */
