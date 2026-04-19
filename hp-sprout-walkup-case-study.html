@@ -13,8 +13,8 @@
     --accent: #0096D6;
     --accent-dark: #006fa0;
     --rule: #d8d4ce;
-    --white: #ffffff;
     --card-bg: #eeeae4;
+    --dark: #111010;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,7 +58,7 @@
   .nav-cta {
     margin-left: 8px;
     padding: 7px 20px;
-    background: var(--ink); color: var(--white);
+    background: var(--ink); color: #fff;
     font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
     text-decoration: none;
     transition: opacity .15s;
@@ -71,15 +71,15 @@
   /* HERO */
   .hero {
     position: relative;
-    height: 72vh;
-    min-height: 480px;
+    height: 80vh;
+    min-height: 520px;
     overflow: hidden;
-    background: #1a2c3a;
+    background: var(--dark);
   }
   .hero-img {
     width: 100%; height: 100%;
     object-fit: cover;
-    opacity: 0.55;
+    opacity: 0.4;
     display: block;
   }
   .hero-overlay {
@@ -87,11 +87,11 @@
     display: flex; flex-direction: column;
     justify-content: flex-end;
     padding: 56px 80px;
-    background: linear-gradient(to top, rgba(15,25,35,0.88) 0%, rgba(15,25,35,0.1) 60%);
+    background: linear-gradient(to top, rgba(10,8,8,0.95) 0%, rgba(10,8,8,0.2) 60%);
   }
   .hero-tag {
     font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--accent);
+    text-transform: uppercase; color: #fff;
     margin-bottom: 16px;
   }
   .hero-title {
@@ -117,7 +117,6 @@
   /* LAYOUT */
   .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
   .section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
-  .section:last-child { border-bottom: none; }
 
   /* INTRO GRID */
   .intro-grid {
@@ -126,7 +125,6 @@
     gap: 80px;
     align-items: start;
   }
-  .intro-left {}
   .section-label {
     font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--accent); font-weight: 600; margin-bottom: 20px;
@@ -189,12 +187,12 @@
 
   /* CHALLENGE STRIP */
   .challenge-strip {
-    background: var(--ink);
+    background: var(--dark);
     padding: 72px 80px;
   }
-  .challenge-strip .section-label { color: var(--accent); }
+  .challenge-strip .section-label { color: #fff; }
   .challenge-strip h2 { color: #fff; }
-  .challenge-strip p { color: rgba(255,255,255,0.6); }
+  .challenge-strip p { color: rgba(255,255,255,0.55); }
   .challenge-strip strong { color: rgba(255,255,255,0.9); }
 
   /* PULL QUOTE */
@@ -325,21 +323,48 @@
   }
   .case-nav .back:hover { color: var(--accent); }
 
-  @media (max-width: 768px) {
-    nav { padding: 0 24px; }
-    .hero-overlay { padding: 36px 24px; }
-    .container { padding: 0 24px; }
-    .intro-grid, .two-col-text { grid-template-columns: 1fr; gap: 40px; }
-    .stat-grid { grid-template-columns: 1fr 1fr; }
+  /* ── TABLET 900px ── */
+  @media(max-width:900px){
+    .container { padding: 0 32px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 48px; }
+    .two-col-text { grid-template-columns: 1fr; gap: 40px; }
     .persona-row { grid-template-columns: 1fr 1fr; }
-    .process-steps { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
     .outcome-row { grid-template-columns: 1fr; }
-    .challenge-strip, .system-section, .case-nav { padding: 48px 24px; }
-    .img-grid-2, .img-grid-3 { grid-template-columns: 1fr; }
+    .challenge-strip { padding: 56px 32px; }
+    .system-section { padding: 56px 32px; }
+    .hero-overlay { padding: 40px 32px; }
+    .case-nav { padding: 40px 32px; }
   }
 
-  /* ── FOOTER — matches index.html ── */
-  footer {
+  /* ── MOBILE 640px ── */
+  @media(max-width:640px){
+    .container { padding: 0 20px; }
+    .section { padding: 56px 0; }
+    .intro-grid { gap: 36px; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .persona-row { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .img-grid-2 { grid-template-columns: 1fr; }
+    .img-grid-3 { grid-template-columns: 1fr; }
+    .challenge-strip { padding: 48px 20px; }
+    .system-section { padding: 48px 20px; }
+    .hero-overlay { padding: 32px 20px; }
+    .hero-meta { gap: 20px; }
+    .case-nav { padding: 32px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
+    .pull-quote { padding: 20px 24px; }
+    .pull-quote blockquote { font-size: 17px; }
+  }
+
+  /* ── MOBILE 480px ── */
+  @media(max-width:480px){
+    nav { padding: 0 16px; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .hero { min-height: 420px; }
+  }
+
+  /* ── FOOTER — matches Yamaha system ── */
+  .site-footer {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
@@ -367,12 +392,12 @@
   .f-icon-link svg { width: 22px; height: 22px; flex-shrink: 0; }
   .f-copy { font-size: .6rem; color: rgba(255,255,255,.5); white-space: nowrap; letter-spacing: .08em; text-align: right; align-self: center; }
   @media(max-width:900px) {
-    footer { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
+    .site-footer { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
     .f-copy { text-align: left; align-self: auto; }
     .f-center { justify-content: flex-start; }
   }
   @media(max-width:480px) {
-    footer { padding: 28px 16px; gap: 24px; }
+    .site-footer { padding: 28px 16px; }
   }
 </style>
 <link rel="icon" type="image/png" href="favicon.png">
@@ -420,14 +445,14 @@
 <section class="section">
   <div class="container">
     <div class="intro-grid">
-      <div class="intro-left">
+      <div>
         <span class="section-label">Overview</span>
         <h2>Designing for Strangers, Every Time</h2>
         <p>The HP Sprout was built for personal use — a creative workstation with a depth camera overhead and a touch mat below. But what happens when you take that experience public? When there's no onboarding, no manual, and the next user is a museum visitor who has 10 minutes and zero context?</p>
         <p>That was the challenge. I led the UX for <strong>HP Sprout Walk-UP</strong> — a self-service mode that transformed Sprout's powerful hardware into an unattended, zero-training kiosk deployable in museums, libraries, schools, offices, and retail spaces.</p>
         <p>The result was a fully modular, administrator-configurable platform that served radically different user types — from an eight-year-old in face paint to an elderly librarian scanning family documents.</p>
       </div>
-      <div class="intro-right">
+      <div>
         <div class="stat-grid">
           <div class="stat-box">
             <div class="stat-number">0</div>
@@ -628,7 +653,7 @@
         <h3>Multi-Context Deployment</h3>
         <p>A single platform shipped across museums, libraries, offices, and retail environments — each with unique branding and app configurations.</p>
       </div>
-      <div class="outcome-card" style="background: #1a2c3a;">
+      <div class="outcome-card" style="background: var(--dark);">
         <h3>Scalable Administration</h3>
         <p>The Configurator Tool and optional Control Center gave administrators full control over multi-unit fleets without engineering support.</p>
       </div>
@@ -670,7 +695,7 @@
   <a href="hp-sprout-3d-case-study.html">HP Sprout 3D Capture →</a>
 </div>
 <!-- FOOTER -->
-<footer>
+<footer class="site-footer">
   <div class="f-left">
     <div class="f-name">Patricia Panqueva</div>
     <div class="f-role">Senior UX Designer · Bay Area, CA</div>
