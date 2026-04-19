@@ -182,7 +182,6 @@
   <a class="nav-name" href="index.html"><img src="nav-icon.png" class="nav-logo" alt=""> <span class="nav-text">Patricia Panqueva</span></a>
   <ul class="nav-links">
     <li><a href="index.html" class="nav-link hm">Work</a></li>
-    <li><a href="about.html" class="nav-link active">About</a></li>
     <li><a href="mailto:patricia.panqueva@gmail.com" class="nav-cta">Say Hello</a></li>
   </ul>
 </nav>
@@ -449,7 +448,7 @@
     if (e.key === 'Escape' && _lb) { _lb.classList.remove('open'); document.body.style.overflow = ''; }
   });
   document.querySelectorAll('img[src]:not([src=""])').forEach(img => {
-    if (img.closest('.hero, .hero-img-wrap')) return;
+    if (img.closest('.hero, .hero-img-wrap, nav')) return;
     img.classList.add('zoomable');
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
   });

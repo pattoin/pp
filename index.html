@@ -340,13 +340,13 @@ footer{
   @media(max-width:480px){ .scroll-top { bottom: 20px; right: 20px; width: 42px; height: 42px; } }
   
   @media(max-width:640px){
-    .hero-overlay { padding: 40px 24px; }
+    .hero-overlay { padding: 72px 24px 40px; }
     .hero-h1 { font-size: clamp(48px, 11vw, 72px); }
     .hero-desc { max-width: 100%; }
   }
   @media(max-width:480px){
     .hero { min-height: 100svh; }
-    .hero-overlay { padding: 32px 20px; }
+    .hero-overlay { padding: 80px 20px 32px; }
     .hero-actions { flex-direction: column; }
     .h-btn { text-align: center; }
   }
@@ -595,7 +595,7 @@ footer{
     if (e.key === 'Escape' && _lb) { _lb.classList.remove('open'); document.body.style.overflow = ''; }
   });
   document.querySelectorAll('img[src]:not([src=""])').forEach(img => {
-    if (img.closest('.hero, .hero-img-wrap')) return;
+    if (img.closest('.hero, .hero-img-wrap, nav')) return;
     img.classList.add('zoomable');
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
   });
