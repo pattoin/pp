@@ -94,62 +94,64 @@
 
     /* ── Hero ── */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 560px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .hero-left {
-      padding: 72px 56px 72px 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 24px;
-    }
-    .hero-eyebrow {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .hero-title {
-      font-family: var(--ff-display);
-      font-size: clamp(64px, 7vw, 96px);
-      line-height: 0.92;
-      letter-spacing: 0.01em;
-      color: var(--ink);
-    }
-    .hero-sub {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 380px;
-      line-height: 1.6;
-    }
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-    .meta-tag {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border: 1px solid var(--rule);
-      color: var(--muted);
-    }
-    .hero-right {
-      background: var(--dark);
+      position: relative;
+      height: 80vh;
+      min-height: 520px;
       overflow: hidden;
+      background: var(--dark);
     }
-    .hero-right img {
+    .hero-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.9;
+      opacity: 0.4;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 56px 80px;
+      background: linear-gradient(to top, rgba(10,8,8,0.95) 0%, rgba(10,8,8,0.2) 60%);
+    }
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(60px, 9vw, 110px);
+      line-height: 0.93;
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hero-meta-label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      font-weight: 500;
+    }
+    .hero-meta-value {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
     }
 
     /* ── Stats bar ── */
@@ -502,9 +504,7 @@
       nav#nav { padding: 0 24px; }
 
       /* Hero */
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { min-height: 280px; order: -1; }
-      .hero-left { padding: 48px 24px; }
+      .hero-overlay { padding: 40px 32px; }
 
       /* Stats */
       .stats-bar { grid-template-columns: repeat(2, 1fr); }
@@ -543,8 +543,8 @@
     @media (max-width: 640px) {
 
       /* Hero */
-      .hero-title { font-size: clamp(52px, 14vw, 72px); }
-      .hero-sub { font-size: 14px; max-width: 100%; }
+      .hero-overlay { padding: 32px 20px; }
+      .hero-meta { gap: 20px; }
 
       /* Stats */
       .stats-bar { grid-template-columns: repeat(2, 1fr); }
@@ -584,10 +584,7 @@
       .nav-cta { display: none; }
 
       /* Hero */
-      .hero-left { padding: 36px 16px; gap: 16px; }
-      .hero-right { min-height: 220px; }
-      .hero-meta { gap: 6px; }
-      .meta-tag { font-size: 10px; padding: 4px 10px; }
+      .hero { min-height: 420px; }
 
       /* Stats */
       .stats-bar { grid-template-columns: 1fr 1fr; }
@@ -624,19 +621,28 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Canonical UK · London · 2013</p>
+    <img class="hero-img" src="images/image_1.png" alt="User purchasing music through Ubuntu Pay on a Dell laptop">
+    <div class="hero-overlay">
+      <span class="hero-tag">Canonical UK · London · 2013</span>
       <h1 class="hero-title">Ubuntu<br>Pay</h1>
-      <p class="hero-sub">Commerce built directly into the operating system — a full purchase checkout inside the Ubuntu Dash, without a browser, without disruption.</p>
       <div class="hero-meta">
-        <span class="meta-tag">UX Lead Designer</span>
-        <span class="meta-tag">Ubuntu Desktop</span>
-        <span class="meta-tag">Dash Monetisation</span>
-        <span class="meta-tag">Ubuntu One</span>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Role</span>
+          <span class="hero-meta-value">UX Lead Designer</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Platform</span>
+          <span class="hero-meta-value">Ubuntu Desktop — Dash</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Context</span>
+          <span class="hero-meta-value">Dash Monetisation</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Identity</span>
+          <span class="hero-meta-value">Ubuntu One</span>
+        </div>
       </div>
-    </div>
-    <div class="hero-right">
-      <img src="images/image_1.png" alt="User purchasing music through Ubuntu Pay on a Dell laptop">
     </div>
   </section>
 
