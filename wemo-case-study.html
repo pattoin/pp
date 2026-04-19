@@ -23,7 +23,7 @@
   .nav-link:hover { color: var(--ink); }
   .nav-cta { margin-left: 8px; padding: 7px 20px; background: var(--ink); color: #fff; font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--ink); transition: opacity .15s; }
   .nav-cta:hover { opacity: .8; }
-  @media(max-width:640px){ .nav-link.hm { display: none; } }
+  @media(max-width:640px){ .nav-link.hm { display: none; } .nav-text { display: none; } }
   @media(max-width:400px){ .nav-cta { display: none; } }
 
   /* HERO */
@@ -198,18 +198,19 @@
   @media(max-width:480px){ .scroll-top { bottom: 20px; right: 20px; width: 42px; height: 42px; } }
   
   .nav-name { display: flex; align-items: center; gap: 8px; }
-  .nav-logo { height: 24px; width: auto; display: block; }
+  .nav-logo { height: 26px; width: auto; display: block; flex-shrink: 0; }
   </style>
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="icon" type="image/png" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMWExODE0Ii8+PHRleHQgeD0iMTYiIHk9IjIzIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2Y0ZjJlZSIgbGV0dGVyLXNwYWNpbmc9IjEiPlBQPC90ZXh0Pjwvc3ZnPg==">
 </head>
 <body>
 
 <nav id="nav">
-  <a class="nav-name" href="index.html"><img src="data:image/png;base64,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" class="nav-logo" alt="Panqueva Design logo"> Patricia Panqueva</a>
+  <a class="nav-name" href="index.html"><img src="nav-icon.png" class="nav-logo" alt=""> <span class="nav-text">Patricia Panqueva</span></a>
   <ul class="nav-links">
     <li><a href="index.html#work" class="nav-link hm">Work</a></li>
-    <li><a href="about.html" class="nav-link hm">About</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
     <li><a class="nav-cta" href="mailto:patricia.panqueva@gmail.com">Say Hello</a></li>
   </ul>
 </nav>
@@ -469,27 +470,33 @@
   <div class="f-copy">© 2026 — All Rights Reserved</div>
 </footer>
 <script>
+  // Nav shrink on scroll
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  }
 
   // Lightbox
   const _lb = document.getElementById('lightbox');
   const _lbImg = document.getElementById('lb-img');
   function openLightbox(src, alt) {
+    if (!_lb || !_lbImg) return;
     _lbImg.src = src; _lbImg.alt = alt || '';
     _lb.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
   function closeLightbox(e) {
+    if (!_lb) return;
     if (!e || e.target === _lb || e.target.classList.contains('lb-close')) {
       _lb.classList.remove('open');
       document.body.style.overflow = '';
     }
   }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { _lb.classList.remove('open'); document.body.style.overflow = ''; } });
-  // Auto-wire all images except hero
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && _lb) { _lb.classList.remove('open'); document.body.style.overflow = ''; }
+  });
   document.querySelectorAll('img[src]:not([src=""])').forEach(img => {
     if (img.closest('.hero, .hero-img-wrap')) return;
     img.classList.add('zoomable');
@@ -498,9 +505,11 @@
 
   // Scroll to top
   const _st = document.getElementById('scrollTop');
-  window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
-  _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  </script>
+  if (_st) {
+    window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
+    _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+</script>
 <button class="scroll-top" id="scrollTop" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
