@@ -9,28 +9,27 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-:root{--blk:#0a0a0a;--wht:#fff;--gry:#9a9690;--sur:#eeece8;--acc:#00A8E0;--acc-l:#E3F6FD;--acc-d:#006E94;--bdr:1px solid #e8e8e8;--max:820px;}
-body{background:#f4f2ee;color:#0a0a0a;font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;}
+:root{--blk:#1a1814;--wht:#fff;--gry:#6b6560;--sur:#eeeae4;--rule:#d8d4ce;--acc:#00A8E0;--acc-l:#E3F6FD;--acc-d:#006E94;--bdr:1px solid var(--rule);--max:820px;}
+body{background:#f4f2ee;color:var(--blk);font-family:'DM Sans',sans-serif;font-size:17px;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;padding-top:52px;}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;background:#f4f2ee;border-bottom:1.5px solid rgba(10,10,10,.12);display:flex;align-items:center;justify-content:space-between;padding:0 28px;transition:height .3s ease;}
 nav.scrolled{height:44px;}
-.nav-name{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.08em;color:#0a0a0a;text-decoration:none;}
+.nav-name{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.08em;color:var(--blk);text-decoration:none;}
 .nav-links{display:flex;align-items:center;gap:0;list-style:none;}
 .nav-link{padding:6px 14px;font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#9a9690;text-decoration:none;transition:color .15s;}
 .nav-link:hover{color:#0a0a0a;}
-.nav-cta{margin-left:8px;padding:7px 20px;background:#0a0a0a;color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:opacity .15s;border:1.5px solid #0a0a0a;}
+.nav-cta{margin-left:8px;padding:7px 20px;background:var(--blk);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:opacity .15s;border:1.5px solid var(--blk);}
 .nav-cta:hover{opacity:.8;}
 @media(max-width:640px){.nav-link.hm{display:none;}}
 @media(max-width:400px){.nav-cta{display:none;}}
-.hero{margin-top:52px;height:80vh;min-height:500px;position:relative;overflow:hidden;background:#001824;}
-.hero img{width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:.65;}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,24,36,.2) 0%,rgba(0,24,36,.95) 75%);display:flex;flex-direction:column;justify-content:flex-end;padding:64px;}
-.hero-tag{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
-.hero-tag::before{content:'';display:block;width:32px;height:2px;background:var(--acc);flex-shrink:0;}
-h1.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,10vw,120px);line-height:0.9;letter-spacing:0.02em;color:var(--wht);margin-bottom:28px;}
-.hero-meta{display:flex;gap:32px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:24px;}
-.hmi{display:flex;flex-direction:column;gap:3px;}
-.hml{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);}
-.hmv{font-size:.84rem;font-weight:400;color:rgba(255,255,255,.82);}
+.hero{height:80vh;min-height:520px;position:relative;overflow:hidden;background:#111010;}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0.4;display:block;}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,8,0.95) 0%,rgba(10,8,8,0.2) 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:56px 80px;}
+.hero-tag{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#fff;margin-bottom:16px;}
+h1.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,110px);line-height:0.93;letter-spacing:0.02em;color:var(--wht);margin-bottom:24px;}
+.hero-meta{display:flex;gap:40px;flex-wrap:wrap;}
+.hmi{display:flex;flex-direction:column;gap:4px;}
+.hml{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.hmv{font-size:14px;font-weight:400;color:rgba(255,255,255,0.85);}
 .role-strip{background:var(--acc);padding:0 64px;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;}
 .role-strip::-webkit-scrollbar{display:none}
 .rc{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.9);padding:13px 20px 13px 0;white-space:nowrap;}
@@ -84,13 +83,13 @@ h1.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,10vw,120p
 .ob p{font-size:1rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,.88);margin-bottom:14px;}
 .ob p:last-child{margin-bottom:0}.ob strong{color:var(--wht);font-weight:500;}
 .div{width:48px;height:3px;background:var(--acc);margin:72px 0;}
-.case-nav{padding:60px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(10,10,10,.12);}
-.case-nav a{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.06em;color:#0a0a0a;text-decoration:none;transition:color .2s;}
+.case-nav{padding:60px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--rule);}
+.case-nav a{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.06em;color:var(--blk);text-decoration:none;transition:color .2s;}
 .case-nav a:hover{color:var(--acc);}
-.case-nav .back{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#9a9690;text-decoration:none;}
+.case-nav .back{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gry);text-decoration:none;}
 @media(max-width:900px){.case-nav{padding:40px 24px;}}
 @media(max-width:480px){.case-nav{padding:32px 16px;flex-direction:column;gap:16px;align-items:flex-start;}}
-footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:40px 48px;background:#0a0a0a;border-top:1.5px solid rgba(10,10,10,.12);gap:24px;}
+footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:40px 48px;background:var(--blk);border-top:1.5px solid rgba(10,10,10,.12);gap:24px;}
 .f-left{display:flex;flex-direction:column;gap:6px;}
 .f-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.08em;color:#fff;line-height:1;}
 .f-role{font-size:.68rem;color:rgba(255,255,255,.6);letter-spacing:.1em;text-transform:uppercase;}
@@ -100,7 +99,7 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
 .f-icon-link:hover{background:rgba(255,255,255,.12);}
 .f-icon-link svg{width:22px;height:22px;flex-shrink:0;}
 .f-copy{font-size:.6rem;color:rgba(255,255,255,.5);white-space:nowrap;letter-spacing:.08em;text-align:right;align-self:center;}
-@media(max-width:900px){footer{grid-template-columns:1fr;padding:32px 24px;gap:28px;}.f-copy{text-align:left;align-self:auto;}.f-center{align-items:flex-start;}}
+@media(max-width:900px){footer{grid-template-columns:1fr;padding:32px 24px;gap:28px;}.f-copy{text-align:left;align-self:auto;}.f-center{align-items:flex-start;justify-content:flex-start;}}
 @media(max-width:480px){footer{padding:28px 16px;}}
 .reveal{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease;}
 .js-reveal{opacity:0;transform:translateY(20px);}
@@ -118,10 +117,20 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
 .lb-close{position:absolute;top:-14px;right:-14px;width:36px;height:36px;background:var(--wht);border:2px solid var(--blk);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:700;color:var(--blk);transition:background .15s;}
 .lb-close:hover{background:var(--blk);color:var(--wht);}
 .lb-hint{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);white-space:nowrap;}
+@media(max-width:900px){
+  .hero-ov{padding:40px 32px;}
+}
 @media(max-width:700px){
-  .hero-ov{padding:32px 24px;}.role-strip{padding:0 24px;}.content{padding:48px 20px;}
+  .role-strip{padding:0 24px;}.content{padding:48px 20px;}
   .stats{grid-template-columns:1fr 1fr;}.ig,.test-grid,.wfs{grid-template-columns:1fr;}
   .timg.tw{grid-column:span 1;}nav{padding:0 16px;}
+}
+@media(max-width:640px){
+  .hero-ov{padding:32px 20px;}
+  .hero-meta{gap:20px;}
+}
+@media(max-width:480px){
+  .hero{min-height:420px;}
 }
 
 .waudio{background:#001824;padding:10px 12px;border-top:1px solid rgba(255,255,255,.08);}
@@ -136,9 +145,9 @@ audio::-webkit-media-controls-panel{background:#001824;}
 <nav id="nav">
   <a href="index.html" class="nav-name">Patricia Panqueva</a>
   <ul class="nav-links">
-    <li><a href="index.html" class="nav-link hm">Work</a></li>
+    <li><a href="index.html#work" class="nav-link hm">Work</a></li>
     <li><a href="about.html" class="nav-link hm">About</a></li>
-    <li><a href="/cdn-cgi/l/email-protection#53233227213a303a3213233227213a303a3223323d22263625327d303c3e" class="nav-cta">Say Hello</a></li>
+    <li><a href="mailto:patricia.panqueva@gmail.com" class="nav-cta">Say Hello</a></li>
   </ul>
 </nav>
 
@@ -342,7 +351,7 @@ audio::-webkit-media-controls-panel{background:#001824;}
   <a href="alexa-search-case-study.html">Alexa Search →</a>
 </div>
 
-<footer>
+<footer class="site-footer">
   <div class="f-left">
     <div class="f-name">Patricia Panqueva</div>
     <div class="f-role">Senior UX Designer · Bay Area, CA</div>
@@ -353,7 +362,7 @@ audio::-webkit-media-controls-panel{background:#001824;}
       <a href="https://www.linkedin.com/in/patriciapanqueva" target="_blank" class="f-icon-link" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-      <a href="/cdn-cgi/l/email-protection#53233227213a303a3213233227213a303a3223323d22263625327d303c3e" class="f-icon-link" aria-label="Email">
+      <a href="mailto:patricia.panqueva@gmail.com" class="f-icon-link" aria-label="Email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       </a>
     </div>
@@ -370,7 +379,7 @@ audio::-webkit-media-controls-panel{background:#001824;}
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>{el.classList.add('js-reveal');obs.observe(el);});
 const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);},{ passive:true });
