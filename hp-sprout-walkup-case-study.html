@@ -764,7 +764,7 @@
     if (e.key === 'Escape' && _lb) { _lb.classList.remove('open'); document.body.style.overflow = ''; }
   });
   document.querySelectorAll('img[src]:not([src=""])').forEach(img => {
-    if (img.closest('.hero, .hero-img-wrap')) return;
+    if (img.closest('.hero, .hero-img-wrap, nav')) return;
     img.classList.add('zoomable');
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
   });
