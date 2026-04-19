@@ -272,6 +272,16 @@
   .reflection-card-label { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: block; }
   .reflection-card p { font-size: 14px; line-height: 1.7; }
 
+  /* ── FULL IMAGE & CAPTION ── */
+  .full-img { width: 100%; display: block; }
+  .img-caption { font-size: 12px; color: var(--muted); letter-spacing: .04em; margin-top: 12px; font-style: italic; }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote { border-left: 3px solid var(--accent); padding: 24px 36px; margin: 40px 0; background: var(--card-bg); }
+  .pull-quote blockquote { font-size: 20px; font-weight: 300; line-height: 1.55; color: var(--ink); font-style: italic; margin-bottom: 16px; }
+  .pull-quote blockquote:last-child { margin-bottom: 0; }
+  .pull-quote cite { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); font-style: normal; font-weight: 600; }
+
   /* ── IMAGE PLACEHOLDER ── */
   .img-block { width: 100%; background: rgba(107,63,160,.06); border: 1.5px dashed rgba(107,63,160,.25); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 60px 20px; text-align: center; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(107,63,160,.5); margin: 32px 0; }
   .img-block svg { width: 28px; height: 28px; opacity: .4; }
@@ -317,19 +327,50 @@
   .audio-label { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
   .audio-query { font-size: 14px; font-weight: 300; color: var(--ink); font-style: italic; margin-bottom: 16px; line-height: 1.5; }
   .audio-card audio { width: 100%; height: 36px; }
-  @media(max-width:640px){ .audio-grid { grid-template-columns: 1fr; } }
+  /* ── RESPONSIVE 1024 ── */
+  @media(max-width:1024px){
+    .response-body { grid-template-columns: 1fr; }
+  }
+
+  /* ── RESPONSIVE 900 ── */
   @media(max-width:900px){
     .page-grid { padding: 0 32px; }
     .hero-overlay { padding: 40px 32px; }
     .hero-meta { gap: 24px; }
+
+    /* grids */
     .stat-row { grid-template-columns: 1fr 1fr; }
-    .problem-cards, .ordinals-grid, .insights-grid, .reflection-grid { grid-template-columns: 1fr; }
+    .problem-cards { grid-template-columns: 1fr 1fr; }
+    .ordinals-grid { grid-template-columns: 1fr; }
+    .insights-grid { grid-template-columns: 1fr 1fr; }
+    .reflection-grid { grid-template-columns: 1fr; }
     .process-steps { grid-template-columns: 1fr 1fr; }
-    .response-body { grid-template-columns: 1fr; }
-    .outcome-strip { grid-template-columns: 1fr; padding: 48px 32px; }
-    .outcome-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); padding: 0 0 28px; margin-bottom: 28px; }
+    .audio-grid { grid-template-columns: 1fr 1fr; }
+
+    /* outcome strip */
+    .outcome-strip { grid-template-columns: 1fr; padding: 56px 32px; gap: 0; }
+    .outcome-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); padding: 0 0 32px; margin-bottom: 32px; }
     .outcome-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    /* bubbles */
     .bubble-row { grid-template-columns: 80px 1fr; }
+
+    /* voice spec */
+    .voice-spec-header { flex-wrap: wrap; gap: 6px; }
+
+    /* utterance */
+    .utterance { grid-template-columns: 1fr; gap: 10px; }
+    .utterance-tag { align-self: flex-start; }
+
+    /* callout / diagram */
+    .callout { padding: 20px 24px; }
+    .diagram-wrap { padding: 36px 28px; }
+
+    /* pull quote */
+    .pull-quote { padding: 20px 28px; }
+    .pull-quote blockquote { font-size: 18px; }
+
+    /* nav + footer */
     .case-nav { padding: 40px 32px; }
     .site-footer { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
     .f-copy { text-align: left; }
@@ -342,12 +383,47 @@
     .section { padding: 56px 0; }
     .hero-overlay { padding: 32px 20px; }
     .hero-meta { gap: 20px; }
-    .stat-row { grid-template-columns: 1fr; }
+
+    /* grids */
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .problem-cards { grid-template-columns: 1fr; }
+    .insights-grid { grid-template-columns: 1fr; }
     .process-steps { grid-template-columns: 1fr; }
-    .bubble-row { grid-template-columns: 1fr; }
-    .bubble-type { padding-top: 0; }
-    .case-nav { padding: 32px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
+    .audio-grid { grid-template-columns: 1fr; }
+
+    /* bubbles */
+    .bubble-row { grid-template-columns: 1fr; gap: 12px; }
+    .bubble-type { display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 8px 12px; }
+    .bubble-user { max-width: 92%; }
+    .bubble-alexa { max-width: 92%; }
+
+    /* code / voice */
+    .code-block { font-size: 12px; padding: 14px 16px; }
+    .voice-spec-body { padding: 20px 16px; }
+    .voice-spec-header { padding: 10px 16px; }
+    .voice-spec-tag { display: none; }
+
+    /* callout / diagram / pull-quote */
+    .callout { padding: 16px 20px; }
+    .diagram-wrap { padding: 24px 16px; }
+    .pull-quote { padding: 16px 20px; }
+    .pull-quote blockquote { font-size: 16px; }
+
+    /* utterances */
+    .utterances { border: none; }
+    .utterance { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+    .utterance-tag { font-size: 9px; padding: 3px 8px; }
+
+    /* response cards */
+    .response-card-header { padding: 10px 16px; }
+    .response-panel { padding: 20px 16px; }
+
+    /* outcome */
     .outcome-strip { padding: 40px 20px; }
+    .outcome-num { font-size: 44px; }
+
+    /* nav */
+    .case-nav { padding: 32px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
   }
 
   /* ── RESPONSIVE 480 ── */
@@ -355,8 +431,20 @@
     nav#nav { padding: 0 16px; }
     .site-footer { padding: 28px 16px; }
     .hero { min-height: 420px; }
+
+    .stat-row { grid-template-columns: 1fr; }
+    .stat-num { font-size: 40px; }
+
+    .hero-title { line-height: 0.95; }
+    .hero-tag { letter-spacing: .12em; }
+
+    .bubble-user::after,
+    .bubble-alexa::before { display: none; }
+
+    .img-block { padding: 40px 16px; }
   }
 </style>
+<link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
@@ -1106,7 +1194,7 @@ Want me to set one?"</div>
 <footer class="site-footer">
   <div class="f-left">
     <div class="f-name">Patricia Panqueva</div>
-    <div class="f-role">Senior UX Designer · Voice &amp; AI</div>
+    <div class="f-role">Senior UX Designer · Bay Area, CA</div>
   </div>
   <div class="f-center">
     <div class="f-icons">
