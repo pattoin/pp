@@ -462,7 +462,7 @@
   @media(max-width:480px){ .scroll-top { bottom: 20px; right: 20px; width: 42px; height: 42px; } }
   
   .nav-name { display: flex; align-items: center; gap: 8px; }
-  .nav-logo { height: 26px; width: auto; display: block; flex-shrink: 0; }
+  .nav-logo { height: 26px; width: auto; display: block; flex-shrink: 0; cursor: pointer; }
   </style>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png">
@@ -1263,7 +1263,7 @@ Want me to set one?"</div>
     if (e.key === 'Escape' && _lb) { _lb.classList.remove('open'); document.body.style.overflow = ''; }
   });
   document.querySelectorAll('img[src]:not([src=""])').forEach(img => {
-    if (img.closest('.hero, .hero-img-wrap')) return;
+    if (img.closest('.hero, .hero-img-wrap, nav') || img.classList.contains('nav-logo')) return;
     img.classList.add('zoomable');
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
   });
