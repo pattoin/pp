@@ -12,9 +12,9 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{--blk:#1a1814;--wht:#fff;--gry:#6b6560;--sur:#eeeae4;--rule:#d8d4ce;--acc:#00A8E0;--acc-l:#E3F6FD;--acc-d:#006E94;--bdr:1px solid var(--rule);--max:1100px;}
-body{background:#f4f2ee;color:var(--blk);font-family:'DM Sans',sans-serif;font-size:17px;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;padding-top:64px;}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;background:#f4f2ee;border-bottom:1.5px solid rgba(10,10,10,.12);display:flex;align-items:center;justify-content:space-between;padding:0 48px;transition:height .3s ease;}
-nav.scrolled{height:52px;}
+body{background:#f4f2ee;color:var(--blk);font-family:'DM Sans',sans-serif;font-size:17px;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;padding-top:52px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;background:#f4f2ee;border-bottom:1.5px solid rgba(10,10,10,.12);display:flex;align-items:center;justify-content:space-between;padding:0 28px;transition:height .3s ease;}
+nav.scrolled{height:44px;}
 .nav-name{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.08em;color:var(--blk);text-decoration:none;}
 .nav-links{display:flex;align-items:center;gap:0;list-style:none;}
 .nav-link{padding:6px 14px;font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#9a9690;text-decoration:none;transition:color .15s;}
@@ -25,21 +25,21 @@ nav.scrolled{height:52px;}
 @media(max-width:400px){.nav-cta{display:none;}}
 .hero{height:80vh;min-height:520px;position:relative;overflow:hidden;background:#111010;}
 .hero img{width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0.4;display:block;}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(to top, rgba(10,8,8,0.75) 0%, rgba(10,8,8,0.18) 50%, rgba(10,8,8,0.0) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(10,8,8,0.75) 0%, rgba(10,8,8,0.18) 50%, rgba(10,8,8,0.0) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px;}
 .hero-tag{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#fff;margin-bottom:16px;}
 h1.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,110px);line-height:0.93;letter-spacing:0.02em;color:var(--wht);margin-bottom:24px;}
 .hero-meta{display:flex;gap:40px;flex-wrap:wrap;}
-.hmi{display:flex;flex-direction:column;gap:4px;}
-.hml{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
-.hmv{font-size:14px;font-weight:400;color:rgba(255,255,255,0.85);}
-.content{max-width:var(--max);margin:0 auto;padding:80px 32px;}
+.hero-meta-item{display:flex;flex-direction:column;gap:4px;}
+.hero-meta-label{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.hero-meta-value{font-size:14px;font-weight:400;color:rgba(255,255,255,0.85);}
+.content{max-width:var(--max);margin:0 auto;padding:80px 48px;}
 .cs{margin-bottom:80px;}
-.slabel{font-size:.62rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
-.slabel::before{content:'';display:block;width:20px;height:2px;background:var(--acc);}
-.stitle{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1;margin-bottom:16px;}
+.section-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--acc);font-weight:600;margin-bottom:20px;display:block;}
+
+.stitle{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,52px);letter-spacing:0.04em;line-height:1.05;margin-bottom:24px;}
 .body{font-size:1rem;font-weight:300;line-height:1.82;color:#2a2a2a;margin-bottom:16px;}
 .body strong{font-weight:500;color:var(--blk)}.body em{color:var(--acc);font-style:italic;}
-.pq{border-left:4px solid var(--acc);padding:8px 0 8px 28px;margin:40px 0;}
+.pq{border-left:3px solid var(--acc);padding:8px 0 8px 28px;margin:40px 0;}
 .pq p{font-size:1.2rem;font-style:italic;font-weight:300;line-height:1.65;color:#1a1a1a;}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;overflow:hidden;margin:36px 0;}
 .stat{background:var(--sur);padding:28px 20px;text-align:center;}
@@ -56,7 +56,7 @@ h1.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,110px
 .tlabel{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.78),transparent);padding:28px 14px 12px;font-size:.71rem;color:rgba(255,255,255,.8);font-style:italic;}
 .ttag{position:absolute;top:10px;left:10px;background:var(--acc);color:var(--wht);font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;}
 .ig{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:28px 0;}
-.ic{background:var(--sur);padding:24px;border-top:3px solid var(--acc);}
+.ic{background:var(--sur);padding:24px;}
 .in{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:1.8rem;font-weight:900;color:var(--acc);line-height:1;opacity:.25;margin-bottom:10px;}
 .it{font-size:.88rem;font-weight:400;line-height:1.65;color:#333;}
 .it strong{font-weight:600;color:var(--blk);}
@@ -76,11 +76,11 @@ h1.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,110px
 .vw{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:var(--bdr);margin:28px 0 10px;background:#000;}
 .vw iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
 .ob{background:var(--acc);padding:40px;margin:32px 0;color:var(--wht);}
-.ob .slabel{color:rgba(255,255,255,.6)}.ob .slabel::before{background:rgba(255,255,255,.4);}
+.ob .section-label{color:rgba(255,255,255,.6)}
 .ob p{font-size:1rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,.88);margin-bottom:14px;}
 .ob p:last-child{margin-bottom:0}.ob strong{color:var(--wht);font-weight:500;}
-.div{width:48px;height:3px;background:var(--acc);margin:72px 0;}
-.case-nav{padding:60px 48px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--rule);}
+.section-divider{border:none;border-top:1px solid var(--rule);margin:72px 0;}
+.case-nav{padding:60px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--rule);}
 .case-nav a{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.06em;color:var(--blk);text-decoration:none;transition:color .2s;}
 .case-nav a:hover{color:var(--acc);}
 .case-nav .back{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gry);text-decoration:none;}
@@ -145,15 +145,15 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
 </nav>
 
 <section class="hero">
-  <img src="images/hero-cook-along.jpg" alt="Alexa Cook Along storyboard">
-  <div class="hero-ov">
+  <img class="hero-img" src="images/hero-cook-along.jpg" alt="Alexa Cook Along storyboard">
+  <div class="hero-overlay">
     <div class="hero-tag">Amazon Alexa · Voice &amp; Multimodal · 2018</div>
     <h1 class="hero-title">Alexa<br>Cook Along</h1>
     <div class="hero-meta">
-      <div class="hmi"><span class="hml">My Role</span><span class="hmv">Lead UX — Voice &amp; Multimodal</span></div>
-      <div class="hmi"><span class="hml">Team</span><span class="hmv">Alexa Household Organization</span></div>
-      <div class="hmi"><span class="hml">Surfaces</span><span class="hmv">Echo Show · Echo Spot · Mobile</span></div>
-      <div class="hmi"><span class="hml">Launched</span><span class="hmv">2018 — First Release</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">My Role</span><span class="hero-meta-value">Lead UX — Voice &amp; Multimodal</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Team</span><span class="hero-meta-value">Alexa Household Organization</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Surfaces</span><span class="hero-meta-value">Echo Show · Echo Spot · Mobile</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Launched</span><span class="hero-meta-value">2018 — First Release</span></div>
     </div>
   </div>
 </section>
@@ -162,7 +162,7 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
 <div class="content">
 
   <section class="cs reveal">
-    <div class="slabel">Overview</div>
+    <span class="section-label">Overview</span>
     <h2 class="stitle">The Kitchen Is the Hardest Room to Design For</h2>
     <p class="body">Cooking is one of the most <strong>cognitively and physically demanding</strong> domestic tasks. Hands are wet, floury, or covered in raw protein. A recipe on a phone becomes a liability — touched once, it darkens. Scrolled to the wrong step, you lose your place mid-chop.</p>
     <p class="body">When Alexa launched, voice-only instruction solved the hands problem — but created new ones. A single spoken step with no visual anchor is easy to mishear. And <em>"Alexa, repeat step three"</em> became the accidental UX benchmark nobody wanted.</p>
@@ -175,10 +175,10 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
     <div class="stat"><div class="stat-n">0</div><div class="stat-l">Existing precedents at Alexa</div></div>
   </div>
 
-  <div class="div"></div>
+  <hr class="section-divider">
 
   <section class="cs reveal">
-    <div class="slabel">The Scenario</div>
+    <span class="section-label">The Scenario</span>
     <h2 class="stitle">Meet Kai</h2>
     <p class="body">To ground the design, we built a core scenario: <strong>Kai</strong>, someone who wants to bake cookies with hands already deep in dough — a perfect stress test for a hands-free, screen-free cooking experience.</p>
     <div class="sb-wrap">
@@ -190,10 +190,10 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
     </div>
   </section>
 
-  <div class="div"></div>
+  <hr class="section-divider">
 
   <section class="cs reveal">
-    <div class="slabel">In-House User Testing</div>
+    <span class="section-label">In-House User Testing</span>
     <h2 class="stitle">Testing Where the Mess Happens</h2>
     <p class="body">We didn't test Cook Along in a sterile lab. The cocktail-making sessions at Amazon Santa Clara were a deliberate stress test: <strong>high ingredient complexity, precise measurements, time pressure.</strong></p>
     <div class="img-full">
@@ -206,10 +206,10 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
     <div class="pq"><p>"When users had wet or occupied hands, they <em>never</em> reached for the screen — even when the voice instruction was unclear. The voice experience had to be fully self-sufficient."</p></div>
   </section>
 
-  <div class="div"></div>
+  <hr class="section-divider">
 
   <section class="cs reveal">
-    <div class="slabel">Research &amp; Insights</div>
+    <span class="section-label">Research &amp; Insights</span>
     <h2 class="stitle">Six Principles That Shaped Every Design Decision</h2>
     <div class="ig">
       <div class="ic"><div class="in">01</div><div class="it"><strong>Frequent ingredient references.</strong> Users constantly glance back at the ingredient list — persistent access to quantities at every step was essential.</div></div>
@@ -221,10 +221,10 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
     </div>
   </section>
 
-  <div class="div"></div>
+  <hr class="section-divider">
 
   <section class="cs reveal">
-    <div class="slabel">Interaction Design</div>
+    <span class="section-label">Interaction Design</span>
     <h2 class="stitle">Voice + Visual: Step by Step</h2>
     <p class="body">Each step has a corresponding visual state on Echo Spot and a spoken Alexa response. Core principle: <strong>the screen shows the current fact, the voice explains the current action.</strong></p>
         <div class="wf">
@@ -275,7 +275,7 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
   </section>
 
   <section class="cs reveal">
-    <div class="slabel">Product Demo</div>
+    <span class="section-label">Product Demo</span>
     <h2 class="stitle">See It in Action</h2>
     <p class="body">A working demo of Cook Along on Echo Spot — voice-guided, step-by-step cooking in a real kitchen context.</p>
     <div class="vw"><iframe src="https://www.youtube.com/embed/M6LIfdm2FzM" title="Alexa Cook Along Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
@@ -283,7 +283,7 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
   </section>
 
   <section class="cs reveal">
-    <div class="slabel">Voice Design</div>
+    <span class="section-label">Voice Design</span>
     <h2 class="stitle">The Golden Utterances</h2>
     <p class="body">Designing for voice means designing what people will <em>actually say</em> — not what the system expects.</p>
     <div class="ub">
@@ -302,13 +302,13 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
     <div class="pq"><p>"Cook Along wasn't a recipe reader. It was a <em>cooking partner</em> — something that responds when spoken to, stays quiet when not needed, and always knows where you are."</p></div>
   </section>
 
-  <div class="div"></div>
+  <hr class="section-divider">
 
   <section class="cs reveal">
-    <div class="slabel">Outcome &amp; Impact</div>
+    <span class="section-label">Outcome &amp; Impact</span>
     <h2 class="stitle">What Shipped — and What It Established</h2>
     <div class="ob">
-      <div class="slabel">Impact</div>
+      <span class="section-label">Impact</span>
       <p><strong>Cook Along shipped to 20M+ Alexa households</strong> across Echo Show and Echo Spot at first release in 2018.</p>
       <p>Cook Along <strong>established the multimodal interaction model</strong> for sequential tasks on Alexa. The patterns — voice-led navigation, step-anchored visuals, cross-surface consistency — became the foundation subsequent Alexa experiences were built on.</p>
       <p>It was an early proof of concept for <strong>ambient AI assistance</strong>: technology that doesn't demand your attention, but responds reliably when you need it.</p>
@@ -317,7 +317,7 @@ footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;paddin
   </section>
 
   <section class="cs reveal">
-    <div class="slabel">Reflection</div>
+    <span class="section-label">Reflection</span>
     <h2 class="stitle">What I'd Do Differently</h2>
     <p class="body">I would push for <strong>longitudinal research earlier</strong>. Our in-kitchen sessions were invaluable but point-in-time. Tracking households over six weeks would have surfaced insights about habit formation after novelty wore off.</p>
     <p class="body">I'd also design <strong>failure states as first-class artifacts</strong> from day one — the moments Alexa misheard a quantity, or a user lost their place after a 20-minute pause, deserved dedicated attention earlier in the process.</p>
