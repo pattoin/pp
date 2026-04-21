@@ -426,53 +426,37 @@
 
   
 
-  /* ── OVERFLOW FIX (final) ── */
-  html { overflow-x: hidden; }
-  body { overflow-x: hidden; width: 100%; }
-  /* Every block container is clipped and capped */
-  section, div, header, footer, nav, main {
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  /* Full-bleed strip containers */
-  .dark-strip, .notestar-strip, .accent-strip, .challenge-strip,
-  .system-section, .pig-strip, .mesh-strip, .split,
-  .probe-strip, .probe-cards {
-    overflow: hidden;
-  }
-  /* Every image fills its container */
-  img {
-    display: block;
+  /* ── OVERFLOW FIX: page wrapper creates real clipping context ── */
+  html, body { margin: 0; padding: 0; overflow-x: hidden; }
+  #page-wrap {
     width: 100%;
     max-width: 100%;
-    height: auto;
+    overflow-x: hidden;
+    overflow-y: visible;
+    position: relative;
   }
-  /* Restore special cases */
+  /* All grids must shrink to fit */
+  img { display: block; width: 100%; max-width: 100%; height: auto; }
   .nav-logo   { width: auto !important; height: 26px !important; max-width: none !important; }
   .hero-img   { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
   #lb-img, .lb-inner img { width: auto !important; max-width: 90vw !important; height: auto !important; }
-  /* Grid cells must shrink */
   .img-grid-2 > *, .img-grid-3 > *,
   .storyboard-grid > *, .phone-grid > *, .phone-grid-3 > *,
   .pig-strip > *, .pig-frame, .mesh-strip > *, .mesh-item,
   .split > *, .split-img { min-width: 0; overflow: hidden; }
 
-  /* ── FULL-BLEED FROM CONTAINER ── */
   .full-bleed-wrap {
     margin-left:  -48px;
     margin-right: -48px;
     overflow: hidden;
   }
-  @media(max-width:900px) {
-    .full-bleed-wrap { margin-left: -32px; margin-right: -32px; }
-  }
-  @media(max-width:640px) {
-    .full-bleed-wrap { margin-left: -20px; margin-right: -20px; }
-  }
+  @media(max-width:900px) { .full-bleed-wrap { margin-left: -32px; margin-right: -32px; } }
+  @media(max-width:640px) { .full-bleed-wrap { margin-left: -20px; margin-right: -20px; } }
 </style>
 
 </head>
 <body>
+<div id="page-wrap">
 
 <!-- NAV -->
 <nav id="nav">
@@ -596,7 +580,7 @@
 </section>
 
 <!-- FIELD PHOTO -->
-<div style="margin: 0;; overflow:hidden; max-width:100%; width:100%;">
+<div style="margin: 0;">
   <img class="full-img" src="images/wk3-1691x893.png" alt="Experience prototyping and role-playing session">
   <div class="container"><p class="img-caption">Experience prototyping with role-playing — simulating bank teller telepresence interactions to stress-test the interaction model before digital development.</p></div>
 </div>
@@ -634,10 +618,8 @@
     <h2>Designed for First-Time,<br>Every Time</h2>
     <p style="max-width: 640px;">Each user journey was mapped against the constraint that the system was already set up and waiting. No login, no tutorial — just clear affordances and progressive disclosure.</p>
   </div>
-  <div class="container" style="margin-top:40px;">
-    <div class="full-bleed-wrap">
-      <img class="full-img" src="images/wk4-1691x951.png" alt="User journey map for first-time public users">
-    </div>
+  <div style="margin-top: 40px;">
+    <img class="full-img" src="images/wk4-1691x951.png" alt="User journey map for first-time public users">
     <div class="container"><p class="img-caption">User Journey — First Time / Public Use. Designed around the constraint that Sprout is pre-configured and ready. Each persona's goal is achievable within minutes, without instruction.</p></div>
   </div>
   <div class="container">
@@ -698,14 +680,9 @@
     <h2>Real Users,<br>Real Spaces</h2>
     <p style="max-width: 640px;">Walk-UP deployed across museums, libraries, and educational events. Seeing the system in use — children in costume exploring the touch mat, elderly visitors scanning heirlooms, families collaborating side by side — validated the core UX hypothesis: delight is achievable without instruction.</p>
   </div>
-  <div class="container" style="margin-top:40px;">
-    <div class="full-bleed-wrap">
-      <div class="img-grid-2" style="margin:0;">
-
+  <div class="img-grid-2" style="margin: 40px 0 0;">
     <img src="images/wk7-1886x1886.jpeg" alt="Children using HP Sprout Walk-UP at a cultural event">
     <img src="images/wk7-2000x2000.jpg" alt="Children interacting with Sprout touch mat at event">
-      </div>
-    </div>
   </div>
   <div class="container">
     <p class="img-caption">Walk-UP deployed at a cultural education event — children in traditional dress using the touch mat intuitively, with no instruction required.</p>
@@ -842,5 +819,6 @@
     <button class="lb-close" onclick="closeLightbox(event)" aria-label="Close">&#x2715;</button>
   </div>
 </div>
+</div><!-- #page-wrap -->
 </body>
 </html>

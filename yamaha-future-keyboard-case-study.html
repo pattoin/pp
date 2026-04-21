@@ -243,53 +243,37 @@
 
   
 
-  /* ── OVERFLOW FIX (final) ── */
-  html { overflow-x: hidden; }
-  body { overflow-x: hidden; width: 100%; }
-  /* Every block container is clipped and capped */
-  section, div, header, footer, nav, main {
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  /* Full-bleed strip containers */
-  .dark-strip, .notestar-strip, .accent-strip, .challenge-strip,
-  .system-section, .pig-strip, .mesh-strip, .split,
-  .probe-strip, .probe-cards {
-    overflow: hidden;
-  }
-  /* Every image fills its container */
-  img {
-    display: block;
+  /* ── OVERFLOW FIX: page wrapper creates real clipping context ── */
+  html, body { margin: 0; padding: 0; overflow-x: hidden; }
+  #page-wrap {
     width: 100%;
     max-width: 100%;
-    height: auto;
+    overflow-x: hidden;
+    overflow-y: visible;
+    position: relative;
   }
-  /* Restore special cases */
+  /* All grids must shrink to fit */
+  img { display: block; width: 100%; max-width: 100%; height: auto; }
   .nav-logo   { width: auto !important; height: 26px !important; max-width: none !important; }
   .hero-img   { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
   #lb-img, .lb-inner img { width: auto !important; max-width: 90vw !important; height: auto !important; }
-  /* Grid cells must shrink */
   .img-grid-2 > *, .img-grid-3 > *,
   .storyboard-grid > *, .phone-grid > *, .phone-grid-3 > *,
   .pig-strip > *, .pig-frame, .mesh-strip > *, .mesh-item,
   .split > *, .split-img { min-width: 0; overflow: hidden; }
 
-  /* ── FULL-BLEED FROM CONTAINER ── */
   .full-bleed-wrap {
     margin-left:  -48px;
     margin-right: -48px;
     overflow: hidden;
   }
-  @media(max-width:900px) {
-    .full-bleed-wrap { margin-left: -32px; margin-right: -32px; }
-  }
-  @media(max-width:640px) {
-    .full-bleed-wrap { margin-left: -20px; margin-right: -20px; }
-  }
+  @media(max-width:900px) { .full-bleed-wrap { margin-left: -32px; margin-right: -32px; } }
+  @media(max-width:640px) { .full-bleed-wrap { margin-left: -20px; margin-right: -20px; } }
 </style>
 
 </head>
 <body>
+<div id="page-wrap">
 
 <nav id="nav">
   <a href="index.html" class="nav-name"><img src="nav-icon.png" class="nav-logo" alt=""> <span class="nav-text">Patricia Panqueva</span></a>
@@ -408,10 +392,8 @@
     <h2>From Scenarios<br>to Storyboards</h2>
     <p style="max-width:640px;">As the only designer among engineers, I led all UX ideation — sketching scenarios, mapping interaction flows, and building storyboards that communicated the vision to the team and to Yamaha stakeholders.</p>
   </div>
-  <div class="container" style="margin-top:40px;">
-    <div class="full-bleed-wrap">
-      <img class="full-img" src="images/yh1-2000x1502.jpeg" alt="Early sketches, storyboards and user scenario notes">
-    </div>
+  <div style="margin-top:40px;">
+    <img class="full-img" src="images/yh1-2000x1502.jpeg" alt="Early sketches, storyboards and user scenario notes">
     <div class="container"><p class="img-caption">Early sketching phase — scenario storyboards mapping Jenny and Marcelo's learning journeys, annotation flows, and social moments. Notes read: "Learning together is more fun!"</p></div>
   </div>
   <div class="container">
@@ -445,10 +427,7 @@
     <h2>Built with Paper,<br>Validated Fast</h2>
     <p style="max-width:640px;">With no design tools budget and an engineering-heavy team, paper prototyping was the fastest way to test interaction ideas, gather feedback, and iterate before writing a single line of code.</p>
   </div>
-  <div class="container" style="margin-top:40px;">
-    <div class="full-bleed-wrap">
-      <div class="img-grid-3" style="margin:0;">
-
+  <div class="img-grid-3" style="margin:40px 0 0;">
     <div>
       <img src="images/yh4-2000x1142.jpg" alt="Paper prototype: song looping UI with drag handles" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
       <div class="container" style="padding:0;"><p class="img-caption">Loop region prototype — blue acetate overlay + red dot handles to drag start/end points on sheet music. Tested gesture intuitiveness before digital implementation.</p></div>
@@ -460,8 +439,6 @@
     <div>
       <img src="images/yh6-2000x1501.jpg" alt="Paper prototype: song library and in-app shopping" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
       <div class="container" style="padding:0;"><p class="img-caption">Song library + integrated shopping — paper prototype for browsing and purchasing scores, with animated overlay cards tested by swapping printed panels.</p></div>
-    </div>
-      </div>
     </div>
   </div>
   <div class="container" style="margin-top:4px;">
@@ -533,14 +510,9 @@
     <h2>Tested with Teens,<br>Shown in Japan</h2>
     <p style="max-width:640px;">We brought hi-fi prototypes with popular music content to a group of mothers and teenagers aged 11 to 15. Observed behind one-way glass, their reactions — the spontaneous collaboration, the immediate reach for familiar songs — validated the core design hypothesis: <strong>motivation follows content and community, not curriculum.</strong></p>
   </div>
-  <div class="container" style="margin-top:40px;">
-    <div class="full-bleed-wrap">
-      <div class="img-grid-2" style="margin:0;">
-
+  <div class="img-grid-2" style="margin:40px 0 0;">
     <img src="images/yh11-1975x1112.jpg" alt="Hi-fi prototype user testing session with teenagers" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
     <img src="images/yh18-1800x1789.png" alt="Observers watching user testing through one-way glass" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;">
-      </div>
-    </div>
   </div>
   <div class="container">
     <p class="img-caption">User testing with teens aged 11–15 and their parents — observed through one-way glass. Spontaneous moments of collaborative play and peer motivation confirmed the social design direction.</p>
@@ -676,5 +648,6 @@
     <button class="lb-close" onclick="closeLightbox(event)" aria-label="Close">&#x2715;</button>
   </div>
 </div>
+</div><!-- #page-wrap -->
 </body>
 </html>

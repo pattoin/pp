@@ -225,53 +225,37 @@
 
   
 
-  /* ── OVERFLOW FIX (final) ── */
-  html { overflow-x: hidden; }
-  body { overflow-x: hidden; width: 100%; }
-  /* Every block container is clipped and capped */
-  section, div, header, footer, nav, main {
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  /* Full-bleed strip containers */
-  .dark-strip, .notestar-strip, .accent-strip, .challenge-strip,
-  .system-section, .pig-strip, .mesh-strip, .split,
-  .probe-strip, .probe-cards {
-    overflow: hidden;
-  }
-  /* Every image fills its container */
-  img {
-    display: block;
+  /* ── OVERFLOW FIX: page wrapper creates real clipping context ── */
+  html, body { margin: 0; padding: 0; overflow-x: hidden; }
+  #page-wrap {
     width: 100%;
     max-width: 100%;
-    height: auto;
+    overflow-x: hidden;
+    overflow-y: visible;
+    position: relative;
   }
-  /* Restore special cases */
+  /* All grids must shrink to fit */
+  img { display: block; width: 100%; max-width: 100%; height: auto; }
   .nav-logo   { width: auto !important; height: 26px !important; max-width: none !important; }
   .hero-img   { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
   #lb-img, .lb-inner img { width: auto !important; max-width: 90vw !important; height: auto !important; }
-  /* Grid cells must shrink */
   .img-grid-2 > *, .img-grid-3 > *,
   .storyboard-grid > *, .phone-grid > *, .phone-grid-3 > *,
   .pig-strip > *, .pig-frame, .mesh-strip > *, .mesh-item,
   .split > *, .split-img { min-width: 0; overflow: hidden; }
 
-  /* ── FULL-BLEED FROM CONTAINER ── */
   .full-bleed-wrap {
     margin-left:  -48px;
     margin-right: -48px;
     overflow: hidden;
   }
-  @media(max-width:900px) {
-    .full-bleed-wrap { margin-left: -32px; margin-right: -32px; }
-  }
-  @media(max-width:640px) {
-    .full-bleed-wrap { margin-left: -20px; margin-right: -20px; }
-  }
+  @media(max-width:900px) { .full-bleed-wrap { margin-left: -32px; margin-right: -32px; } }
+  @media(max-width:640px) { .full-bleed-wrap { margin-left: -20px; margin-right: -20px; } }
 </style>
 
 </head>
 <body>
+<div id="page-wrap">
 
 <nav id="nav">
   <a href="index.html" class="nav-name"><img src="nav-icon.png" class="nav-logo" alt="Panqueva Design logo"> Patricia Panqueva</a>
@@ -360,14 +344,9 @@
     <h2>A Transparent Pass<br>That Glows with the City</h2>
     <p style="max-width:640px;">The physical design of the pass was central to the concept. Transparent, thin, and beautiful — it was designed to feel like holding a piece of the city itself. The generative visual patterns on each pass reflected the character and energy of different venues and promotions.</p>
   </div>
-  <div class="container" style="margin-top:40px;">
-    <div class="full-bleed-wrap">
-      <div class="img-grid-2" style="margin:0;">
-
+  <div class="img-grid-2" style="margin:40px 0 0;">
     <img src="images/gc9-1691x1327.png" alt="Transparent Glowing Citizens pass held up against the city street" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
     <img src="images/gc9-2000x1569.png" alt="Green transparent pass with city storefront behind it" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
-      </div>
-    </div>
   </div>
   <div class="container">
     <p class="img-caption">The transparent pass held against the city — literally a window onto urban life. Location-aware promotions from nearby venues appeared on the pass display as you moved through the street.</p>
@@ -406,7 +385,7 @@
 </section>
 
 <!-- RESEARCH PHOTOS -->
-<div style="margin:0;; overflow:hidden; max-width:100%; width:100%;">
+<div style="margin:0;">
   <img class="full-img" src="images/gc-4-1-1691x846.png" alt="Urban probes photographic timeline — commuter experience research">
   <div class="container"><p class="img-caption">Urban Probes output — participants' commute photographs assembled into a continuous timeline. The sequence reveals what captures attention in transit: signage, light, faces, the blur of passing architecture.</p></div>
 </div>
@@ -607,5 +586,6 @@
     <button class="lb-close" onclick="closeLightbox(event)" aria-label="Close">&#x2715;</button>
   </div>
 </div>
+</div><!-- #page-wrap -->
 </body>
 </html>
