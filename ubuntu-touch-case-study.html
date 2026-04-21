@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ubuntu Touch — Patricia Panqueva</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="icon" type="image/png" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMWExODE0Ii8+PHRleHQgeD0iMTYiIHk9IjIzIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2Y0ZjJlZSIgbGV0dGVyLXNwYWNpbmc9IjEiPlBQPC90ZXh0Pjwvc3ZnPg==">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -27,16 +29,7 @@
   .nav-link:hover{color:var(--ink);}
   .nav-cta{margin-left:8px;padding:7px 20px;background:var(--ink);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:opacity .15s;border:1.5px solid var(--ink);}
   .nav-cta:hover{opacity:.8;}
-  
-  /* IMAGES */
-  .full-img { width: 100%; display: block; }
-  .img-caption { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; margin-top: 12px; font-style: italic; }
-  .img-caption-light { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; margin-top: 12px; font-style: italic; }
-  .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 40px 0; }
-  .img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin: 40px 0; }
-  .img-grid-2 img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
-  .img-grid-3 img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
-@media(max-width:640px){.nav-link.hm{display:none;} .nav-text { display: none; } .nav-text{display:none;}}
+  @media(max-width:640px){.nav-link.hm{display:none;} .nav-text { display: none; } .nav-text{display:none;}}
   @media(max-width:400px){.nav-cta{display:none;}}
 
   .hero { position: relative; height: 80vh; min-height: 520px; overflow: hidden; background: var(--ubuntu-plum); margin-top: 52px; }
@@ -121,7 +114,6 @@
   .f-copy{font-size:.6rem;color:rgba(255,255,255,.5);white-space:nowrap;letter-spacing:.08em;text-align:right;align-self:center;}
 
   /* ── TABLET 900px ── */
-
   @media(max-width:900px){
     .container { padding: 0 32px; }
     .intro-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -186,8 +178,8 @@
   @media(max-width:480px){ .scroll-top { bottom: 20px; right: 20px; width: 42px; height: 42px; } }
   
   .nav-name { display: flex; align-items: center; gap: 8px; }
-  .nav-logo { height: 26px; width: auto; display: block; flex-shrink: 0; }
-</style>
+  .nav-logo { height: 24px; width: auto; display: block; }
+  </style>
 </head>
 <body>
 
@@ -196,7 +188,7 @@
 </script>
 
 <nav id="nav">
-  <a href="index.html" class="nav-name"><img src="nav-icon.png" class="nav-logo" alt=""> <span class="nav-text">Patricia Panqueva</span></a>
+  <a href="index.html" class="nav-name"><img src="favicon.png" class="nav-logo" alt=""> <span class="nav-text">Patricia Panqueva</span></a>
   <ul class="nav-links">
     <li><a href="index.html#work" class="nav-link hm">Work</a></li>
     <li><a href="about.html" class="nav-link">About</a></li>
