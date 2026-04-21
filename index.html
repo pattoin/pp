@@ -77,11 +77,11 @@ nav.scrolled{height:44px;}
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 64px 80px;
+  padding: 56px 80px 88px;
 }
 .hero-eyebrow {
-  font-size: .64rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(255,255,255,.5); margin-bottom: 14px;
+  font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  color: #fff; margin-bottom: 16px;
 }
 .hero-h1 {
   font-family: 'Bebas Neue', sans-serif;
@@ -344,14 +344,17 @@ footer{
   .scroll-top svg { width: 20px; height: 20px; }
   @media(max-width:480px){ .scroll-top { bottom: 20px; right: 20px; width: 42px; height: 42px; } }
   
+  @media(max-width:900px){
+    .hero-overlay { padding: 40px 32px 64px; }
+  }
   @media(max-width:640px){
-    .hero-overlay { padding: 40px 24px; }
+    .hero-overlay { padding: 32px 20px 48px; }
     .hero-h1 { font-size: clamp(48px, 11vw, 72px); }
     .hero-desc { max-width: 100%; }
   }
   @media(max-width:480px){
-    .hero { min-height: 100svh; }
-    .hero-overlay { padding: 32px 20px; }
+    .hero { min-height: calc(100svh - 52px); }
+    .hero-overlay { padding: 28px 20px 40px; }
     .hero-actions { flex-direction: column; }
     .h-btn { text-align: center; }
   }
