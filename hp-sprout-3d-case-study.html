@@ -272,15 +272,18 @@
   
   .nav-name { display: flex; align-items: center; gap: 8px; }
   .nav-logo { height: 26px; width: auto; display: block; flex-shrink: 0; }
-  
-  /* GRID OVERFLOW FIX — min-width:0 prevents native img size from busting out of grid cells */
-  .img-grid-2 > *, .img-grid-3 > *, .mesh-strip > *, .pig-strip > * {
-    min-width: 0;
-    overflow: hidden;
-  }
-  .img-grid-2 img, .img-grid-3 img, .mesh-strip img, .pig-strip img {
+  /* ── GLOBAL IMAGE OVERFLOW FIX ─────────────────────────────────────────
+     Prevents any image from exceeding its container width.
+     Targets all content images; excludes hero, nav logo, lightbox.      */
+  body { overflow-x: hidden; }
+  img:not(.hero-img):not(.nav-logo):not(#lb-img) {
     max-width: 100%;
     min-width: 0;
+    height: auto;
+  }
+  /* Restore explicit heights where needed */
+  .hero-img, .split-img img, .pig-frame img, .mesh-item img {
+    height: 100%;
   }
 </style>
 

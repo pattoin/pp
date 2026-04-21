@@ -222,15 +222,18 @@
   
   .nav-name { display: flex; align-items: center; gap: 8px; }
   .nav-logo { height: 24px; width: auto; display: block; }
-  
-  /* GRID OVERFLOW FIX — min-width:0 prevents native img size from busting out of grid cells */
-  .img-grid-2 > *, .img-grid-3 > * {
-    min-width: 0;
-    overflow: hidden;
-  }
-  .img-grid-2 img, .img-grid-3 img {
+  /* ── GLOBAL IMAGE OVERFLOW FIX ─────────────────────────────────────────
+     Prevents any image from exceeding its container width.
+     Targets all content images; excludes hero, nav logo, lightbox.      */
+  body { overflow-x: hidden; }
+  img:not(.hero-img):not(.nav-logo):not(#lb-img) {
     max-width: 100%;
     min-width: 0;
+    height: auto;
+  }
+  /* Restore explicit heights where needed */
+  .hero-img, .split-img img, .pig-frame img, .mesh-item img {
+    height: 100%;
   }
 </style>
 
@@ -301,7 +304,7 @@
   <span class="section-label">The Vision</span>
   <h2>"A Window to See<br>Through the Buildings"</h2>
   <p style="max-width:700px;font-size:18px;line-height:1.65;">Glowing Citizens proposed a <strong>lightweight, disposable digital pass</strong> — a daily or monthly transit ticket redesigned as an interactive portal into city life. As commuters moved through the urban landscape, the pass responded to their location, surfacing contextual offers and promotions from nearby places — without ever requiring them to stop, tap, or search.</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-top:48px;">
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:4px;margin-top:48px;">
     <div style="background:rgba(255,255,255,0.06);padding:32px 28px;">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:#fff;margin-bottom:12px;">TRANSIT PASS</div>
       <p style="font-size:14px;margin:0;color:rgba(255,255,255,0.55);">The physical form factor everyone already carries — a daily or monthly bus/tram ticket — redesigned as a connected device.</p>
