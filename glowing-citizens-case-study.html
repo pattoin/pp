@@ -223,42 +223,37 @@
   .nav-name { display: flex; align-items: center; gap: 8px; }
   .nav-logo { height: 24px; width: auto; display: block; }
 
-    
-  /* ── DEFINITIVE OVERFLOW FIX ──────────────────────────────────────────
-     width:100% on html+body sets explicit containing block width.
-     overflow:hidden on html clips any child that escapes.
-     max-width:100% + overflow:hidden on all block containers ensures
-     no section, div, or full-bleed wrapper ever exceeds viewport. */
-  html {
-    width: 100%;
-    overflow-x: hidden;
-  }
-  body {
+  
+
+  /* ── OVERFLOW DEFINITIVE FIX ───────────────────────────────────────────
+     Explicit width:100% on html+body+section prevents any element
+     from ever exceeding viewport width. overflow:hidden clips anything
+     that tries to escape. The img rule forces ALL images to fill their
+     container. Special cases restore nav-logo, hero, and lightbox. */
+  html, body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
   }
-  section, header, footer, main, article, aside, nav {
+  section, div, article, aside, header, footer, main {
     max-width: 100%;
-    overflow-x: hidden;
+    box-sizing: border-box;
   }
   img {
     display: block;
-    max-width: 100%;
     width: 100%;
+    max-width: 100%;
     height: auto;
   }
-  .nav-logo { width: auto !important; height: 26px !important; max-width: none !important; }
-  .hero-img { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
+  .nav-logo   { width: auto !important; height: 26px !important; max-width: none !important; }
+  .hero-img   { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
   .lb-inner img { width: auto !important; max-width: 90vw !important; height: auto !important; }
-  /* Grid cells must shrink */
   .img-grid-2 > *, .img-grid-3 > *,
   .storyboard-grid > *,
   .phone-grid > *, .phone-grid-3 > *,
   .pig-strip > *, .pig-frame,
   .mesh-strip > *, .mesh-item,
   .split > *, .split-img { min-width: 0; overflow: hidden; }
-
 </style>
 
 </head>
@@ -328,7 +323,7 @@
   <span class="section-label">The Vision</span>
   <h2>"A Window to See<br>Through the Buildings"</h2>
   <p style="max-width:700px;font-size:18px;line-height:1.65;">Glowing Citizens proposed a <strong>lightweight, disposable digital pass</strong> — a daily or monthly transit ticket redesigned as an interactive portal into city life. As commuters moved through the urban landscape, the pass responded to their location, surfacing contextual offers and promotions from nearby places — without ever requiring them to stop, tap, or search.</p>
-  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:4px;margin-top:48px;">
+  <div style="display:grid;grid-template-columns: minmax(0,minmax(0, 1fr)) minmax(0,minmax(0, 1fr)) minmax(0,minmax(0, 1fr));gap:4px;margin-top:48px;">
     <div style="background:rgba(255,255,255,0.06);padding:32px 28px;">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:#fff;margin-bottom:12px;">TRANSIT PASS</div>
       <p style="font-size:14px;margin:0;color:rgba(255,255,255,0.55);">The physical form factor everyone already carries — a daily or monthly bus/tram ticket — redesigned as a connected device.</p>

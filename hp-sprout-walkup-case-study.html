@@ -424,42 +424,37 @@
   .nav-name { display: flex; align-items: center; gap: 8px; }
   .nav-logo { height: 26px; width: auto; display: block; flex-shrink: 0; }
 
-    
-  /* ── DEFINITIVE OVERFLOW FIX ──────────────────────────────────────────
-     width:100% on html+body sets explicit containing block width.
-     overflow:hidden on html clips any child that escapes.
-     max-width:100% + overflow:hidden on all block containers ensures
-     no section, div, or full-bleed wrapper ever exceeds viewport. */
-  html {
-    width: 100%;
-    overflow-x: hidden;
-  }
-  body {
+  
+
+  /* ── OVERFLOW DEFINITIVE FIX ───────────────────────────────────────────
+     Explicit width:100% on html+body+section prevents any element
+     from ever exceeding viewport width. overflow:hidden clips anything
+     that tries to escape. The img rule forces ALL images to fill their
+     container. Special cases restore nav-logo, hero, and lightbox. */
+  html, body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
   }
-  section, header, footer, main, article, aside, nav {
+  section, div, article, aside, header, footer, main {
     max-width: 100%;
-    overflow-x: hidden;
+    box-sizing: border-box;
   }
   img {
     display: block;
-    max-width: 100%;
     width: 100%;
+    max-width: 100%;
     height: auto;
   }
-  .nav-logo { width: auto !important; height: 26px !important; max-width: none !important; }
-  .hero-img { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
+  .nav-logo   { width: auto !important; height: 26px !important; max-width: none !important; }
+  .hero-img   { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
   .lb-inner img { width: auto !important; max-width: 90vw !important; height: auto !important; }
-  /* Grid cells must shrink */
   .img-grid-2 > *, .img-grid-3 > *,
   .storyboard-grid > *,
   .phone-grid > *, .phone-grid-3 > *,
   .pig-strip > *, .pig-frame,
   .mesh-strip > *, .mesh-item,
   .split > *, .split-img { min-width: 0; overflow: hidden; }
-
 </style>
 
 </head>
