@@ -228,6 +228,12 @@
   .nav-logo { width: auto !important; max-width: none !important; height: 26px !important; }
   .hero-img { height: 100% !important; max-width: none !important; }
   #lb-img, .lb-inner img { width: auto !important; max-width: 90vw !important; height: auto !important; }
+  /* ── GRID CELL & SECTION OVERFLOW CONTAINMENT ── */
+  html { overflow-x: hidden; }
+  section, .challenge-strip, .system-section { overflow-x: hidden; }
+  .img-grid-2 > *, .img-grid-3 > * { min-width: 0; overflow: hidden; }
+  .persona-row > *, .process-steps > *, .outcome-row > * { min-width: 0; }
+
 </style>
 
 </head>
