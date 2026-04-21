@@ -426,21 +426,42 @@
 
   
 
-  /* ── OVERFLOW FIX ── */
-  html, body { overflow-x: hidden; }
-  img { max-width: 100%; display: block; height: auto; }
-  .nav-logo { width: auto !important; height: 26px !important; max-width: none !important; }
-  .hero-img { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
-  .lb-inner img { width: auto !important; max-width: 90vw !important; height: auto !important; }
+  /* ── OVERFLOW FIX (final) ── */
+  html { overflow-x: hidden; }
+  body { overflow-x: hidden; width: 100%; }
+  /* Every block container is clipped and capped */
+  section, div, header, footer, nav, main {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  /* Full-bleed strip containers */
+  .dark-strip, .notestar-strip, .accent-strip, .challenge-strip,
+  .system-section, .pig-strip, .mesh-strip, .split,
+  .probe-strip, .probe-cards {
+    overflow: hidden;
+  }
+  /* Every image fills its container */
+  img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  /* Restore special cases */
+  .nav-logo   { width: auto !important; height: 26px !important; max-width: none !important; }
+  .hero-img   { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
+  #lb-img, .lb-inner img { width: auto !important; max-width: 90vw !important; height: auto !important; }
+  /* Grid cells must shrink */
   .img-grid-2 > *, .img-grid-3 > *,
   .storyboard-grid > *, .phone-grid > *, .phone-grid-3 > *,
   .pig-strip > *, .pig-frame, .mesh-strip > *, .mesh-item,
   .split > *, .split-img { min-width: 0; overflow: hidden; }
 
-  /* ── FULL-BLEED IMAGES FROM WITHIN CONTAINER ── */
+  /* ── FULL-BLEED FROM CONTAINER ── */
   .full-bleed-wrap {
     margin-left:  -48px;
     margin-right: -48px;
+    overflow: hidden;
   }
   @media(max-width:900px) {
     .full-bleed-wrap { margin-left: -32px; margin-right: -32px; }
@@ -448,7 +469,6 @@
   @media(max-width:640px) {
     .full-bleed-wrap { margin-left: -20px; margin-right: -20px; }
   }
-
 </style>
 
 </head>
@@ -576,7 +596,7 @@
 </section>
 
 <!-- FIELD PHOTO -->
-<div style="margin: 0;">
+<div style="margin: 0;; overflow:hidden; max-width:100%; width:100%;">
   <img class="full-img" src="images/wk3-1691x893.png" alt="Experience prototyping and role-playing session">
   <div class="container"><p class="img-caption">Experience prototyping with role-playing — simulating bank teller telepresence interactions to stress-test the interaction model before digital development.</p></div>
 </div>
