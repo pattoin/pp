@@ -424,39 +424,15 @@
   .nav-name { display: flex; align-items: center; gap: 8px; }
   .nav-logo { height: 26px; width: auto; display: block; flex-shrink: 0; }
 
-  
-
-  /* ── OVERFLOW FIX: page wrapper creates real clipping context ── */
-  html, body { margin: 0; padding: 0; overflow-x: hidden; }
-  #page-wrap {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    overflow-y: visible;
-    position: relative;
-  }
-  /* All grids must shrink to fit */
-  img { display: block; width: 100%; max-width: 100%; height: auto; }
-  .nav-logo   { width: auto !important; height: 26px !important; max-width: none !important; }
-  .hero-img   { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
+  /* ── IMAGE OVERFLOW FIX ── */
+  img { width: 100%; max-width: 100%; height: auto; display: block; }
+  .nav-logo { width: auto !important; max-width: none !important; height: 26px !important; }
+  .hero-img { height: 100% !important; max-width: none !important; }
   #lb-img, .lb-inner img { width: auto !important; max-width: 90vw !important; height: auto !important; }
-  .img-grid-2 > *, .img-grid-3 > *,
-  .storyboard-grid > *, .phone-grid > *, .phone-grid-3 > *,
-  .pig-strip > *, .pig-frame, .mesh-strip > *, .mesh-item,
-  .split > *, .split-img { min-width: 0; overflow: hidden; }
-
-  .full-bleed-wrap {
-    margin-left:  -48px;
-    margin-right: -48px;
-    overflow: hidden;
-  }
-  @media(max-width:900px) { .full-bleed-wrap { margin-left: -32px; margin-right: -32px; } }
-  @media(max-width:640px) { .full-bleed-wrap { margin-left: -20px; margin-right: -20px; } }
 </style>
 
 </head>
 <body>
-<div id="page-wrap">
 
 <!-- NAV -->
 <nav id="nav">
@@ -819,6 +795,5 @@
     <button class="lb-close" onclick="closeLightbox(event)" aria-label="Close">&#x2715;</button>
   </div>
 </div>
-</div><!-- #page-wrap -->
 </body>
 </html>
