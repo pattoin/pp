@@ -225,35 +225,29 @@
 
   
 
-  /* ── OVERFLOW DEFINITIVE FIX ───────────────────────────────────────────
-     Explicit width:100% on html+body+section prevents any element
-     from ever exceeding viewport width. overflow:hidden clips anything
-     that tries to escape. The img rule forces ALL images to fill their
-     container. Special cases restore nav-logo, hero, and lightbox. */
-  html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-  section, div, article, aside, header, footer, main {
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  img {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  .nav-logo   { width: auto !important; height: 26px !important; max-width: none !important; }
-  .hero-img   { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
+  /* ── OVERFLOW FIX ── */
+  html, body { overflow-x: hidden; }
+  img { max-width: 100%; display: block; height: auto; }
+  .nav-logo { width: auto !important; height: 26px !important; max-width: none !important; }
+  .hero-img { width: 100% !important; height: 100% !important; max-width: none !important; object-fit: cover !important; }
   .lb-inner img { width: auto !important; max-width: 90vw !important; height: auto !important; }
   .img-grid-2 > *, .img-grid-3 > *,
-  .storyboard-grid > *,
-  .phone-grid > *, .phone-grid-3 > *,
-  .pig-strip > *, .pig-frame,
-  .mesh-strip > *, .mesh-item,
+  .storyboard-grid > *, .phone-grid > *, .phone-grid-3 > *,
+  .pig-strip > *, .pig-frame, .mesh-strip > *, .mesh-item,
   .split > *, .split-img { min-width: 0; overflow: hidden; }
+
+  /* ── FULL-BLEED IMAGES FROM WITHIN CONTAINER ── */
+  .full-bleed-wrap {
+    margin-left:  -48px;
+    margin-right: -48px;
+  }
+  @media(max-width:900px) {
+    .full-bleed-wrap { margin-left: -32px; margin-right: -32px; }
+  }
+  @media(max-width:640px) {
+    .full-bleed-wrap { margin-left: -20px; margin-right: -20px; }
+  }
+
 </style>
 
 </head>
@@ -346,9 +340,14 @@
     <h2>A Transparent Pass<br>That Glows with the City</h2>
     <p style="max-width:640px;">The physical design of the pass was central to the concept. Transparent, thin, and beautiful — it was designed to feel like holding a piece of the city itself. The generative visual patterns on each pass reflected the character and energy of different venues and promotions.</p>
   </div>
-  <div class="img-grid-2" style="margin:40px 0 0;">
+  <div class="container" style="margin-top:40px;">
+    <div class="full-bleed-wrap">
+      <div class="img-grid-2" style="margin:0;">
+
     <img src="images/gc9-1691x1327.png" alt="Transparent Glowing Citizens pass held up against the city street" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
     <img src="images/gc9-2000x1569.png" alt="Green transparent pass with city storefront behind it" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;">
+      </div>
+    </div>
   </div>
   <div class="container">
     <p class="img-caption">The transparent pass held against the city — literally a window onto urban life. Location-aware promotions from nearby venues appeared on the pass display as you moved through the street.</p>
