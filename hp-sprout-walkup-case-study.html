@@ -423,18 +423,25 @@
   
   .nav-name { display: flex; align-items: center; gap: 8px; }
   .nav-logo { height: 26px; width: auto; display: block; flex-shrink: 0; }
-  /* ── GLOBAL IMAGE OVERFLOW FIX ─────────────────────────────────────────
-     Prevents any image from exceeding its container width.
-     Targets all content images; excludes hero, nav logo, lightbox.      */
-  body { overflow-x: hidden; }
-  img:not(.hero-img):not(.nav-logo):not(#lb-img) {
-    max-width: 100%;
+
+  /* ── OVERFLOW FIX (definitive) ─────────────────────────────────────────
+     html+body both needed — body alone doesn't stop viewport scrollbar.
+     max-width:100% on img catches bare imgs that no class selector reaches.
+     min-width:0 + overflow:hidden on grid cells stops intrinsic-size blowout.  */
+  html, body { overflow-x: hidden; }
+  img { max-width: 100%; }
+  /* restore elements that need height:100% */
+  .hero-img { height: 100%; max-width: none; }
+  .split-img img, .pig-frame img, .mesh-item img { height: 100%; }
+  /* grid cells: allow shrinking, clip overflow */
+  .img-grid-2 > *, .img-grid-3 > * {
     min-width: 0;
-    height: auto;
+    overflow: hidden;
   }
-  /* Restore explicit heights where needed */
-  .hero-img, .split-img img, .pig-frame img, .mesh-item img {
-    height: 100%;
+  /* grid images: prevent natural size from setting min-width of cell */
+  .img-grid-2 img, .img-grid-3 img {
+    width: 100%;
+    min-width: 0;
   }
 </style>
 
@@ -453,7 +460,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-img" src="wk2-1691x1268.jpeg" alt="Children engaging with HP Sprout Walk-UP in a museum">
+  <img class="hero-img" src="images/wk2-1691x1268.jpeg" alt="Children engaging with HP Sprout Walk-UP in a museum">
   <div class="hero-overlay">
     <span class="hero-tag">HP Inc. · 2016</span>
     <h1 class="hero-title">HP Sprout<br>Walk-UP</h1>
@@ -564,7 +571,7 @@
 
 <!-- FIELD PHOTO -->
 <div style="margin: 0;">
-  <img class="full-img" src="wk3-1691x893.png" alt="Experience prototyping and role-playing session">
+  <img class="full-img" src="images/wk3-1691x893.png" alt="Experience prototyping and role-playing session">
   <div class="container"><p class="img-caption">Experience prototyping with role-playing — simulating bank teller telepresence interactions to stress-test the interaction model before digital development.</p></div>
 </div>
 
@@ -602,21 +609,21 @@
     <p style="max-width: 640px;">Each user journey was mapped against the constraint that the system was already set up and waiting. No login, no tutorial — just clear affordances and progressive disclosure.</p>
   </div>
   <div style="margin-top: 40px;">
-    <img class="full-img" src="wk4-1691x951.png" alt="User journey map for first-time public users">
+    <img class="full-img" src="images/wk4-1691x951.png" alt="User journey map for first-time public users">
     <div class="container"><p class="img-caption">User Journey — First Time / Public Use. Designed around the constraint that Sprout is pre-configured and ready. Each persona's goal is achievable within minutes, without instruction.</p></div>
   </div>
   <div class="container">
     <div class="img-grid-3" style="margin-top: 40px;">
       <div>
-        <img src="wks1-1980x1114.png" alt="Walk-UP user journey: select capture activity" style="width:100%; display:block;">
+        <img src="images/wks1-1980x1114.png" alt="Walk-UP user journey: select capture activity" style="width:100%; display:block;">
         <p class="img-caption">B. Select an activity — camera icon prominent on both vertical screen and touch mat</p>
       </div>
       <div>
-        <img src="wks2-1800x1013.png" alt="Walk-UP user journey: position object on touch mat" style="width:100%; display:block;">
+        <img src="images/wks2-1800x1013.png" alt="Walk-UP user journey: position object on touch mat" style="width:100%; display:block;">
         <p class="img-caption">B. Position object — live preview on vertical screen guides placement</p>
       </div>
       <div>
-        <img src="wks3-1800x1013.png" alt="Walk-UP user journey: capture document" style="width:100%; display:block;">
+        <img src="images/wks3-1800x1013.png" alt="Walk-UP user journey: capture document" style="width:100%; display:block;">
         <p class="img-caption">C. Capture — one tap, document captured. Session timer visible at all times</p>
       </div>
     </div>
@@ -629,7 +636,7 @@
   <h2>A Platform, Not a Feature</h2>
   <p style="max-width: 660px; color: var(--muted);">Walk-UP was designed as a complete ecosystem — not a skin on top of Sprout's existing software. It comprised a <strong>Configurator Tool</strong> for administrators, an optional <strong>Control Center</strong> for multi-device fleet management, and a <strong>locked-down visitor experience</strong> with timed sessions, curated apps, and multiple output paths.</p>
   <div style="margin-top: 40px;">
-    <img class="full-img" src="wk11-1691x951.png" alt="Walk-UP system architecture diagram">
+    <img class="full-img" src="images/wk11-1691x951.png" alt="Walk-UP system architecture diagram">
     <p class="img-caption" style="margin-top: 12px;">System architecture: Configurator Tool (A), optional Control Center for multi-unit management (B), and the locked-down public experience (C) with session management, output options, and curated app selection.</p>
   </div>
 </div>
@@ -650,7 +657,7 @@
       </div>
     </div>
     <div style="margin-top: 40px;">
-      <img class="full-img" src="wk5-1-1691x951.png" alt="Branding and adaptability — museum and office contexts">
+      <img class="full-img" src="images/wk5-1-1691x951.png" alt="Branding and adaptability — museum and office contexts">
       <p class="img-caption">Museum and office deployment contexts — same hardware, radically different brand expressions. The configurator enabled this without engineering changes.</p>
     </div>
   </div>
@@ -664,13 +671,13 @@
     <p style="max-width: 640px;">Walk-UP deployed across museums, libraries, and educational events. Seeing the system in use — children in costume exploring the touch mat, elderly visitors scanning heirlooms, families collaborating side by side — validated the core UX hypothesis: delight is achievable without instruction.</p>
   </div>
   <div class="img-grid-2" style="margin: 40px 0 0;">
-    <img src="wk7-1886x1886.jpeg" alt="Children using HP Sprout Walk-UP at a cultural event">
-    <img src="wk7-2000x2000.jpg" alt="Children interacting with Sprout touch mat at event">
+    <img src="images/wk7-1886x1886.jpeg" alt="Children using HP Sprout Walk-UP at a cultural event">
+    <img src="images/wk7-2000x2000.jpg" alt="Children interacting with Sprout touch mat at event">
   </div>
   <div class="container">
     <p class="img-caption">Walk-UP deployed at a cultural education event — children in traditional dress using the touch mat intuitively, with no instruction required.</p>
     <div style="margin-top: 40px;">
-      <img class="full-img" src="wk10-1691x952.jpg" alt="Designer testing Walk-UP in HP lab with physical objects">
+      <img class="full-img" src="images/wk10-1691x952.jpg" alt="Designer testing Walk-UP in HP lab with physical objects">
       <p class="img-caption">Lab testing — exploring the capture interaction with physical objects on the touch mat, validating the overhead camera's live preview UX before finalizing interaction flows.</p>
     </div>
   </div>
@@ -750,6 +757,10 @@
   <div class="f-copy">© 2026 — All Rights Reserved</div>
 </footer>
 
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
   // Nav shrink on scroll
   const nav = document.getElementById('nav');
@@ -792,9 +803,6 @@
   }
 </script>
 
-<button class="scroll-top" id="scrollTop" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" onclick="closeLightbox(event)">
   <div class="lb-inner">
     <img id="lb-img" src="" alt="">

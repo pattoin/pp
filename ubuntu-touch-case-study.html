@@ -163,6 +163,7 @@
   /* LIGHTBOX */
   .zoomable { cursor: zoom-in; transition: opacity .2s; }
   .zoomable:hover { opacity: .88; }
+  .full-img { width: 100%; display: block; }
   .lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.93); align-items: center; justify-content: center; }
   .lightbox.open { display: flex; }
   .lb-inner { position: relative; max-width: 92vw; max-height: 92vh; display: flex; align-items: center; justify-content: center; }
@@ -179,18 +180,25 @@
   
   .nav-name { display: flex; align-items: center; gap: 8px; }
   .nav-logo { height: 24px; width: auto; display: block; }
-  /* ── GLOBAL IMAGE OVERFLOW FIX ─────────────────────────────────────────
-     Prevents any image from exceeding its container width.
-     Targets all content images; excludes hero, nav logo, lightbox.      */
-  body { overflow-x: hidden; }
-  img:not(.hero-img):not(.nav-logo):not(#lb-img) {
-    max-width: 100%;
+
+  /* ── OVERFLOW FIX (definitive) ─────────────────────────────────────────
+     html+body both needed — body alone doesn't stop viewport scrollbar.
+     max-width:100% on img catches bare imgs that no class selector reaches.
+     min-width:0 + overflow:hidden on grid cells stops intrinsic-size blowout.  */
+  html, body { overflow-x: hidden; }
+  img { max-width: 100%; }
+  /* restore elements that need height:100% */
+  .hero-img { height: 100%; max-width: none; }
+  .split-img img, .pig-frame img, .mesh-item img { height: 100%; }
+  /* grid cells: allow shrinking, clip overflow */
+  .img-grid-2 > *, .img-grid-3 > * {
     min-width: 0;
-    height: auto;
+    overflow: hidden;
   }
-  /* Restore explicit heights where needed */
-  .hero-img, .split-img img, .pig-frame img, .mesh-item img {
-    height: 100%;
+  /* grid images: prevent natural size from setting min-width of cell */
+  .img-grid-2 img, .img-grid-3 img {
+    width: 100%;
+    min-width: 0;
   }
 </style>
 </head>
@@ -474,6 +482,10 @@
   <div class="f-copy">© 2026 — All Rights Reserved</div>
 </footer>
 
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
   // Nav shrink on scroll
   const nav = document.getElementById('nav');
@@ -516,9 +528,6 @@
   }
 </script>
 
-<button class="scroll-top" id="scrollTop" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" onclick="closeLightbox(event)">
   <div class="lb-inner">
     <img id="lb-img" src="" alt="">
