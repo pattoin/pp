@@ -203,7 +203,17 @@
   
   .nav-name { display: flex; align-items: center; gap: 8px; }
   .nav-logo { height: 26px; width: auto; display: block; flex-shrink: 0; }
-  </style>
+  
+  /* GRID OVERFLOW FIX — min-width:0 prevents native img size from busting out of grid cells */
+  .img-grid-2 > *, .img-grid-3 > *, .phone-grid > *, .phone-grid-3 > * {
+    min-width: 0;
+    overflow: hidden;
+  }
+  .img-grid-2 img, .img-grid-3 img, .phone-grid img, .phone-grid-3 img {
+    max-width: 100%;
+    min-width: 0;
+  }
+</style>
 
 </head>
 <body>
