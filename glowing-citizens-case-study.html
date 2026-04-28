@@ -243,7 +243,7 @@
   <a href="index.html" class="nav-name"><img src="nav-icon.png" class="nav-logo" alt="Panqueva Design logo"> <span class="nav-text">Patricia Panqueva</span></a>
   <ul class="nav-links">
     <li><a href="index.html#work" class="nav-link hm">Work</a></li>
-    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="about.html" class="nav-link hm">About</a></li>
     <li><a href="mailto:patricia.panqueva@gmail.com" class="nav-cta">Say Hello</a></li>
   </ul>
 </nav>
@@ -551,7 +551,7 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { _lb.classList.remove('open'); document.body.style.overflow = ''; } });
   // Auto-wire all images except hero
   document.querySelectorAll('img[src]:not([src=""])').forEach(img => {
-    if (img.closest('.hero, .hero-img-wrap, nav')) return;
+    if (img.closest('.hero, .hero-img-wrap')) return;
     img.classList.add('zoomable');
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
   });

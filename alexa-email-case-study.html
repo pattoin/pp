@@ -459,6 +459,7 @@
     <div class="artifact">
       <div class="artifact-header">
         <span class="artifact-title">Voice Enrollment Option 1 — Guided phrase reading</span>
+        <span class="artifact-tag">HHO CX Design · Amazon Confidential</span>
       </div>
       <img src="images/em-enroll1.jpg" alt="Voice Enrollment Option 1" onclick="openLightbox(this)">
       <div class="artifact-cap">Select a device → choose from household devices → tap Next to start → read 10 phrases aloud. High-accuracy enrollment for primary users. Last screen shows the "Listening..." state with a progress indicator and the phrase to read.</div>
@@ -466,6 +467,7 @@
     <div class="artifact">
       <div class="artifact-header">
         <span class="artifact-title">Voice Enrollment Option 2 — VUI-triggered enrollment</span>
+        <span class="artifact-tag">HHO CX Design · Amazon Confidential</span>
       </div>
       <img src="images/em-enroll2.jpg" alt="Voice Enrollment Option 2" onclick="openLightbox(this)">
       <div class="artifact-cap">Say "Alexa, learn my voice" to start enrollment passively. Lower friction for secondary household users. The open design question — "HOW DO WE KNOW IT'S DONE?" — shows the honest challenges we were actively working through.</div>
@@ -473,6 +475,7 @@
     <div class="artifact">
       <div class="artifact-header">
         <span class="artifact-title">Voice Code — Optional 4-digit security layer</span>
+        <span class="artifact-tag">HHO CX Design · Amazon Confidential</span>
       </div>
       <img src="images/em-voicecode.jpg" alt="Voice code setup flow" onclick="openLightbox(this)">
       <div class="artifact-cap">After enrollment, users can optionally set a 4-digit voice code as a second authentication factor for email access. Confirms "Alexa can now check and play your emails without asking who you are" — privacy protection without mandatory friction.</div>
@@ -711,11 +714,14 @@
   });
 
   // Scroll to top
-  const _st = document.getElementById('scrollTop');
-  if (_st) {
-    window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
-    _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
+  // Scroll to top — deferred so button exists in DOM
+  document.addEventListener('DOMContentLoaded', () => {
+    const _st = document.getElementById('scrollTop');
+    if (_st) {
+      window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
+      _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+  });
 </script>
 <button class="scroll-top" id="scrollTop" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>

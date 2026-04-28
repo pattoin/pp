@@ -607,11 +607,14 @@ footer{
   });
 
   // Scroll to top
-  const _st = document.getElementById('scrollTop');
-  if (_st) {
-    window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
-    _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
+  // Scroll to top — deferred so button exists in DOM
+  document.addEventListener('DOMContentLoaded', () => {
+    const _st = document.getElementById('scrollTop');
+    if (_st) {
+      window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
+      _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+  });
 </script>
 <button class="scroll-top" id="scrollTop" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>

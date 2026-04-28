@@ -462,11 +462,14 @@
   });
 
   // Scroll to top
-  const _st = document.getElementById('scrollTop');
-  if (_st) {
-    window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
-    _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
+  // Scroll to top — deferred so button exists in DOM
+  document.addEventListener('DOMContentLoaded', () => {
+    const _st = document.getElementById('scrollTop');
+    if (_st) {
+      window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
+      _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+  });
 </script>
 
 <button class="scroll-top" id="scrollTop" aria-label="Back to top">
