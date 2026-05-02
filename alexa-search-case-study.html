@@ -464,9 +464,10 @@
   .nav-name { display: flex; align-items: center; gap: 8px; }
   .nav-logo { height: 26px; width: auto; display: block; flex-shrink: 0; cursor: pointer; }
   </style>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="icon" type="image/png" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMWExODE0Ii8+PHRleHQgeD0iMTYiIHk9IjIzIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2Y0ZjJlZSIgbGV0dGVyLXNwYWNpbmc9IjEiPlBQPC90ZXh0Pjwvc3ZnPg==">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 </head>
 <body>
 
@@ -1269,14 +1270,11 @@ Want me to set one?"</div>
   });
 
   // Scroll to top
-  // Scroll to top — deferred so button exists in DOM
-  document.addEventListener('DOMContentLoaded', () => {
-    const _st = document.getElementById('scrollTop');
-    if (_st) {
-      window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
-      _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    }
-  });
+  const _st = document.getElementById('scrollTop');
+  if (_st) {
+    window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
+    _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 </script>
 
 <button class="scroll-top" id="scrollTop" aria-label="Back to top">
