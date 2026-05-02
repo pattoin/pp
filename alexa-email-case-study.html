@@ -52,14 +52,14 @@
     position: relative; height: 80vh; min-height: 520px;
     overflow: hidden; background: var(--dark);
   }
-  .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: right center; opacity: 0.5; display: block; }
+  .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: right center; opacity: 0.4; display: block; }
   .hero-overlay {
     position: absolute; inset: 0;
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 56px 80px;
     background: linear-gradient(to top, rgba(10,8,8,0.75) 0%, rgba(10,8,8,0.18) 50%, rgba(10,8,8,0.0) 100%);
   }
-  .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
   .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 9vw, 110px); line-height: 0.93; color: #fff; letter-spacing: 0.02em; margin-bottom: 24px; }
   .hero-meta { display: flex; gap: 40px; flex-wrap: wrap; }
   .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
@@ -99,7 +99,7 @@
 
   /* DARK STRIP */
   .dark-strip { background: var(--dark); padding: 80px 0; }
-  .dark-strip .section-label { color: rgba(255,255,255,.45); }
+  .dark-strip .section-label { color: #fff; }
   .dark-strip h2 { color: #fff; }
   .dark-strip p { color: rgba(255,255,255,.55); }
   .dark-strip strong { color: rgba(255,255,255,.9); }
@@ -155,7 +155,7 @@
   .accent-strip strong { color: #1a1200; }
 
   /* 3-UP IMAGE GRID */
-  .img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin: 32px 0; }
+  .img-grid-3 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(0,1fr); gap: 4px; margin: 32px 0; }
   .img-grid-3 .artifact { margin: 0; }
 
   /* CASE NAV */
@@ -165,7 +165,7 @@
   .case-nav .back { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
 
   /* FOOTER */
-  .site-footer { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 40px 48px; background: var(--ink); border-top: 1.5px solid rgba(10,10,10,.12); gap: 24px; }
+  .site-footer { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; padding: 40px 48px; background: var(--ink); border-top: 1.5px solid rgba(10,10,10,.12); gap: 24px; }
   .f-left { display: flex; flex-direction: column; gap: 6px; }
   .f-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: .08em; color: #fff; line-height: 1; }
   .f-role { font-size: .68rem; color: rgba(255,255,255,.6); letter-spacing: .1em; text-transform: uppercase; }
@@ -226,6 +226,14 @@
   .lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.93); align-items: center; justify-content: center; }
   .lightbox.open { display: flex; }
   .lb-inner { position: relative; max-width: 92vw; max-height: 92vh; display: flex; align-items: center; justify-content: center; }
+  .img-caption { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; margin-top: 12px; font-style: italic; }
+
+  /* IMAGE OVERFLOW FIX */
+  img { width: 100%; max-width: 100%; height: auto; display: block; }
+  .hero-img { height: 100% !important; max-width: none !important; }
+  #lb-img, .lb-inner img { width: auto !important; max-width: 90vw !important; height: auto !important; }
+  .img-grid-3 > * { min-width: 0; overflow: hidden; }
+
   .lb-inner img { max-width: 90vw; max-height: 88vh; object-fit: contain; display: block; box-shadow: 0 24px 80px rgba(0,0,0,.5); }
   .lb-close { position: fixed; top: 20px; right: 28px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; cursor: pointer; opacity: .7; background: none; border: none; transition: opacity .15s; }
   .lb-close:hover { opacity: 1; }
@@ -460,7 +468,7 @@
     <div class="artifact">
       <div class="artifact-header">
         <span class="artifact-title">Voice Enrollment Option 1 — Guided phrase reading</span>
-        <span class="artifact-tag">HHO CX Design · Amazon Confidential</span>
+        <span class="artifact-tag">HHO CX Design</span>
       </div>
       <img src="images/em-enroll1.jpg" alt="Voice Enrollment Option 1" onclick="openLightbox(this)">
       <div class="artifact-cap">Select a device → choose from household devices → tap Next to start → read 10 phrases aloud. High-accuracy enrollment for primary users. Last screen shows the "Listening..." state with a progress indicator and the phrase to read.</div>
@@ -468,7 +476,7 @@
     <div class="artifact">
       <div class="artifact-header">
         <span class="artifact-title">Voice Enrollment Option 2 — VUI-triggered enrollment</span>
-        <span class="artifact-tag">HHO CX Design · Amazon Confidential</span>
+        <span class="artifact-tag">HHO CX Design</span>
       </div>
       <img src="images/em-enroll2.jpg" alt="Voice Enrollment Option 2" onclick="openLightbox(this)">
       <div class="artifact-cap">Say "Alexa, learn my voice" to start enrollment passively. Lower friction for secondary household users. The open design question — "HOW DO WE KNOW IT'S DONE?" — shows the honest challenges we were actively working through.</div>
@@ -476,7 +484,7 @@
     <div class="artifact">
       <div class="artifact-header">
         <span class="artifact-title">Voice Code — Optional 4-digit security layer</span>
-        <span class="artifact-tag">HHO CX Design · Amazon Confidential</span>
+        <span class="artifact-tag">HHO CX Design</span>
       </div>
       <img src="images/em-voicecode.jpg" alt="Voice code setup flow" onclick="openLightbox(this)">
       <div class="artifact-cap">After enrollment, users can optionally set a 4-digit voice code as a second authentication factor for email access. Confirms "Alexa can now check and play your emails without asking who you are" — privacy protection without mandatory friction.</div>
@@ -600,7 +608,7 @@
     <div class="dialog-spec">
       <div class="artifact-header">
         <span class="artifact-title">VUI Dialog Spec — Core email navigation flow</span>
-        <span class="artifact-tag">Alexa Connect PR/FAQ · Amazon Confidential</span>
+        <span class="artifact-tag">Alexa Connect PR/FAQ</span>
       </div>
       <div class="dialog-body">
         <div><span class="dialog-c">C:</span> "Alexa, do I have any email?"</div>
@@ -714,12 +722,14 @@
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
   });
 
-  // Scroll to top
-  const _st = document.getElementById('scrollTop');
-  if (_st) {
-    window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
-    _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
+  // Scroll to top — deferred so button exists in DOM
+  document.addEventListener('DOMContentLoaded', () => {
+    const _st = document.getElementById('scrollTop');
+    if (_st) {
+      window.addEventListener('scroll', () => { _st.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
+      _st.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+  });
 </script>
 <button class="scroll-top" id="scrollTop" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
